@@ -7,6 +7,11 @@
 FlightMap::FlightMap(int airportNumber) :
     airportNumber(airportNumber), airports(airportNumber) {}
 
+
+int calculateDistance(){
+    return 0;
+}
+
 // Add edge from source to destination with a certain weight
 void FlightMap::addFlight(int source, int destination, Airline airline) {
     if (source<1 || source>airportNumber || destination<1 || destination>airportNumber) return;
@@ -14,10 +19,6 @@ void FlightMap::addFlight(int source, int destination, Airline airline) {
     int distance = calculateDistance();
 
     airports[source].flights.push_back({airline, destination, distance});
-}
-
-void calculateDistance(){
-
 }
 
 // Depth-First Search: example implementation

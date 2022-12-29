@@ -20,16 +20,15 @@ struct Airline{
     string country;
 };
 
-class FlightMap {
+struct Flight {
 
-    struct Flight {
+    Airline airline;
+    int destination;   // Destination node
+    int distance; // An integer weight
+};
 
-        Airline airline;
-        int destination;   // Destination node
-        int distance; // An integer weight
-    };
+struct Airport {
 
-    struct Airport {
         string code;
         string name;
         string city;
@@ -39,7 +38,9 @@ class FlightMap {
 
         list<Flight> flights; // The list of outgoing edges (to adjacent nodes)
         bool visited;   // As the node been visited on a search?
-    };
+};
+
+class FlightMap {
 
     int airportNumber;  // Graph size (vertices are numbered from 1 to n)
     vector<Airport> airports; // The list of nodes being represented
