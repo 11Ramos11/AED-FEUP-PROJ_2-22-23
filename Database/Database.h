@@ -10,7 +10,9 @@
 #include <set>
 #include <algorithm>
 #include <vector>
-#include "../Graph/FlightMap.h"
+#include <unordered_map>
+#include <unordered_set>
+#include "../Graph/Airport.h"
 
 /** @brief Database class to read all input files and store all information.
  *
@@ -24,7 +26,7 @@ class Database {
 
 private:
 
-    vector<Airport> airports;
+    unordered_map<string,  unordered_set<Airport, Airport::hashFunction>> airportsPerCity;
 
     /** @brief Reads airports input file and stores them accordingly.
      *
@@ -39,6 +41,8 @@ private:
      */
     void readAirports();
 
+
+    void readAirlines();
 
 public:
 

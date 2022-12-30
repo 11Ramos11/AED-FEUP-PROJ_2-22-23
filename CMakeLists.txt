@@ -13,4 +13,4 @@ add_executable(AED_FEUP_PROJ_2_22_23
         resources/airports.csv
         resources/flights.csv
         Database/Database.cpp
-        Database/Database.h)
+        Database/Database.h Graph/Airport.h Graph/Airport.cpp)

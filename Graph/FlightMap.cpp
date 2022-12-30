@@ -5,7 +5,7 @@
 
 // Constructor: nr nodes and direction (default: undirected)
 FlightMap::FlightMap(int airportNumber) :
-    airportNumber(airportNumber), airports(airportNumber) {}
+    airportNumber(airportNumber) {}
 
 
 int calculateDistance(){
@@ -18,7 +18,7 @@ void FlightMap::addFlight(int source, int destination, Airline airline) {
 
     int distance = calculateDistance();
 
-    airports[source].flights.push_back({airline, destination, distance});
+    //airports[source].flights.push_back({airline, destination, distance});
 }
 
 // Depth-First Search: example implementation

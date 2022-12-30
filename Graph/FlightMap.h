@@ -8,37 +8,11 @@
 #include <vector>
 #include <queue>
 #include <iostream>
+#include <unordered_set>
+#include "Airport.h"
 
 using namespace std;
 
-
-struct Airline{
-
-    string code;
-    string name;
-    string callSign;
-    string country;
-};
-
-struct Flight {
-
-    Airline airline;
-    int destination;   // Destination node
-    int distance; // An integer weight
-};
-
-struct Airport {
-
-        string code;
-        string name;
-        string city;
-        string country;
-        float latitude;
-        float longitude;
-
-        list<Flight> flights; // The list of outgoing edges (to adjacent nodes)
-        bool visited;   // As the node been visited on a search?
-};
 
 class FlightMap {
 
