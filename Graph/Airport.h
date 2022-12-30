@@ -6,9 +6,12 @@
 #define AED_FEUP_PROJ_2_22_23_AIRPORT_H
 
 #include <string>
-#include "FlightMap.h"
+#include <unordered_set>
+#include <list>
 
 using namespace std;
+
+
 
 struct Airline{
 
@@ -25,7 +28,9 @@ struct Flight {
     int distance; // An integer weight
 };
 
-struct Airport {
+class Airport {
+
+public:
     string code;
     string name;
     string city;

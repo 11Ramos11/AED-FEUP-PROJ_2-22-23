@@ -12,7 +12,7 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
-#include "../Graph/Airport.h"
+#include "../Graph/FlightMap.h"
 
 /** @brief Database class to read all input files and store all information.
  *
