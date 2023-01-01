@@ -63,11 +63,11 @@ void Database::readAirports(){
             airportsPerCity[city].insert(airport);
 
         else {
-            unordered_set<Airport, Airport::hashFunction> airports;
+            unordered_set<AirportPTR, Airport::hashFunction> airports;
             airports.insert(airport);
-            airportsPerCity.insert(pair<City, unordered_set<Airport, Airport::hashFunction>> (city, airports));
+            airportsPerCity.insert(pair<City, unordered_set<AirportPTR, Airport::hashFunction>> (city, airports));
         }
-        this->airports.insert(pair<string, Airport>(code, airport));
+        this->airports.insert(pair<string, AirportPTR>(code, airport));
 
     } while (true);
 
@@ -97,7 +97,7 @@ void Database::read() {
     readAirlines();
 
 
-    for (Airport airport: airportsPerCity[{"London", "Canada"}])
-        std::cout << airport.name << ',' << airport.country << endl;
+    for (AirportPTR airport: airportsPerCity[{"London", "United Kingdom"}])
+        std::cout << airport->name << ',' << airport->country << endl;
 }
 

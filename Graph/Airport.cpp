@@ -18,17 +18,19 @@ Airport::Airport(const Airport& airport) {
     this->longitude = airport.longitude;
 }
 
-bool Airport::operator == (const Airport& airport) const
+Airport::Airport(){}
+
+bool operator==(const AirportPTR& airport1, const AirportPTR& airport2)
 {
-    return this->code == airport.code;
+    return airport1->code == airport2->code;
 }
 
-size_t Airport::hashFunction::operator()(const Airport &airport) const {
+size_t Airport::hashFunction::operator()(const AirportPTR &airport) const {
 
-    return hash<string>()(airport.code);
+    return hash<string>()(airport->code);
 }
 
-double Airport::distanteTo(const Airport& airport) const{
+double Airport::distanceTo(const Airport& airport) const{
 
     double thisLatitude = this->latitude, thisLongitude = this->longitude;
     double otherLatitude = airport.latitude, otherLongitude = airport.longitude;
