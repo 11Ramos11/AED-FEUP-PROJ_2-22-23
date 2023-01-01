@@ -12,7 +12,7 @@
 using namespace std;
 
 Database::Database() = default;
-/*
+
 void Database::readAirlines(){
 
     ifstream airlineFile("../resources/airlines.csv");
@@ -28,11 +28,11 @@ void Database::readAirlines(){
         getline(airlineFile, name, ',');
         getline(airlineFile, callSign, ',');
         getline(airlineFile, country);
-        airlines.push_back({code, name, callSign, country});
+        airlines.insert(pair<string, Airline>(code,{code, name, callSign, country}));
 
     } while (true);
 
-}*/
+}
 
 
 
@@ -43,23 +43,30 @@ void Database::readAirports(){
 
     getline(airportFile, line);
 
-    string code,name,city,country, latitude, longitude;
+    string code,name,cityName,country, latitude, longitude;
 
     do {
         getline(airportFile, code, ',');
         if (code == "") break;
         getline(airportFile, name, ',');
-        getline(airportFile, city, ',');
+        getline(airportFile, cityName, ',');
         getline(airportFile, country, ',');
         getline(airportFile, latitude, ',');
         getline(airportFile, longitude);
 
-      //  unordered_set<Airport, Airport::hashFunction> airports;
 
-      //  Airport airport (code, name, city, country, stof(latitude), stof(longitude));
-      //  airports.insert(airport);
+        Airport airport (code, name, cityName, country, stof(latitude), stof(longitude));
 
-      //  airportsPerCity.insert(pair<string, unordered_set<Airport, Airport::hashFunction>> (city, airports));
+        City city {cityName, country};
+        if (airportsPerCity.find(city) != airportsPerCity.end())
+            airportsPerCity[city].insert(airport);
+
+        else {
+            unordered_set<Airport, Airport::hashFunction> airports;
+            airports.insert(airport);
+            airportsPerCity.insert(pair<City, unordered_set<Airport, Airport::hashFunction>> (city, airports));
+        }
+        this->airports.insert(pair<string, Airport>(code, airport));
 
     } while (true);
 
@@ -69,6 +76,8 @@ void Database::read() {
 
     readAirports();
     readAirlines();
-    std::cout << "hello";
+
+    for (Airport airport: airportsPerCity[{"London", "Canada"}])
+        std::cout << airport.name << ',' << airport.country << endl;
 }
 

@@ -21,10 +21,7 @@ bool Airport::operator == (const Airport& airport) const
     return this->code == airport.code;
 }
 
-struct Airport::hashFunction
-{
-    size_t operator()(const Airport& airport) const
-    {
-        return hash<string>()(airport.code);
-    }
-};
+size_t Airport::hashFunction::operator()(const Airport &airport) const {
+
+    return hash<string>()(airport.code);
+}

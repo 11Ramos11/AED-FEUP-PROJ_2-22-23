@@ -22,11 +22,32 @@
  *  "classes.csv", "classes_per_uc.csv" and "student_classes.csv".
  *  And stores their data accordingly.
  */
+
+struct City {
+    string name;
+    string country;
+
+    bool operator == (const City& city) const {
+        return name == city.name && country == city.country;
+    }
+
+    struct hashFunction {
+        size_t operator()(const City& city) const {
+            return hash<string>()(city.name + city.country);
+        }
+    };
+};
+
+
 class Database {
 
 private:
 
-    unordered_map<string,  unordered_set<Airport, Airport::hashFunction>> airportsPerCity;
+    unordered_map<City,  unordered_set<Airport, Airport::hashFunction>, City::hashFunction> airportsPerCity;
+
+    unordered_map<string,  Airport> airports;
+
+    unordered_map<string,  Airline> airlines;
 
     /** @brief Reads airports input file and stores them accordingly.
      *

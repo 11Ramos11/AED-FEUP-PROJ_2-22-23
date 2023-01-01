@@ -23,7 +23,6 @@ struct Airline{
 
 struct Flight {
 
-    unordered_set<Airline> airlines;
     int destination;   // Destination node
     int distance; // An integer weight
 };
@@ -46,7 +45,10 @@ public:
 
     bool operator == (const Airport & airport) const;
 
-    struct hashFunction;
+    struct hashFunction
+    {
+        size_t operator()(const Airport& airport) const;
+    };
 };
 
 #endif //AED_FEUP_PROJ_2_22_23_AIRPORT_H
