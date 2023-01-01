@@ -8,7 +8,7 @@
 #include <vector>
 #include <queue>
 #include <iostream>
-#include <unordered_set>
+#include <unordered_map>
 #include "Airport.h"
 
 using namespace std;
@@ -16,21 +16,23 @@ using namespace std;
 
 class FlightMap {
 
-    int airportNumber;  // Graph size (vertices are numbered from 1 to n)
-    vector<Airport> airports; // The list of nodes being represented
+    //! @brief Holds all airports.
+    unordered_map<string,  Airport> airports;
 
 public:
     // Constructor: nr nodes and direction (default: undirected)
-    FlightMap(int airportNumber);
+    FlightMap();
+
+    void setAirports(const unordered_map<string,  Airport> airports);
 
     // Add edge from source to destination with a certain weight
-    void addFlight(int src, int dest, Airline airline);
+    void addFlight(string originCode, string destinationCode, Airline airline);
 
     // Depth-First Search: example implementation
-    void dfs(int v);
+    void dfs(string code);
 
     // Breadth-First Search: example implementation
-    void bfs(int v);
+    void bfs(const string& code);
 };
 
 #endif

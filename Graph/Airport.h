@@ -22,7 +22,7 @@ struct Airline{
 
 struct Flight {
 
-    int destination;   // Destination node
+    string destinationCode;   // Destination node
     int distance; // An integer weight
 };
 
@@ -58,7 +58,7 @@ public:
      * @param airport2 Of Airport type.
      * @return double that corresponds to the distance.
      */
-    const double distanceBetweenAirports(Airport airport1, Airport airport2) const;
+    double distanteTo(const Airport& airport) const;
 };
 
 #endif //AED_FEUP_PROJ_2_22_23_AIRPORT_H

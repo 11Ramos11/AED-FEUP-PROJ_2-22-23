@@ -4,17 +4,19 @@
 #include "FlightMap.h"
 
 // Constructor: nr nodes and direction (default: undirected)
-FlightMap::FlightMap(int airportNumber) :
-    airportNumber(airportNumber) {}
+FlightMap::FlightMap() {}
 
+void FlightMap::setAirports(const unordered_map<string,  Airport> airports) {
+    this->airports = airports;
+}
 
 int calculateDistance(){
     return 0;
 }
 
 // Add edge from source to destination with a certain weight
-void FlightMap::addFlight(int source, int destination, Airline airline) {
-    if (source<1 || source>airportNumber || destination<1 || destination>airportNumber) return;
+void FlightMap::addFlight(string originCode, string destinationCode, Airline airline) {
+    if (airports.find(originCode) == airports.end() || airports.find(destinationCode) == airports.end() ) return;
 
     int distance = calculateDistance();
 
@@ -22,32 +24,39 @@ void FlightMap::addFlight(int source, int destination, Airline airline) {
 }
 
 // Depth-First Search: example implementation
-void FlightMap::dfs(int v) {
+void FlightMap::dfs(string code) {
     // show node order
     // cout << v << " ";
-    airports[v].visited = true;
-    for (auto e : airports[v].flights) {
-        int w = e.destination;
-        if (!airports[w].visited)
-            dfs(w);
+    if (airports.find(code) != airports.end())
+        airports[code].visited = true;
+
+    for (auto e : airports[code].flights) {
+        string destinationCode = e.destinationCode;
+        if (!airports[code].visited)
+            dfs(destinationCode);
     }
 }
 
 // Breadth-First Search: example implementation
-void FlightMap::bfs(int v) {
-    for (int i=1; i<=airportNumber; i++) airports[i].visited = false;
-    queue<int> q; // queue of unvisited nodes
-    q.push(v);
-    airports[v].visited = true;
-    while (!q.empty()) { // while there are still unvisited nodes
-        int u = q.front(); q.pop();
+void FlightMap::bfs(const string& code) {
+
+    for (auto & [code, airport]: airports)
+        airport.visited = false;
+
+    queue<string> unvisitedNodes; // queue of unvisited nodes
+    unvisitedNodes.push(code);
+    airports[code].visited = true;
+
+    while (!unvisitedNodes.empty()) { // while there are still unvisited nodes
+        string code2 = unvisitedNodes.front();
+        unvisitedNodes.pop();
         // show node order
         //cout << u << " ";
-        for (auto e : airports[u].flights) {
-            int w = e.destination;
-            if (!airports[w].visited) {
-                q.push(w);
-                airports[w].visited = true;
+        for (auto flight : airports[code2].flights) {
+            string destination = flight.destinationCode;
+            if (!airports[destination].visited) {
+                unvisitedNodes.push(destination);
+                airports[destination].visited = true;
             }
         }
     }

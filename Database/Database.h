@@ -9,6 +9,7 @@
 
 #include <algorithm>
 #include <unordered_map>
+#include <memory>
 #include <unordered_set>
 #include "../Graph/FlightMap.h"
 
@@ -27,6 +28,10 @@ struct City {
     };
 };
 
+typedef shared_ptr<FlightMap> FlightMapPtr;
+typedef shared_ptr<Airport> AirportPTR;
+
+
 /** @brief Database class to read all input files and store all information.
  *
  *  Intended to be instanced once and creates a database
@@ -39,11 +44,13 @@ class Database {
 
 private:
 
+    FlightMapPtr flightMap {new FlightMap()};
+
     //! @brief Holds all airports per city.
-    unordered_map<City,  unordered_set<Airport, Airport::hashFunction>, City::hashFunction> airportsPerCity;
+    unordered_map<City,  unordered_set<AirportPTR, Airport::hashFunction>, City::hashFunction> airportsPerCity;
 
     //! @brief Holds all airports..
-    unordered_map<string,  Airport> airports;
+    unordered_map<string,  AirportPTR> airports;
 
     //! @brief Holds all airlines.
     unordered_map<string,  Airline> airlines;
@@ -68,6 +75,9 @@ private:
      *  @return Void.
      */
     void readAirports();
+
+    void readFlights();
+
 
 public:
 

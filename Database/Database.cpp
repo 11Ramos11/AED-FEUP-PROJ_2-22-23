@@ -55,7 +55,8 @@ void Database::readAirports(){
         getline(airportFile, longitude);
 
 
-        Airport airport (code, name, cityName, country, stof(latitude), stof(longitude));
+        AirportPTR airport {new Airport (
+                code, name, cityName, country, stof(latitude), stof(longitude))};
 
         City city {cityName, country};
         if (airportsPerCity.find(city) != airportsPerCity.end())
@@ -72,10 +73,29 @@ void Database::readAirports(){
 
 }
 
+void Database::readFlights() {
+    ifstream flightsFile("../resources/flights.csv");
+    string line;
+
+    getline(flightsFile, line);
+
+    string originCode,destinationCode,companyCode;
+
+    do {
+        getline(flightsFile, originCode, ',');
+        if (originCode == "") break;
+        getline(flightsFile, destinationCode, ',');
+        getline(flightsFile, companyCode);
+
+
+    } while (true);
+}
+
 void Database::read() {
 
     readAirports();
     readAirlines();
+
 
     for (Airport airport: airportsPerCity[{"London", "Canada"}])
         std::cout << airport.name << ',' << airport.country << endl;
