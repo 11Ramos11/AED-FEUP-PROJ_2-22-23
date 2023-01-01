@@ -1,5 +1,8 @@
-// AED 2022/2023 - Aula Pratica 12
-// Pedro Ribeiro (DCC/FCUP) [last update: 11/12/2022]
+/** @file FlightMap.cpp
+ *  @brief Contains the FlightMap Class implementation.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #include "FlightMap.h"
 

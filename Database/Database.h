@@ -13,23 +13,11 @@
 #include <unordered_set>
 #include "../Graph/FlightMap.h"
 
-struct City {
-    string name;
-    string country;
+/** @brief City struct to represent a city.
+ *
+ */
 
-    bool operator == (const City& city) const {
-        return name == city.name && country == city.country;
-    }
 
-    struct hashFunction {
-        size_t operator()(const City& city) const {
-            return hash<string>()(city.name + city.country);
-        }
-    };
-};
-
-typedef shared_ptr<FlightMap> FlightMapPtr;
-typedef shared_ptr<Airport> AirportPTR;
 
 
 /** @brief Database class to read all input files and store all information.
