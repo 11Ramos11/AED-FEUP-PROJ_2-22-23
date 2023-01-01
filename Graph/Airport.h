@@ -83,7 +83,9 @@ public:
      * @param airport2 Of Airport type.
      * @return double that corresponds to the distance.
      */
-    double distanceTo(const Airport& airport) const;
+    double distanceTo(const AirportPTR& airport) const;
+
+    void addFlight(Flight flight);
 };
 
 /** @brief Operator overload.

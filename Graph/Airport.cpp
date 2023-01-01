@@ -30,10 +30,10 @@ size_t Airport::hashFunction::operator()(const AirportPTR &airport) const {
     return hash<string>()(airport->code);
 }
 
-double Airport::distanceTo(const Airport& airport) const{
+double Airport::distanceTo(const AirportPTR& airport) const{
 
     double thisLatitude = this->latitude, thisLongitude = this->longitude;
-    double otherLatitude = airport.latitude, otherLongitude = airport.longitude;
+    double otherLatitude = airport->latitude, otherLongitude = airport->longitude;
 
     double distanceLat = (thisLatitude - otherLatitude) * M_PI / 180.0;
     double distanceLon = (thisLongitude - otherLongitude) * M_PI / 180.0;
@@ -46,3 +46,9 @@ double Airport::distanceTo(const Airport& airport) const{
     double b = 2 * asin(sqrt(a));
     return earthRadius * b;
 }
+
+void Airport::addFlight(Flight flight){
+
+    flights.push_back(flight);
+}
+

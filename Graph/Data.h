@@ -39,7 +39,7 @@ struct Flight {
     int distance;
 
     //! @brief Holds the airline that can be used to the flight.
-    list<Airline> airlines;
+    string airlineCode;
 };
 
 struct City {
