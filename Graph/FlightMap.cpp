@@ -7,7 +7,7 @@
 FlightMap::FlightMap(int airportNumber) :
     airportNumber(airportNumber) {}
 
-/*
+
 int calculateDistance(){
     return 0;
 }
@@ -51,4 +51,4 @@ void FlightMap::bfs(int v) {
             }
         }
     }
-}*/
+}

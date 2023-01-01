@@ -8,10 +8,9 @@
 #include <string>
 #include <unordered_set>
 #include <list>
+#include <cmath>
 
 using namespace std;
-
-
 
 struct Airline{
 
@@ -40,7 +39,7 @@ public:
     list<Flight> flights; // The list of outgoing flights (to other airports)
     bool visited;   // As the node been visited on a search?
 
-    Airport( string code,string name,string city,string country,float latitude,float longitude);
+    Airport(string code, string name, string city, string country, float latitude, float longitude);
     Airport(const Airport& airport);
 
     bool operator == (const Airport & airport) const;
@@ -49,6 +48,17 @@ public:
     {
         size_t operator()(const Airport& airport) const;
     };
+
+    /** @brief Calculate distance between two Airports.
+     *
+     * Calculate the distance between latitudes and longitudes,
+     * convert latitudes to radians and apply the Haversine formula.
+     *
+     * @param airport1 Of Airport type.
+     * @param airport2 Of Airport type.
+     * @return double that corresponds to the distance.
+     */
+    const double distanceBetweenAirports(Airport airport1, Airport airport2) const;
 };
 
 #endif //AED_FEUP_PROJ_2_22_23_AIRPORT_H
