@@ -12,14 +12,29 @@
 #include <unordered_set>
 #include "../Graph/FlightMap.h"
 
+/** @brief City struct to represent a city.
+ *
+ */
 struct City {
+
     string name;
     string country;
 
+    /** @brief Operator overload.
+     *
+     * Compare if two cities have the same name
+     * and if they belong to the same country.
+     *
+     * @param city of type const City.
+     * @return True if the names and the counties are equals.
+     */
     bool operator == (const City& city) const {
         return name == city.name && country == city.country;
     }
 
+    /** @brief Hash function implementation.
+     *
+     */
     struct hashFunction {
         size_t operator()(const City& city) const {
             return hash<string>()(city.name + city.country);
@@ -42,7 +57,7 @@ private:
     //! @brief Holds all airports per city.
     unordered_map<City,  unordered_set<Airport, Airport::hashFunction>, City::hashFunction> airportsPerCity;
 
-    //! @brief Holds all airports..
+    //! @brief Holds all airports.
     unordered_map<string,  Airport> airports;
 
     //! @brief Holds all airlines.

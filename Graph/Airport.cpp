@@ -1,6 +1,8 @@
-//
-// Created by Ramos on 12/30/2022.
-//
+/** @file Airport.cpp
+ *  @brief Contains the Airport Class implementation.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #include "Airport.h"
 

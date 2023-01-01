@@ -1,8 +1,11 @@
-// AED 2022/2023 - Aula Pratica 12
-// Pedro Ribeiro (DCC/FCUP) [last update: 11/12/2022]
+/** @file FlightMap.h
+ *  @brief Contains the FlightMap class declaration.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
-#ifndef _GRAPH_H_
-#define _GRAPH_H_
+#ifndef AED_FEUP_PROJ_2_22_23_FLIGHTMAP_H
+#define AED_FEUP_PROJ_2_22_23_FLIGHTMAP_H
 
 #include <list>
 #include <vector>
@@ -13,14 +16,23 @@
 
 using namespace std;
 
-
+/** @brief FlightMap class to represent a flight map.
+ *
+ */
 class FlightMap {
 
-    int airportNumber;  // Graph size (vertices are numbered from 1 to n)
-    vector<Airport> airports; // The list of nodes being represented
+    //! @brief Holds the number of airports.
+    int airportNumber;
+
+    //! @brief Holds the possible airports.
+    vector<Airport> airports;
 
 public:
-    // Constructor: nr nodes and direction (default: undirected)
+
+    /** Create a new FlightMap with an airport number.
+     *
+     * @param airportNumber Of Type int.
+     */
     FlightMap(int airportNumber);
 
     // Add edge from source to destination with a certain weight
