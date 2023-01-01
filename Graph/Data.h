@@ -1,6 +1,8 @@
-//
-// Created by Ramos on 1/1/2023.
-//
+/** @file Data.h
+ *  @brief Contains the Data class declaration.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #ifndef AED_FEUP_PROJ_2_22_23_DATA_H
 #define AED_FEUP_PROJ_2_22_23_DATA_H

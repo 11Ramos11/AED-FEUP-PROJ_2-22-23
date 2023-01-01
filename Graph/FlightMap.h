@@ -22,10 +22,9 @@ using namespace std;
 class FlightMap {
 
     //! @brief Holds all airports.
-    unordered_map<string,  Airport> airports;
+    unordered_map<string,  AirportPTR> airports;
 
 public:
-
 
     /** Create a new FlightMap with an airport number.
      *
@@ -33,7 +32,7 @@ public:
      */
     FlightMap();
 
-    void setAirports(const unordered_map<string,  Airport> airports);
+    void setAirports(const unordered_map<string,  AirportPTR> airports);
 
     // Add edge from source to destination with a certain weight
     void addFlight(string originCode, string destinationCode, Airline airline);
@@ -43,6 +42,8 @@ public:
 
     // Breadth-First Search: example implementation
     void bfs(const string& code);
+
+    list<list<AirportPTR>> getPaths(AirportPTR airportDepart, AirportPTR airportDestination);
 };
 
 #endif

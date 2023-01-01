@@ -16,7 +16,6 @@
 
 using namespace std;
 
-
 /** @brief Airport class to represent an airport.
  *
  */
@@ -42,11 +41,19 @@ public:
     //! @brief Holds the airport longitude.
     float longitude;
 
+
+
+
+
     //! @brief Holds the flight that depart from the airport.
     list<Flight> flights;
 
     //! @brief Holds the airport has already visited or not.
     bool visited;
+
+    list<AirportPTR> path;
+
+    int numFlights;
 
     /** Create a new Airport with a code, a name, a city, a country, a latitude and a longitude.
      *
