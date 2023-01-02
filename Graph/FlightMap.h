@@ -97,11 +97,13 @@ public:
 
     list<list<Flight>> getFlights(float longitude, float latitude, int distance, string finalDestination, unordered_set<string> airlines);
 
-    int airportsMaxYFlights(int y);
+    list<AirportPTR> reachableAirports(AirportPTR airportPtr, int y);
 
     int airportsMaxYFlights(AirportPTR airportPtr, int y);
 
-    int citysMaxYFlights(City city, int y);
+    int citiesMaxYFlights(City city, int y);
+
+    int countriesMaxYFlights(string country, int y);
 };
 
 #endif

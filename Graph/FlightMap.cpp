@@ -187,8 +187,9 @@ int FlightMap::numDifferentCountries(AirportPTR airportPtr){
     return countries.size();
 }
 
-int FlightMap::airportsMaxYFlights(AirportPTR airportPtr, int y){
+list<AirportPTR> FlightMap::reachableAirports(AirportPTR airportPtr, int y){
     queue<AirportPTR> airports_code;
+    list<AirportPTR> airportsVisited;
     airports_code.push(airportPtr);
     airportPtr->visited = true;
     int count =0;
@@ -199,18 +200,54 @@ int FlightMap::airportsMaxYFlights(AirportPTR airportPtr, int y){
             auto destination = edge.destinationCode;
             if(airports[destination]->visited == false){
                 airports_code.push(airports[destination]);
+                airportsVisited.push_back(airports[destination]);
                 airports[destination]->visited = true;
                 count++;
                 if(count >= y) break;
             }
         }
     }
+    return airportsVisited;
 }
 
-int FlightMap::citysMaxYFlights(City city, int y){
-
+int FlightMap::airportsMaxYFlights(AirportPTR airportPtr, int y){
+    return reachableAirports(airportPtr,y).size();
 }
 
+int FlightMap::citiesMaxYFlights(City city, int y){
+    list<AirportPTR> allAirports;
+    for(AirportPTR airportptr: airportsPerCity[city]){
+        list<AirportPTR> airports = reachableAirports(airportptr,y);
+        for(auto airport: airports){
+            allAirports.push_back(airport);
+        }
+    }
+    list<string> cityName;
+    for(auto airport: allAirports){
+        auto city = airport->city;
+        if(find(cityName.begin(), cityName.end(), city) == cityName.end())
+            cityName.push_back(city);
+    }
+    return cityName.size();
+}
 
+int FlightMap::countriesMaxYFlights(string country, int y){
+    list<AirportPTR> allAirports;
+    for(auto pair: airports){
+        if(pair.second->country == country) {
+            list<AirportPTR> airports = reachableAirports(pair.second, y);
+            for (auto airport: airports) {
+                allAirports.push_back(airport);
+            }
+        }
+    }
+    list<string> countryName;
+    for(auto airport: allAirports){
+        auto country = airport->country;
+        if(find(countryName.begin(), countryName.end(), country) == countryName.end())
+            countryName.push_back(country);
+    }
+    return countryName.size();
+}
 
 
