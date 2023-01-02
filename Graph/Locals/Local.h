@@ -12,7 +12,7 @@ class Local {
 
 public:
 
-    virtual list<AirportPTR> getAirports(FlightMapPtr flightMap) = 0;
+    virtual list<AirportPTR > getAirports(FlightMapPtr flightMap) = 0;
 };
 
 
