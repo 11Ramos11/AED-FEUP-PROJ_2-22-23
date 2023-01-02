@@ -61,7 +61,7 @@ public:
      * @param airportDestination of AirportPTR type.
      * @return One or more lists with the minors airport paths.
      */
-    list<list<AirportPTR>> getPaths(AirportPTR airportDepart, AirportPTR airportDestination);
+    list<list<AirportPTR>> getPaths(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines);
 
     /** @brief Returns the best set od flights that can use to fly from one airport to another.
      *

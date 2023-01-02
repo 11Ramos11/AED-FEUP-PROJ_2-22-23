@@ -53,7 +53,7 @@ void FlightMap::bfs(const string& code) {
     }
 }
 
-list<list<AirportPTR>> FlightMap::getPaths(AirportPTR airportDepart, AirportPTR airportDestination){
+list<list<AirportPTR>> FlightMap::getPaths(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines){
 
     list<list<AirportPTR>> paths;
     int mininumFlights = INT_MAX;
@@ -76,6 +76,8 @@ list<list<AirportPTR>> FlightMap::getPaths(AirportPTR airportDepart, AirportPTR 
 
         for (auto flight : previousAirport->flights) {
             AirportPTR destination = airports[flight.destinationCode];
+
+            if (airlines.find(flight.airlineCode) == airlines.end()) continue;
 
             if (destination->numFlights > mininumFlights) break;
 
