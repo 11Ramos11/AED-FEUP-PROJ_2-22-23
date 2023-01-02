@@ -85,7 +85,8 @@ void Database::readFlights() {
         getline(flightsFile, destinationCode, ',');
         getline(flightsFile, companyCode);
 
-        int distance = airports[originCode]->distanceTo(airports[destinationCode]);
+        int distance = airports[originCode]->distanceTo(
+                airports[destinationCode]->longitude, airports[destinationCode]->latitude);
         airports[originCode]->addFlight({destinationCode, distance, companyCode});
 
     } while (true);
@@ -97,14 +98,7 @@ void Database::read() {
     readAirlines();
     readFlights();
 
-    for (AirportPTR airport: airportsPerCity[{"London", "United Kingdom"}]) {
-
-        for (Flight flight: airport->flights) {
-            std::cout << airport->city << ',' << airport->name  <<
-                " >>>> " << airports[flight.destinationCode]->city << ',' << airlines[flight.airlineCode].name << endl;
-        }
-
-        std::cout << endl << endl;
-    }
+    flightMap->setAirports(airports);
+    flightMap->setAirportsPerCity(airportsPerCity);
 }
 

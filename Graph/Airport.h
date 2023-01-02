@@ -88,11 +88,11 @@ public:
      * Calculate the distance between latitudes and longitudes,
      * convert latitudes to radians and apply the Haversine formula.
      *
-     * @param airport1 Of Airport type.
-     * @param airport2 Of Airport type.
+     * @param longitude Of float type.
+     * @param latitude Of float type.
      * @return double that corresponds to the distance.
      */
-    double distanceTo(const AirportPTR& airport) const;
+    double distanceTo(float longitude, float latitude) const;
 
     /** @brief Add flights to the list of flights.
      *

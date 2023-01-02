@@ -16,6 +16,8 @@
 
 using namespace std;
 
+typedef unordered_map<City,  unordered_set<AirportPTR, Airport::hashFunction>, City::hashFunction> AiportsPerCity_Set;
+
 /** @brief FlightMap class to represent a flight map.
  *
  */
@@ -23,6 +25,8 @@ class FlightMap {
 
     //! @brief Holds all airports.
     unordered_map<string,  AirportPTR> airports;
+
+    AiportsPerCity_Set airportsPerCity;
 
 public:
 
@@ -38,6 +42,13 @@ public:
      * @return Void.
      */
     void setAirports(const unordered_map<string,  AirportPTR> airports);
+
+    /** @brief Sets the airportsPerCity to the given argument.
+     *
+     * @param airports of const unordered_map<City,  unordered_set<AirportPTR>> type.
+     * @return Void.
+     */
+    void setAirportsPerCity(AiportsPerCity_Set airportsPerCity);
 
     /** @brief Depth-First Search implementation.
      *
@@ -79,6 +90,12 @@ public:
      * @return Number of different countries.
      */
     int numDifferentCountries(AirportPTR airportPtr);
+
+    list<list<Flight>> getFlights(AirportPTR airport, AirportPTR destination, unordered_set<string> airlines);
+
+    list<list<Flight>> getFlights(City city, string finalDestination, unordered_set<string> airlines);
+
+    list<list<Flight>> getFlights(float longitude, float latitude, int distance, string finalDestination, unordered_set<string> airlines);
 };
 
 #endif

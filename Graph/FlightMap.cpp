@@ -13,10 +13,11 @@ void FlightMap::setAirports(const unordered_map<string,  AirportPTR> airports) {
     this->airports = airports;
 }
 
-int calculateDistance(){
-    return 0;
+void FlightMap::setAirportsPerCity(AiportsPerCity_Set airportsPerCity){
+    this->airportsPerCity = airportsPerCity;
 }
 
+/*
 void FlightMap::dfs(string code) {
     // show node order
     // cout << v << " ";
@@ -28,7 +29,7 @@ void FlightMap::dfs(string code) {
         if (!airports[code]->visited)
             dfs(destinationCode);
     }
-}
+}*/
 
 void FlightMap::bfs(const string& code) {
 
@@ -135,6 +136,38 @@ list<list<Flight>> FlightMap::bestFlights(list<list<AirportPTR>> paths, string f
     }
 }
 
+list<list<Flight>> FlightMap::getFlights(AirportPTR airport, AirportPTR destination, unordered_set<string> airlines){
+    auto paths = getPaths(airport, destination, airlines);
+
+    auto trajectories = bestFlights(paths, destination->code);
+
+    return trajectories;
+}
+
+list<list<Flight>> FlightMap::getFlights(City city, string destinationCode, unordered_set<string> airlines){
+
+    list<list<Flight>> trajectories;
+
+    for (AirportPTR airport: airportsPerCity[city])
+        for (auto trajectory: getFlights(airport, airports[destinationCode],airlines))
+            trajectories.push_back(trajectory);
+
+    return trajectories;
+}
+
+
+list<list<Flight>> FlightMap::getFlights(float longitude, float latitude, int distance, string destinationCode, unordered_set<string> airlines){
+
+    list<list<Flight>> trajectories;
+
+    for (auto pair: airports) {
+        AirportPTR airport = pair.second;
+        if (airport->distanceTo(longitude, latitude) < distance)
+            for (auto trajectory: getFlights(airport, airports[destinationCode], airlines))
+                trajectories.push_back(trajectory);
+    }
+    return trajectories;
+}
 
 int FlightMap::numDifferentCountries(AirportPTR airportPtr){
     for(auto airport: airports){
