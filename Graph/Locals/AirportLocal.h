@@ -6,8 +6,18 @@
 #define AED_FEUP_PROJ_2_22_23_AIRPORTLOCAL_H
 
 
-class AirportLocal {
+#include "Local.h"
 
+class AirportLocal: public Local {
+
+private:
+    string code;
+
+public:
+
+    AirportLocal(string code);
+
+    list<AirportPTR> getAirports(FlightMapPtr flightMap) override;
 };
 
 

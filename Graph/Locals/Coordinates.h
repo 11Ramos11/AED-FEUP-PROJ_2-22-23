@@ -6,8 +6,21 @@
 #define AED_FEUP_PROJ_2_22_23_COORDINATES_H
 
 
-class Coordinates {
+#include "Local.h"
 
+class Coordinates: public Local {
+
+private:
+
+    float longitude;
+    float latitude;
+    float radius;
+
+public:
+
+    Coordinates(float longitude, float latitude, float radius);
+
+    list<AirportPTR> getAirports(FlightMapPtr flightMap) override;
 };
 
 
