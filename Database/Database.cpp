@@ -34,8 +34,6 @@ void Database::readAirlines(){
 
 }
 
-
-
 void Database::readAirports(){
 
     ifstream airportFile("../resources/airports.csv");

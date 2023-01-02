@@ -13,12 +13,6 @@
 #include <unordered_set>
 #include "../Graph/FlightMap.h"
 
-/** @brief City struct to represent a city.
- *
- */
-
-
-
 
 /** @brief Database class to read all input files and store all information.
  *
@@ -32,6 +26,7 @@ class Database {
 
 private:
 
+    //! @brief Represents the FlightMapPtr.
     FlightMapPtr flightMap {new FlightMap()};
 
     //! @brief Holds all airports per city.
@@ -46,7 +41,7 @@ private:
     /** @brief Reads airlines input file and stores them accordingly.
      *
      *  Reads the file "airlines.csv" and for each line
-     *  it read a Airline code, name, its call sign and country.
+     *  it reads an Airline code, name, its call sign and country.
      *
      *  @return Void.
      */
@@ -55,7 +50,7 @@ private:
     /** @brief Reads airports input file and stores them accordingly.
      *
      *  Reads the file "airports.csv" and for each line
-     *  it read a Airport code and name, a name of the city and country that belongs to
+     *  it reads an Airport code and name, a name of the city and country that belongs to
      *  and its latitude and longitude.
      *  If the Airport (name of the city, name of the country) corresponds to a new Airport,
      *  it creates a new Airport object and adds it to the unordered_map of airports.
@@ -64,6 +59,13 @@ private:
      */
     void readAirports();
 
+    /** @brief Reads flights input file and stores them accordingly.
+     *
+     *  Reads the file "flights.csv" and for each line
+     *  it reads its source, target and airline.
+     *
+     *  @return Void.
+     */
     void readFlights();
 
 
