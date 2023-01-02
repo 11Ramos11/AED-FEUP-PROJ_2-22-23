@@ -106,6 +106,45 @@ list<list<AirportPTR>> FlightMap::getPaths(AirportPTR airportDepart, AirportPTR 
     }
 }
 
+void getAllFlights(list<list<Flight>>& trajectories, string finalDestination,  list<Flight> trajectory, list<AirportPTR>::iterator airportIT){
+
+    AirportPTR airport = *airportIT;
+    auto nextAirport = airportIT; ++nextAirport;
+
+
+    for (Flight flight: airport->flights) {
+
+        auto backup = trajectory;
+
+        if (!(flight.destinationCode == (*nextAirport)->code))
+            continue;
+        
+        trajectory.push_back(flight);
+
+        if (airport->code == finalDestination)
+            trajectories.push_back(trajectory);
+
+        else
+            getAllFlights(trajectories, finalDestination, trajectory, nextAirport);
+
+
+        trajectory = backup;
+
+    }
+}
+
+list<list<Flight>> FlightMap::bestFlights(list<list<AirportPTR>> paths, string finalDestination){
+
+    list<list<Flight>> trajectories;
+    for(auto pathIT = paths.begin(); pathIT != paths.end(); pathIT++){
+
+        list<Flight> trajectory = {};
+
+        getAllFlights(trajectories, finalDestination, trajectory, pathIT->begin());
+    }
+}
+
+
 
 
 

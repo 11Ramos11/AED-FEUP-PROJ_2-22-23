@@ -44,6 +44,8 @@ public:
     void bfs(const string& code);
 
     list<list<AirportPTR>> getPaths(AirportPTR airportDepart, AirportPTR airportDestination);
+
+    list<list<Flight>> bestFlights(list<list<AirportPTR>> paths, string destinationCode);
 };
 
 #endif
