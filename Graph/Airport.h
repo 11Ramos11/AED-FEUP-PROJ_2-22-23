@@ -41,9 +41,8 @@ public:
     //! @brief Holds the airport longitude.
     float longitude;
 
-
-
-
+    //! @brief Holds the number of flights.
+    int numFlights;
 
     //! @brief Holds the flight that depart from the airport.
     list<Flight> flights;
@@ -51,9 +50,8 @@ public:
     //! @brief Holds the airport has already visited or not.
     bool visited;
 
+    //! @brief Holds all paths from the airport.
     list<AirportPTR> path;
-
-    int numFlights;
 
     /** Create a new Airport with a code, a name, a city, a country, a latitude and a longitude.
      *
@@ -71,6 +69,10 @@ public:
      */
     Airport(const Airport& airport);
 
+    /** Create a new Airport.
+     *
+     * Does nothing.
+     */
     Airport();
 
     /** @brief Hash function declaration.
@@ -92,16 +94,46 @@ public:
      */
     double distanceTo(const AirportPTR& airport) const;
 
+    /** @brief Add flights to the list of flights.
+     *
+     * @param flight of Flight type.
+     * @return Void.
+     */
     void addFlight(Flight flight);
+
+    /** @brief Represents the number of flights.
+     *
+     * @return The number of flights.
+     */
+    int getnumFlights();
+
+    /** @brief Represents all the flights.
+     *
+     * @return A list of flights.
+     */
+    list<Flight> getFlights();
+
+    /** @brief Represents the number of different airlines departing from the airport.
+     *
+     * @return Number of different airlines.
+     */
+    int numDifferentAirlines();
+
+    /** @brief Represents the number of different destinations of the flights departing from the airport.
+     *
+     * @return Number of different destinations.
+     */
+    int numDifferentDestinations();
+
 };
 
 /** @brief Operator overload.
-     *
-     * Compare if two airports have the same code.
-     *
-     * @param airport of type const Airport.
-     * @return True if the codes are equals.
-     */
+ *
+ * Compare if two airports have the same code.
+ *
+ * @param airport of type const Airport.
+ * @return True if the codes are equals.
+ */
 bool operator ==(const AirportPTR& airport1, const AirportPTR& airport2);
 
 #endif //AED_FEUP_PROJ_2_22_23_AIRPORT_H

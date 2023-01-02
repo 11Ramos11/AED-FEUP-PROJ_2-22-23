@@ -35,7 +35,8 @@ struct Airline{
  */
 struct Flight {
 
-    string destinationCode;   // Destination node
+    //! @brief Holds the destination code of the flight.
+    string destinationCode;
 
     //! @brief Holds the flight distance.
     int distance;
@@ -46,7 +47,10 @@ struct Flight {
 
 struct City {
 
+    //! @brief Holds the name of the city.
     string name;
+
+    //! @brief Holds the name of the country that the city belongs to.
     string country;
 
     /** @brief Operator overload.

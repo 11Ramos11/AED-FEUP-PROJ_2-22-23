@@ -26,26 +26,59 @@ class FlightMap {
 
 public:
 
-    /** Create a new FlightMap with an airport number.
+    /** Create a new FlightMap.
      *
-     * @param airportNumber Of Type int.
+     * Does nothing.
      */
     FlightMap();
 
+    /** @brief Sets the airports to the given argument.
+     *
+     * @param airports of const unordered_map<string,  AirportPTR> type.
+     * @return Void.
+     */
     void setAirports(const unordered_map<string,  AirportPTR> airports);
 
-    // Add edge from source to destination with a certain weight
-    void addFlight(string originCode, string destinationCode, Airline airline);
-
-    // Depth-First Search: example implementation
+    /** @brief Depth-First Search implementation.
+     *
+     * @param code of string type.
+     * @return Void.
+     */
     void dfs(string code);
 
-    // Breadth-First Search: example implementation
+    /** @brief Breadth-First Search implementation.
+     *
+     * @param code of const string type.
+     * @return Void.
+     */
     void bfs(const string& code);
 
+    /** @brief Returns all lists with minors airport paths.
+     *
+     * It uses BFS implementation.
+     *
+     * @param airportDepart of AirportPTR type.
+     * @param airportDestination of AirportPTR type.
+     * @return One or more lists with the minors airport paths.
+     */
     list<list<AirportPTR>> getPaths(AirportPTR airportDepart, AirportPTR airportDestination);
 
+    /** @brief Returns the best set od flights that can use to fly from one airport to another.
+     *
+     * It uses the return of the "getPaths" method and leach all the lists, keeping only the best of the best ones.
+     *
+     * @param paths of list<list<AirportPTR>> type.
+     * @param destinationCode of string type.
+     * @return The best set of flights.
+     */
     list<list<Flight>> bestFlights(list<list<AirportPTR>> paths, string destinationCode);
+
+    /** @brief Represents the number of different countries of the flights that arrived at the airport.
+     *
+     * @param airportPtr of AirportPTR type.
+     * @return Number of different countries.
+     */
+    int numDifferentCountries(AirportPTR airportPtr);
 };
 
 #endif

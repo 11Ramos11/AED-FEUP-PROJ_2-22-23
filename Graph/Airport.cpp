@@ -4,7 +4,9 @@
  *  @bug No known bugs.
  */
 
+#include <algorithm>
 #include "Airport.h"
+
 
 Airport::Airport(string code, string name, string city, string country, float latitude, float longitude):
 code(code), name(name), city(city), country(country), latitude(latitude), longitude(longitude) {}
@@ -48,8 +50,37 @@ double Airport::distanceTo(const AirportPTR& airport) const{
 }
 
 void Airport::addFlight(Flight flight){
-
     flights.push_back(flight);
+}
+
+int Airport::getnumFlights(){
+    return flights.size();
+}
+
+list<Flight> Airport::getFlights(){
+    return flights;
+}
+
+int Airport::numDifferentAirlines(){
+    list<string> airlinesCodes;
+    for(Flight flight: flights){
+        auto code = flight.airlineCode;
+        if(std::find(airlinesCodes.begin(), airlinesCodes.end(), code) == airlinesCodes.end()){
+            airlinesCodes.push_back(code);
+        }
+    }
+    return airlinesCodes.size();
+}
+
+int Airport::numDifferentDestinations(){
+    list<string> destinations;
+    for(Flight flight: flights){
+        auto code = flight.destinationCode;
+        if(std::find(destinations.begin(), destinations.end(), code) == destinations.end()){
+            destinations.push_back(code);
+        }
+    }
+    return destinations.size();
 }
 
 

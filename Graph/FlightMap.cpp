@@ -5,8 +5,8 @@
  */
 
 #include "FlightMap.h"
+#include <algorithm>
 
-// Constructor: nr nodes and direction (default: undirected)
 FlightMap::FlightMap() {}
 
 void FlightMap::setAirports(const unordered_map<string,  AirportPTR> airports) {
@@ -17,16 +17,6 @@ int calculateDistance(){
     return 0;
 }
 
-// Add edge from source to destination with a certain weight
-void FlightMap::addFlight(string originCode, string destinationCode, Airline airline) {
-    if (airports.find(originCode) == airports.end() || airports.find(destinationCode) == airports.end() ) return;
-
-    int distance = calculateDistance();
-
-    //airports[source].flights.push_back({airline, destination, distance});
-}
-
-// Depth-First Search: example implementation
 void FlightMap::dfs(string code) {
     // show node order
     // cout << v << " ";
@@ -40,17 +30,16 @@ void FlightMap::dfs(string code) {
     }
 }
 
-// Breadth-First Search: example implementation
 void FlightMap::bfs(const string& code) {
 
     for (auto & [code, airport]: airports)
         airport->visited = false;
 
-    queue<string> unvisitedNodes; // queue of unvisited nodes
+    queue<string> unvisitedNodes;
     unvisitedNodes.push(code);
     airports[code]->visited = true;
 
-    while (!unvisitedNodes.empty()) { // while there are still unvisited nodes
+    while (!unvisitedNodes.empty()) {
         string code2 = unvisitedNodes.front();
         unvisitedNodes.pop();
 
@@ -75,13 +64,13 @@ list<list<AirportPTR>> FlightMap::getPaths(AirportPTR airportDepart, AirportPTR 
         airport->numFlights = 0;
     }
 
-    queue<AirportPTR> unvisitedAirports; // queue of unvisited nodes
+    queue<AirportPTR> unvisitedAirports;
     unvisitedAirports.push(airportDepart);
     airportDepart->visited = true;
     airportDepart->numFlights = 1;
     airportDepart->path.push_back(airportDepart);
 
-    while (!unvisitedAirports.empty()) { // while there are still unvisited nodes
+    while (!unvisitedAirports.empty()) {
         AirportPTR previousAirport = unvisitedAirports.front();
         unvisitedAirports.pop();
 
@@ -118,7 +107,7 @@ void getAllFlights(list<list<Flight>>& trajectories, string finalDestination,  l
 
         if (!(flight.destinationCode == (*nextAirport)->code))
             continue;
-        
+
         trajectory.push_back(flight);
 
         if (airport->code == finalDestination)
@@ -143,6 +132,30 @@ list<list<Flight>> FlightMap::bestFlights(list<list<AirportPTR>> paths, string f
         getAllFlights(trajectories, finalDestination, trajectory, pathIT->begin());
     }
 }
+
+
+int FlightMap::numDifferentCountries(AirportPTR airportPtr){
+    for(auto airport: airports){
+        airport.second->visited = false;
+    }
+    string airportcode = airportPtr->code;
+
+    list<string> flightsCode;
+    for(auto airport: airports) {
+        for (auto edge: airport.second->flights) {
+            string destinationCode = edge.destinationCode;
+            if (destinationCode == airportcode) {
+                auto airlinecode = edge.airlineCode;
+                if (std::find(flightsCode.begin(),
+                              flightsCode.end(), airlinecode) == flightsCode.end()){
+                    flightsCode.push_back(airlinecode);
+                }
+            }
+        }
+    }
+    return flightsCode.size();
+}
+
 
 
 

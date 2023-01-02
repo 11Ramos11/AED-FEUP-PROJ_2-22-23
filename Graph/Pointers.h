@@ -9,9 +9,16 @@
 
 #include <memory>
 
-class Airport; class FlightMap;
+//! @brief Short declaration of incomplete type to avoid the "circular dependencies" problem.
+class Airport;
 
+//! @brief Short declaration of incomplete type to avoid the "circular dependencies" problem.
+class FlightMap;
+
+//! @brief Redefinition of shared pointers of FlightMaps for ease of use.
 typedef std::shared_ptr<FlightMap> FlightMapPtr;
+
+//! @brief Redefinition of shared pointers of Airports for ease of use.
 typedef std::shared_ptr<Airport> AirportPTR;
 
 #endif //AED_FEUP_PROJ_2_22_23_POINTERS_H
