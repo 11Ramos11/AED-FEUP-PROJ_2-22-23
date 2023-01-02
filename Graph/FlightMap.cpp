@@ -170,28 +170,46 @@ list<list<Flight>> FlightMap::getFlights(float longitude, float latitude, int di
 }
 
 int FlightMap::numDifferentCountries(AirportPTR airportPtr){
-    for(auto airport: airports){
-        airport.second->visited = false;
-    }
-    string airportcode = airportPtr->code;
-
-    list<string> flightsCode;
-    for(auto airport: airports) {
-        for (auto edge: airport.second->flights) {
+    list<string> countries;
+    auto airportcode = airportPtr->code;
+    for(auto pair: airports) {
+        for (auto edge: pair.second->flights) {
             string destinationCode = edge.destinationCode;
             if (destinationCode == airportcode) {
-                auto airlinecode = edge.airlineCode;
-                if (std::find(flightsCode.begin(),
-                              flightsCode.end(), airlinecode) == flightsCode.end()){
-                    flightsCode.push_back(airlinecode);
+                auto country = pair.second->country;
+                if (std::find(countries.begin(),
+                              countries.end(), country) == countries.end()) {
+                    countries.push_back(country);
                 }
             }
         }
     }
-    return flightsCode.size();
+    return countries.size();
 }
 
+int FlightMap::airportsMaxYFlights(AirportPTR airportPtr, int y){
+    queue<AirportPTR> airports_code;
+    airports_code.push(airportPtr);
+    airportPtr->visited = true;
+    int count =0;
+    while(!airports_code.empty()){
+        auto airport = airports_code.front();
+        airports_code.pop();
+        for(auto edge: airport->flights){
+            auto destination = edge.destinationCode;
+            if(airports[destination]->visited == false){
+                airports_code.push(airports[destination]);
+                airports[destination]->visited = true;
+                count++;
+                if(count >= y) break;
+            }
+        }
+    }
+}
 
+int FlightMap::citysMaxYFlights(City city, int y){
+
+}
 
 
 

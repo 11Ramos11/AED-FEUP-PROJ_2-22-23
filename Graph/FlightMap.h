@@ -74,7 +74,7 @@ public:
      */
     list<list<AirportPTR>> getPaths(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines);
 
-    /** @brief Returns the best set od flights that can use to fly from one airport to another.
+    /** @brief Returns the best set of flights that can be used to fly from one airport to another.
      *
      * It uses the return of the "getPaths" method and leach all the lists, keeping only the best of the best ones.
      *
@@ -96,6 +96,12 @@ public:
     list<list<Flight>> getFlights(City city, string finalDestination, unordered_set<string> airlines);
 
     list<list<Flight>> getFlights(float longitude, float latitude, int distance, string finalDestination, unordered_set<string> airlines);
+
+    int airportsMaxYFlights(int y);
+
+    int airportsMaxYFlights(AirportPTR airportPtr, int y);
+
+    int citysMaxYFlights(City city, int y);
 };
 
 #endif
