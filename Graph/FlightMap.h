@@ -13,6 +13,7 @@
 #include <iostream>
 #include <unordered_map>
 #include "Airport.h"
+#include "Locals/Local.h"
 
 using namespace std;
 
@@ -42,6 +43,10 @@ public:
      * @return Void.
      */
     void setAirports(const unordered_map<string,  AirportPTR> airports);
+
+    unordered_map<string,  AirportPTR> getAirports();
+
+    AiportsPerCity_Set getAirportsPerCity();
 
     /** @brief Sets the airportsPerCity to the given argument.
      *
@@ -93,9 +98,7 @@ public:
 
     list<list<Flight>> getFlights(AirportPTR airport, AirportPTR destination, unordered_set<string> airlines);
 
-    list<list<Flight>> getFlights(City city, string finalDestination, unordered_set<string> airlines);
-
-    list<list<Flight>> getFlights(float longitude, float latitude, int distance, string finalDestination, unordered_set<string> airlines);
+    list<list<Flight>> getFlights(Local* origin, Local* destination, unordered_set<string> airlines);
 
     list<AirportPTR> reachableAirports(AirportPTR airportPtr, int y);
 

@@ -5,6 +5,7 @@
  */
 
 #include "FlightMap.h"
+#include "Locals/Local.h"
 #include <algorithm>
 
 FlightMap::FlightMap() {}
@@ -13,8 +14,16 @@ void FlightMap::setAirports(const unordered_map<string,  AirportPTR> airports) {
     this->airports = airports;
 }
 
+unordered_map<string,  AirportPTR> FlightMap::getAirports(){
+    return airports;
+}
+
 void FlightMap::setAirportsPerCity(AiportsPerCity_Set airportsPerCity){
     this->airportsPerCity = airportsPerCity;
+}
+
+AiportsPerCity_Set FlightMap::getAirportsPerCity(){
+    return airportsPerCity;
 }
 
 /*
@@ -144,28 +153,15 @@ list<list<Flight>> FlightMap::getFlights(AirportPTR airport, AirportPTR destinat
     return trajectories;
 }
 
-list<list<Flight>> FlightMap::getFlights(City city, string destinationCode, unordered_set<string> airlines){
+list<list<Flight>> FlightMap::getFlights(Local* origin, Local* destination, unordered_set<string> airlines){
 
     list<list<Flight>> trajectories;
 
-    for (AirportPTR airport: airportsPerCity[city])
-        for (auto trajectory: getFlights(airport, airports[destinationCode],airlines))
-            trajectories.push_back(trajectory);
-
-    return trajectories;
-}
-
-
-list<list<Flight>> FlightMap::getFlights(float longitude, float latitude, int distance, string destinationCode, unordered_set<string> airlines){
-
-    list<list<Flight>> trajectories;
-
-    for (auto pair: airports) {
-        AirportPTR airport = pair.second;
-        if (airport->distanceTo(longitude, latitude) < distance)
-            for (auto trajectory: getFlights(airport, airports[destinationCode], airlines))
+    for (AirportPTR originAirport: origin->getAirports(static_cast<FlightMapPtr>(this)))
+        for (AirportPTR destAirport: destination->getAirports(static_cast<FlightMapPtr>(this)))
+            for (auto trajectory: getFlights(originAirport, destAirport,airlines))
                 trajectories.push_back(trajectory);
-    }
+
     return trajectories;
 }
 
