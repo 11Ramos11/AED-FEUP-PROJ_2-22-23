@@ -14,7 +14,6 @@ using namespace std;
 Database::Database() = default;
 
 void Database::readAirlines(){
-
     ifstream airlineFile("../resources/airlines.csv");
     string line;
 
@@ -35,7 +34,6 @@ void Database::readAirlines(){
 }
 
 void Database::readAirports(){
-
     ifstream airportFile("../resources/airports.csv");
     string line;
 
@@ -68,7 +66,6 @@ void Database::readAirports(){
         this->airports.insert(pair<string, AirportPTR>(code, airport));
 
     } while (true);
-
 }
 
 void Database::readFlights() {
@@ -93,7 +90,6 @@ void Database::readFlights() {
 }
 
 void Database::read() {
-
     readAirports();
     readAirlines();
     readFlights();

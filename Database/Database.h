@@ -68,7 +68,6 @@ private:
      */
     void readFlights();
 
-
 public:
 
     /** @brief Does nothing.

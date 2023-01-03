@@ -1,5 +1,7 @@
-//
-// Created by Ramos on 1/2/2023.
-//
+/** @file Local.cpp
+ *  @brief Contains the Local Class implementation.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #include "Local.h"

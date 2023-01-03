@@ -1,6 +1,8 @@
-//
-// Created by Ramos on 1/2/2023.
-//
+/** @file CityLocal.cpp
+ *  @brief Contains the CityLocal Class implementation.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #include "CityLocal.h"
 #include "../FlightMap.h"

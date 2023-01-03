@@ -18,11 +18,11 @@ unordered_map<string,  AirportPTR> FlightMap::getAirports(){
     return airports;
 }
 
-void FlightMap::setAirportsPerCity(AiportsPerCity_Set airportsPerCity){
+void FlightMap::setAirportsPerCity(AirportsPerCity_Set airportsPerCity){
     this->airportsPerCity = airportsPerCity;
 }
 
-AiportsPerCity_Set FlightMap::getAirportsPerCity(){
+AirportsPerCity_Set FlightMap::getAirportsPerCity(){
     return airportsPerCity;
 }
 
