@@ -30,7 +30,7 @@ private:
     FlightMapPtr flightMap {new FlightMap()};
 
     //! @brief Holds all airports per city.
-    AiportsPerCity_Set airportsPerCity;
+    AirportsPerCity_Set airportsPerCity;
 
     //! @brief Holds all airports..
     unordered_map<string,  AirportPTR> airports;

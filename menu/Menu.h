@@ -1,6 +1,8 @@
-//
-// Created by Alberto on 03/01/2023.
-//
+/** @file Menu.h
+ *  @brief Contains the Menu class declaration.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #ifndef AED_FEUP_PROJ_2_22_23_MENU_H
 #define AED_FEUP_PROJ_2_22_23_MENU_H

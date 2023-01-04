@@ -1,6 +1,8 @@
-//
-// Created by Alberto on 03/01/2023.
-//
+/** @file Menu.cpp
+ *  @brief Contains the Menu Class implementation.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #include "Menu.h"
 #include <iostream>
