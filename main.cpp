@@ -1,11 +1,10 @@
-//
-// Created by Ramos on 12/29/2022.
-//
 
-#include "Database/Database.h"
+#include "application/Application.h"
 
-int main(){
-    Database database;
-    database.read();
+int main() {
 
+    Application app;
+    app.startApplication();
+
+    return 0;
 }
