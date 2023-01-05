@@ -26,7 +26,15 @@ public:
 
     void listAirportsByCity(std::string city);
 
+    /** @brief Print the number of airports that exists in database.
+     *
+     */
+    void numAirportsRede();
 
+    /** @brief Print the number of airports per country.
+     *
+     */
+    void numAirportsPerCountry(std::string country);
 };
 
 

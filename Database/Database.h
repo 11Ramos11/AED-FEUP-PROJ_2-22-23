@@ -90,6 +90,12 @@ public:
     * @return  AirportsPerCity_Set.
     */
     AirportsPerCity_Set getAirportsPerCity();
+
+    /** Returns all airports.
+     *
+     * @return unordered_map<string, AirportPTR> with airports.
+     */
+    unordered_map<string, AirportPTR> getAirports();
 };
 
 #endif //AED_FEUP_PROJ_22_23_DATABASE_H

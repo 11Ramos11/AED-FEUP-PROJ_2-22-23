@@ -110,6 +110,7 @@ AirportsPerCity_Set Database::getAirportsPerCity() {
     return airportsPerCity;
 }
 
-
-
+unordered_map<string, AirportPTR> Database::getAirports(){
+    return airports;
+}
 

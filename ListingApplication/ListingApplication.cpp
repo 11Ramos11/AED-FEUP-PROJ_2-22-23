@@ -14,12 +14,10 @@ void ListingApplication::listFlights(std::string code) {
 
     string title = "======= " + airport->name + "'s flights =======\n";
     std::cout << title;
-
     std::cout << "Airline | Destination\n";
 
 
     for (Flight flight: airport->getFlights()) {
-
         AirportPTR destination = database->getAirport(flight.destinationCode);
         string airportName = destination->name;
         string city = destination->city;
@@ -38,20 +36,24 @@ void ListingApplication::listAirlines(std::string code) {
 
     string title = "======= " + airport->name + "'s available airlines =======\n";
     std::cout << title;
-
     std::cout << "Name, Call Sign, Country \n\n";
 
     unordered_set<string> airlines;
 
-    for (Flight flight: airport->getFlights()) {
 
+    for (Flight flight: airport->getFlights()) {
         airlines.insert(flight.airlineCode);
     }
 
     for (string airlineCode: airlines) {
+        for (Flight flight: airport->getFlights()) {
+            airlines.insert(flight.airlineCode);
+        }
 
-        Airline airline = database->getAirline(airlineCode);
-        std::cout << airline.name << ", " << airline.callSign << ", " << airline.country << endl;
+        for (string airlineCode: airlines) {
+            Airline airline = database->getAirline(airlineCode);
+            std::cout << airline.name << ", " << airline.callSign << ", " << airline.country << endl;
+        }
     }
 }
 
@@ -61,21 +63,21 @@ void ListingApplication::listCities(std::string code) {
 
     string title = "======= " + airport->name + "'s reachable countries =======\n";
     std::cout << title;
-
     std::cout << "Name | Country \n\n";
 
     unordered_set<City, City::hashFunction> cities;
 
     for (Flight flight: airport->getFlights()) {
+        for (Flight flight: airport->getFlights()) {
+            AirportPTR airport = database->getAirport(flight.destinationCode);
+            cities.insert({airport->city, airport->country});
+        }
 
-        AirportPTR airport = database->getAirport(flight.destinationCode);
-
-        cities.insert({airport->city, airport->country});
-    }
-
-    for (City city: cities) {
-
-        std::cout << city.name << ", " << city.country << endl;
+        for (City city: cities) {
+            for (City city: cities) {
+                std::cout << city.name << ", " << city.country << endl;
+            }
+        }
     }
 }
 
@@ -85,21 +87,21 @@ void ListingApplication::listCountries(std::string code) {
 
     string title = "======= " + airport->name + "'s reachable countries =======\n";
     std::cout << title;
-
     std::cout << "Name \n\n";
 
     unordered_set<string> countries;
 
     for (Flight flight: airport->getFlights()) {
+        for (Flight flight: airport->getFlights()) {
+            AirportPTR airport = database->getAirport(flight.destinationCode);
+            countries.insert(airport->country);
+        }
 
-        AirportPTR airport = database->getAirport(flight.destinationCode);
-
-        countries.insert(airport->country);
-    }
-
-    for (string country: countries) {
-
-        std::cout << country << endl;
+        for (string country: countries) {
+            for (string country: countries) {
+                std::cout << country << endl;
+            }
+        }
     }
 }
 
@@ -117,4 +119,25 @@ void ListingApplication::listAirportsByCity(std::string city) {
         }
     }
 }
+
+
+void ListingApplication::numAirportsRede(){
+    int numAirports = database->getAirports().size();
+    std::cout << "Total number of airports:" << numAirports;
+}
+
+void ListingApplication::numAirportsPerCountry(std::string country){
+    int count=0;
+    for(auto pair: database->getAirports()){
+        AirportPTR airport = pair.second;
+        if(airport->country == country){
+            count++;
+        }
+    }
+    std::cout << "Number of airports per country:" << count;
+}
+
+/*void ListingApplication::numAirportsAirlineReach(std::string airline){
+    
+}*/
 
