@@ -7,7 +7,7 @@
 #define AED_FEUP_PROJ_2_22_23_LOCAL_H
 
 
-#include "../Airport.h"
+#include "../Airport/Airport.h"
 
 /** @brief Local class to represent a local.
  *

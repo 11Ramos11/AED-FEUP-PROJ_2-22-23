@@ -9,6 +9,8 @@
 #include "../Database/Database.h"
 #include "../Graph/Locals/AirportLocal.h"
 #include "../Graph/Locals/CityLocal.h"
+#include "pointers.h"
+#include "../ListingApplication/ListingApplication.h"
 
 using namespace std;
 
@@ -38,13 +40,12 @@ private:
     };
 
     //! @brief Initialization of the database.
-    Database database;
+    DatabasePTR database = DatabasePTR(new Database());
+
+    ListingApplication listingApplication = ListingApplication(database);
 
     //! @brief Initialization of the menu.
     Menu menu;
-
-    //! @brief Initialization of the flight map.
-    FlightMap flightMap;
 
     /** @brief Starts the menu.
      *

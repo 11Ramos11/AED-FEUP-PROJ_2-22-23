@@ -12,7 +12,7 @@
 #include <memory>
 #include <unordered_set>
 #include "../Graph/FlightMap.h"
-
+#include "../Graph/Airline/Airline.h"
 
 /** @brief Database class to read all input files and store all information.
  *
@@ -80,6 +80,10 @@ public:
      * @return Void.
      */
     void read();
+
+    AirportPTR getAirport(string code);
+
+    Airline getAirline(string code);
 };
 
 #endif //AED_FEUP_PROJ_22_23_DATABASE_H
