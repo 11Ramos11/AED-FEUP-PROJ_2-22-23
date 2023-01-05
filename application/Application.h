@@ -11,7 +11,7 @@
 #include "../Database/Database.h"
 #include "../Graph/Locals/AirportLocal.h"
 #include "../Graph/Locals/CityLocal.h"
-#include "pointers.h"
+#include "../Pointers.h"
 #include "../ListingApplication/ListingApplication.h"
 
 using namespace std;

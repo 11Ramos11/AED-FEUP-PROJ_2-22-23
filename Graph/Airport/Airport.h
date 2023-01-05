@@ -11,7 +11,7 @@
 #include <unordered_set>
 #include <list>
 #include <cmath>
-#include "../../application/Pointers.h"
+#include "../../Pointers.h"
 #include "../Flight/Flight.h"
 
 using namespace std;

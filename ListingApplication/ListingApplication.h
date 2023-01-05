@@ -6,7 +6,7 @@
 #define AED_FEUP_PROJ_2_22_23_LISTINGAPPLICATION_H
 
 
-#include "../application/Pointers.h"
+#include "../Pointers.h"
 
 class ListingApplication {
 
