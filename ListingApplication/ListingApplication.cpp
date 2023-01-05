@@ -8,6 +8,10 @@
 
 ListingApplication::ListingApplication(DatabasePTR database) : database(database) {}
 
+void ListingApplication::showTrajectories(LocalPTR local){
+
+}
+
 void ListingApplication::listFlights(std::string code) {
 
     AirportPTR airport = database->getAirport(code);

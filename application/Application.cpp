@@ -11,6 +11,7 @@
  */
 
 #include "Application.h"
+#include "../Graph/Locals/Coordinates.h"
 #include <stdexcept>      // std::invalid_argument
 
 
@@ -218,6 +219,46 @@ void Application::displayMenu() {
                 break;
             }
             case GENERATE_TRAJECTORIES: {
+                cout << "1.Aeroporto\n2.Cidade\n3.Coordenadas\n\n";
+                int option2;
+                cin >> option2;
+                switch (option2){
+                    case 1: {
+                        string airportCode;
+                        cout << "airportCode\n";
+                        std::cin >> airportCode;
+                        LocalPTR local = LocalPTR(new AirportLocal(airportCode));
+                        listingApplication.showTrajectories(local);
+                        break;
+                    }
+                    case 2: {
+                        string cityName, countryName;
+                        cout << "cityName\n";
+                        std::cin >> cityName;
+                        cout << "countryName\n";
+                        std::cin >> countryName;
+                        LocalPTR local = LocalPTR(new CityLocal({cityName, countryName}));
+                        listingApplication.showTrajectories(local);
+                        break;
+                    }
+                    case 3 : {
+                        float latitude, longitude, radius;
+
+                        cout << "latitude\n";
+                        std::cin >> latitude;
+                        cout << "longitude\n";
+                        std::cin >> longitude;
+                        cout << "radius\n";
+                        std::cin >> radius;
+
+                        LocalPTR local = LocalPTR(new Coordinates(longitude, latitude, radius));
+                        listingApplication.showTrajectories(local);
+                        break;
+                    }
+                    default:
+
+                        cout << "noob";
+                }
                 break;
             }
             case FILTERS: {

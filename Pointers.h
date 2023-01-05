@@ -19,6 +19,9 @@ class FlightMap;
 //! @brief Short declaration of incomplete type to avoid the "circular dependencies" problem.
 class Database;
 
+//! @brief Short declaration of incomplete type to avoid the "circular dependencies" problem.
+class Local;
+
 //! @brief Redefinition of shared pointers of FlightMaps for ease of use.
 typedef std::shared_ptr<FlightMap> FlightMapPtr;
 
@@ -27,5 +30,8 @@ typedef std::shared_ptr<Airport> AirportPTR;
 
 //! @brief Redefinition of shared pointers of Database for ease of use.
 typedef std::shared_ptr<Database> DatabasePTR;
+
+//! @brief Redefinition of shared pointers of Local for ease of use.
+typedef std::shared_ptr<Local> LocalPTR;
 
 #endif //AED_FEUP_PROJ_2_22_23_POINTERS_H
