@@ -13,13 +13,13 @@ using namespace std;
 
 Database::Database() = default;
 
-void Database::readAirlines(){
+void Database::readAirlines() {
     ifstream airlineFile("../resources/airlines.csv");
     string line;
 
     getline(airlineFile, line);
 
-    string code,name,callSign,country;
+    string code, name, callSign, country;
 
     do {
         getline(airlineFile, code, ',');
@@ -27,19 +27,19 @@ void Database::readAirlines(){
         getline(airlineFile, name, ',');
         getline(airlineFile, callSign, ',');
         getline(airlineFile, country);
-        airlines.insert(pair<string, Airline>(code,{code, name, callSign, country}));
+        airlines.insert(pair<string, Airline>(code, {code, name, callSign, country}));
 
     } while (true);
 
 }
 
-void Database::readAirports(){
+void Database::readAirports() {
     ifstream airportFile("../resources/airports.csv");
     string line;
 
     getline(airportFile, line);
 
-    string code,name,cityName,country, latitude, longitude;
+    string code, name, cityName, country, latitude, longitude;
 
     do {
         getline(airportFile, code, ',');
@@ -51,17 +51,17 @@ void Database::readAirports(){
         getline(airportFile, longitude);
 
 
-        AirportPTR airport {new Airport (
+        AirportPTR airport{new Airport(
                 code, name, cityName, country, stof(latitude), stof(longitude))};
 
-        City city {cityName, country};
+        City city{cityName, country};
         if (airportsPerCity.find(city) != airportsPerCity.end())
             airportsPerCity[city].insert(airport);
 
         else {
             unordered_set<AirportPTR, Airport::hashFunction> airports;
             airports.insert(airport);
-            airportsPerCity.insert(pair<City, unordered_set<AirportPTR, Airport::hashFunction>> (city, airports));
+            airportsPerCity.insert(pair<City, unordered_set<AirportPTR, Airport::hashFunction>>(city, airports));
         }
         this->airports.insert(pair<string, AirportPTR>(code, airport));
 
@@ -74,7 +74,7 @@ void Database::readFlights() {
 
     getline(flightsFile, line);
 
-    string originCode,destinationCode,companyCode;
+    string originCode, destinationCode, companyCode;
 
     do {
         getline(flightsFile, originCode, ',');
@@ -98,10 +98,18 @@ void Database::read() {
     flightMap->setAirportsPerCity(airportsPerCity);
 }
 
-AirportPTR Database::getAirport(string code){
+AirportPTR Database::getAirport(string code) {
     return airports[code];
 }
 
-Airline Database::getAirline(string code){
+Airline Database::getAirline(string code) {
     return airlines[code];
 }
+
+AirportsPerCity_Set Database::getAirportsPerCity() {
+    return airportsPerCity;
+}
+
+
+
+

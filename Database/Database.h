@@ -27,16 +27,16 @@ class Database {
 private:
 
     //! @brief Represents the FlightMapPtr.
-    FlightMapPtr flightMap {new FlightMap()};
+    FlightMapPtr flightMap{new FlightMap()};
 
     //! @brief Holds all airports per city.
     AirportsPerCity_Set airportsPerCity;
 
     //! @brief Holds all airports..
-    unordered_map<string,  AirportPTR> airports;
+    unordered_map<string, AirportPTR> airports;
 
     //! @brief Holds all airlines.
-    unordered_map<string,  Airline> airlines;
+    unordered_map<string, Airline> airlines;
 
     /** @brief Reads airlines input file and stores them accordingly.
      *
@@ -84,6 +84,12 @@ public:
     AirportPTR getAirport(string code);
 
     Airline getAirline(string code);
+
+    /** @brief Returns group of airport divided by cities.
+    *
+    * @return  AirportsPerCity_Set.
+    */
+    AirportsPerCity_Set getAirportsPerCity();
 };
 
 #endif //AED_FEUP_PROJ_22_23_DATABASE_H

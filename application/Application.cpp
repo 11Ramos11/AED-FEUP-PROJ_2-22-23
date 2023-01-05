@@ -183,8 +183,9 @@ void Application::optionFilter(int &option) {
             }
             case AIRPORT_BY_CITY: {
                 string city;
-                cout << "Type city code to check airports:";
+                cout << "Type name of city to check airports:";
                 cin >> city;
+                listingApplication.listAirportsByCity(city);
                 break;
             }
             default: {

@@ -10,7 +10,6 @@
 
 class ListingApplication {
 
-
     DatabasePTR database;
 
 public:
@@ -24,6 +23,8 @@ public:
     void listCities(std::string code);
 
     void listCountries(std::string code);
+
+    void listAirportsByCity(std::string city);
 
 
 };
