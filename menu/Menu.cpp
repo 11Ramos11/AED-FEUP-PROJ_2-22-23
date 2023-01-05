@@ -107,6 +107,7 @@ void Menu::displayListsMenu() {
     cout << "2 - " << AIRPORT_AIRLINES << endl;
     cout << "3 - " << AIRPORT_DESTINATIONS << endl;
     cout << "4 - " << AIRPORT_COUNTRIES << endl;
+    cout << "5 - " << ALL_AIRPORTS << endl;
     cout << "9 - " << GO_BACK << endl;
     cout << "Insert option number > ";
 }

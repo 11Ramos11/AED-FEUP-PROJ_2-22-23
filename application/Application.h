@@ -7,6 +7,8 @@
 
 #include "../menu/Menu.h"
 #include "../Database/Database.h"
+#include "../Graph/Locals/AirportLocal.h"
+#include "../Graph/Locals/CityLocal.h"
 
 using namespace std;
 
@@ -32,11 +34,14 @@ private:
         BY_FLIGHTS = 1, BY_AIRLINES = 2, BY_DESTINATIONS = 3, BY_COUNTRIES = 4
     };
 
-    //! @brief Initialization of the menu.
+    //! @brief Initialization of the database.
     Database database;
 
     //! @brief Initialization of the menu.
     Menu menu;
+
+    //! @brief Initialization of the flight map.
+    FlightMap flightMap;
 
     /** @brief Starts the menu.
      *

@@ -75,28 +75,24 @@ void Application::airportNumbersMenu(int &oldOption) {
                 string classCode;
                 cout << "Type class code to list:";
                 cin >> classCode;
-                scheduleApp.showOccupationByClass(classCode, ucCode);
                 break;
             }
             case BY_AIRLINES: {
                 string ucCode;
                 cout << "Type the UC code to check:";
                 cin >> ucCode;
-                scheduleApp.showOccupationByUC(ucCode);
                 break;
             }
-            case BY_DEST: {
+            case BY_DESTINATIONS: {
                 char year;
                 cout << "Type the year to check (1, 2 or 3):";
                 cin >> year;
-                scheduleApp.showOccupationByYear(year);
                 break;
             }
             case BY_COUNTRIES: {
                 char year;
                 cout << "Type the year to check (1, 2 or 3):";
                 cin >> year;
-                scheduleApp.showOccupationByYear(year);
                 break;
             }
             default: {
@@ -121,27 +117,21 @@ void Application::airportListMenu(int &oldOption) {
     while (safeOption != QUIT) {
         switch (safeOption) {
             case BY_FLIGHTS: {
-                string ucCode;
-                cout << "Type the UC code relative to the class:";
-                cin >> ucCode;
-                string classCode;
-                cout << "Type class code to list:";
-                cin >> classCode;
-                scheduleApp.listStudentsByClass(classCode, ucCode);
+                string airportCode;
+                cout << "Type the Airport code to check all flights:";
+                cin >> airportCode;
                 break;
             }
             case BY_AIRLINES: {
                 string ucCode;
                 cout << "Type UC code to list:";
                 cin >> ucCode;
-                scheduleApp.listStudentsByUC(ucCode);
                 break;
             }
             case BY_DESTINATIONS: {
                 char year;
                 cout << "Type year number (1, 2 or 3) to list:";
                 cin >> year;
-                scheduleApp.listStudentsByYear(year);
                 break;
             }
 
@@ -149,7 +139,6 @@ void Application::airportListMenu(int &oldOption) {
                 string ucCode;
                 cout << "Type UC code to list:";
                 cin >> ucCode;
-                scheduleApp.listClassesByUC(ucCode);
                 break;
             }
             default: {
@@ -205,11 +194,9 @@ void Application::displayMenu() {
                 break;
             }
             case MAX_FLIGHT_LISTS: {
-                requestMenu(safeOption);
                 break;
             }
             case GENERATE_TRAJECTORIES: {
-                studentsMenu(safeOption);
                 break;
             }
             default:
