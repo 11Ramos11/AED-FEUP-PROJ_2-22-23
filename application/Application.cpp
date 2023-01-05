@@ -68,7 +68,7 @@ void Application::airportNumbersMenu(int &oldOption) {
     airportNumbersSafety(option, safeOption);
     while (safeOption != QUIT) {
         switch (safeOption) {
-            case BY_FLIGHTS: {
+            case FLIGHTS: {
                 string ucCode;
                 cout << "Type the UC code relative to the class:";
                 cin >> ucCode;
@@ -77,13 +77,13 @@ void Application::airportNumbersMenu(int &oldOption) {
                 cin >> classCode;
                 break;
             }
-            case BY_AIRLINES: {
+            case DIFFERENT_AIRLINES: {
                 string ucCode;
                 cout << "Type the UC code to check:";
                 cin >> ucCode;
                 break;
             }
-            case BY_DESTINATIONS: {
+            case CITY: {
                 char year;
                 cout << "Type the year to check (1, 2 or 3):";
                 cin >> year;
@@ -114,32 +114,36 @@ void Application::airportListMenu(int &oldOption) {
     menu.displayListsMenu();
     int safeOption;
     safeInput(option, safeOption);
+
     while (safeOption != QUIT) {
         switch (safeOption) {
-            case BY_FLIGHTS: {
+            case FLIGHTS: {
                 string airportCode;
                 cout << "Type the Airport code to check all flights:";
                 cin >> airportCode;
                 listingApplication.listFlights(airportCode);
                 break;
             }
-            case BY_AIRLINES: {
-                string ucCode;
-                cout << "Type UC code to list:";
-                cin >> ucCode;
+            case DIFFERENT_AIRLINES: {
+                string airportCode;
+                cout << "Type the Airport code to check all flights:";
+                cin >> airportCode;
+                listingApplication.listAirlines(airportCode);
                 break;
             }
-            case BY_DESTINATIONS: {
-                char year;
-                cout << "Type year number (1, 2 or 3) to list:";
-                cin >> year;
+            case CITY: {
+                string airportCode;
+                cout << "Type the Airport code to check all flights:";
+                cin >> airportCode;
+                listingApplication.listCities(airportCode);
                 break;
             }
 
             case BY_COUNTRIES: {
-                string ucCode;
-                cout << "Type UC code to list:";
-                cin >> ucCode;
+                string airportCode;
+                cout << "Type the Airport code to check all flights:";
+                cin >> airportCode;
+                listingApplication.listCountries(airportCode);
                 break;
             }
             default: {

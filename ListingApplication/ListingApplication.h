@@ -18,6 +18,14 @@ public:
     ListingApplication(DatabasePTR database);
 
     void listFlights(std::string code);
+
+    void listAirlines(std::string code);
+
+    void listCities(std::string code);
+
+    void listCountries(std::string code);
+
+
 };
 
 
