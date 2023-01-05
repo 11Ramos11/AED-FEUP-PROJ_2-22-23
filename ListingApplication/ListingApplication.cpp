@@ -8,7 +8,7 @@
 
 ListingApplication::ListingApplication(DatabasePTR database) : database(database) {}
 
-void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination){
+void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination) {
 
 }
 
@@ -125,16 +125,16 @@ void ListingApplication::listAirportsByCity(std::string city) {
 }
 
 
-void ListingApplication::numAirportsRede(){
+void ListingApplication::numAirportsRede() {
     int numAirports = database->getAirports().size();
     std::cout << "Total number of airports:" << numAirports;
 }
 
-void ListingApplication::numAirportsPerCountry(std::string country){
-    int count=0;
-    for(auto pair: database->getAirports()){
+void ListingApplication::numAirportsPerCountry(std::string country) {
+    int count = 0;
+    for (auto pair: database->getAirports()) {
         AirportPTR airport = pair.second;
-        if(airport->country == country){
+        if (airport->country == country) {
             count++;
         }
     }

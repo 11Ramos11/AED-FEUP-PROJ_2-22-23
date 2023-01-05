@@ -35,6 +35,11 @@ const string Menu::AIRLINES_NUMBER = "Number of airlines of the airport";
 const string Menu::DESTINATIONS_NUMBER = "Number of different flight destinations the airport";
 const string Menu::COUNTRIES_NUMBER = "Number different countries flights of the airport";
 
+const string Menu::TRAJECTORIES_BY_AIRPORT_CODE = "Generate trajectory by giving an Airport code";
+const string Menu::TRAJECTORIES_BY_CITY_COUNTRY = "Generate trajectory by giving a city and country";
+const string Menu::TRAJECTORIES_BY_COORDS = "Generate trajectory by giving coordinates";
+
+
 const string Menu::AIRPORT_FLIGHTS = "List flights by airport";
 const string Menu::AIRPORT_AIRLINES = "List airlines by airport";
 const string Menu::AIRPORT_DESTINATIONS = "List flight destinations by airport";
@@ -55,7 +60,7 @@ void Menu::getInvalidMessage() {
 
 void Menu::startMenu() {
     cout << "=============================================" << endl;
-    cout << "Welcome to the Air Transports application!" << endl;
+    cout << " Welcome to the Air Transports application!" << endl;
     cout << "=============================================" << endl;
     cout << "Click ENTER for the options MENU";
     cin.ignore();
@@ -101,7 +106,7 @@ void Menu::displaySearchInfoMenu() {
 
     cout << endl;
     cout << "=============================================" << endl;
-    cout << "           Airport Information Type Menu" << endl;
+    cout << "      Airport Information Type Menu" << endl;
     cout << "=============================================" << endl;
     cout << "1 - " << BY_LISTS << endl;
     cout << "2 - " << BY_NUMBER << endl;
@@ -118,7 +123,7 @@ void Menu::breakLine() {
 void Menu::displayNumbersMenu() {
     cout << endl;
     cout << "=============================================" << endl;
-    cout << " Check Airport information numbers" << endl;
+    cout << "     Check Airport information numbers" << endl;
     cout << "=============================================" << endl;
     cout << "1 - " << FLIGHTS_NUMBER << endl;
     cout << "2 - " << AIRLINES_NUMBER << endl;
@@ -132,7 +137,7 @@ void Menu::displayNumbersMenu() {
 void Menu::displayListsMenu() {
     cout << endl;
     cout << "=============================================" << endl;
-    cout << "          Airport listing options" << endl;
+    cout << "         Airport listing options" << endl;
     cout << "=============================================" << endl;
     cout << "1 - " << AIRPORT_FLIGHTS << endl;
     cout << "2 - " << AIRPORT_AIRLINES << endl;
@@ -148,11 +153,9 @@ void Menu::displayTrajectoriesMenu() {
     cout << "=============================================" << endl;
     cout << "          Trajectories options" << endl;
     cout << "=============================================" << endl;
-    cout << "1 - " << AIRPORT_FLIGHTS << endl;
-    cout << "2 - " << AIRPORT_AIRLINES << endl;
-    cout << "3 - " << AIRPORT_DESTINATIONS << endl;
-    cout << "4 - " << AIRPORT_COUNTRIES << endl;
-    // cout << "5 - " << ALL_AIRPORTS << endl;
+    cout << "1 - " << TRAJECTORIES_BY_AIRPORT_CODE << endl;
+    cout << "2 - " << TRAJECTORIES_BY_CITY_COUNTRY << endl;
+    cout << "3 - " << TRAJECTORIES_BY_COORDS << endl;
     cout << "9 - " << GO_BACK << endl;
     cout << "Insert option number > ";
 }
