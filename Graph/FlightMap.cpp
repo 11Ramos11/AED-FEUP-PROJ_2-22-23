@@ -309,7 +309,7 @@ void FlightMap::dfsUtil(AirportPTR airport, int &count, int& maxCount){
     for (Flight flight: airport->flights) {
         string w= flight.destinationCode;
         AirportPTR destination = airports[w];
-        if (destination->visited == false;) {
+        if (destination->visited == false) {
             if (count >= maxCount) {
                 maxCount = count;
                 farthestNode = destination;
