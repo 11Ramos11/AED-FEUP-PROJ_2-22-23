@@ -302,5 +302,42 @@ list<AirportPTR> FlightMap::articulationPoints() {
     }
     return answer;
 }
+AirportPTR farthestNode;
+void FlightMap::dfsUtil(AirportPTR airport, int &count, int& maxCount){
+    airport->visited = true;
+    count++;
+    for (Flight flight: airport->flights) {
+        string w= flight.destinationCode;
+        AirportPTR destination = airports[w];
+        if (destination->visited == false;) {
+            if (count >= maxCount) {
+                maxCount = count;
+                farthestNode = destination;
+            }
+            dfsUtil(destination, count, maxCount);
+        }
+    }
+}
 
+void FlightMap::dfsDiameter(AirportPTR airport, int& maxCount){
+    int count = 0;
 
+    for(auto pair: airports){
+        AirportPTR airport = pair.second;
+        airport->visited = false;
+    }
+    count++;
+    dfsUtil(airport, count, maxCount);
+}
+
+int FlightMap::diameter(){
+
+    int maxCount = INT_MIN;
+    AirportPTR  airport;
+
+    dfsDiameter(airport, maxCount);
+
+    dfsDiameter(farthestNode, maxCount);
+
+    return maxCount;
+}

@@ -187,6 +187,12 @@ public:
      * @return List of airports.
      */
     list<AirportPTR> articulationPoints();
+
+    void dfsUtil(AirportPTR airport, int &count, int& maxCount);
+
+    void dfsDiameter(AirportPTR airport, int& maxCount);
+
+    int diameter();
 };
 
 #endif
