@@ -78,7 +78,7 @@ public:
     static const string AIRPORT_COUNTRIES;
 
     //! @brief Defines the string to output in the menu, as an option, to list all airports..
-    static const string ALL_AIRPORTS;
+    // static const string ALL_AIRPORTS;
 
 
     //! @brief Does nothing.
