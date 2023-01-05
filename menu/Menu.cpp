@@ -13,6 +13,10 @@ using namespace std;
 const string Menu::AIRPORT_LISTS = "Listings and related options to the Airports";
 const string Menu::MAX_FLIGHTS_LISTS = "Listings related to a maximum number of flights";
 const string Menu::GENERATE_TRAJECTORIES = "Generate flight trajectories based on origin and destination";
+const string Menu::INFO_FILTERED = "Air transports filtered information";
+
+const string Menu::INFO_BY_LOCAL = "Filtered information by Local";
+const string Menu::INFO_BY_AIRLINES = "Filtered information by Airlines";
 
 const string Menu::QUIT_APPLICATION = "Quit the application";
 const string Menu::GO_BACK = "Go Back";
@@ -63,9 +67,34 @@ void Menu::displayMenu() {
     cout << "1 - " << AIRPORT_LISTS << endl;
     cout << "2 - " << MAX_FLIGHTS_LISTS << endl;
     cout << "3 - " << GENERATE_TRAJECTORIES << endl;
+    cout << "4 - " << INFO_FILTERED << endl;
     cout << "9 - " << QUIT_APPLICATION << endl;
     cout << "Insert option number > ";
 }
+
+void Menu::displayFilterMenu() {
+
+    cout << "=============================================" << endl;
+    cout << "         Filters MENU" << endl;
+    cout << "=============================================" << endl;
+    cout << "1 - " << INFO_BY_LOCAL << endl;
+    cout << "2 - " << INFO_BY_AIRLINES << endl;
+    cout << "9 - " << QUIT_APPLICATION << endl;
+    cout << "Insert option number > ";
+}
+
+void Menu::displayLocalMenu() {
+
+    cout << "=============================================" << endl;
+    cout << "         Filter by Local MENU" << endl;
+    cout << "=============================================" << endl;
+    cout << "1 - " << LOCAL_CITY << endl;
+    cout << "2 - " << LOCAL_AIRLINE << endl;
+    cout << "9 - " << QUIT_APPLICATION << endl;
+    cout << "Insert option number > ";
+}
+
+
 
 void Menu::displaySearchInfoMenu() {
 

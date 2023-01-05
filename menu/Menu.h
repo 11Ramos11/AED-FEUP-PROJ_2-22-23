@@ -26,8 +26,23 @@ public:
     //! @brief Defines the string to output in the menu, as an option, for the max flights lists.
     static const string MAX_FLIGHTS_LISTS;
 
-    //! @brief Defines the string to output in the menu, as an option to generate flight trajectories..
+    //! @brief Defines the string to output in the menu, as an option to generate flight trajectories.
     static const string GENERATE_TRAJECTORIES;
+
+    //! @brief Defines the string to output in the menu, as an option to showcase possible filters.
+    static const string INFO_FILTERED;
+
+    //! @brief Defines the string to output in the menu, as an option to filter info by city.
+    static const string LOCAL_CITY;
+
+    //! @brief Defines the string to output in the menu, as an option to filter info by airline.
+    static const string LOCAL_AIRLINE;
+
+    //! @brief Defines the string to output in the menu, as an option to showcase information related to one local (specific place).
+    static const string INFO_BY_LOCAL;
+
+    //! @brief Defines the string to output in the menu, as an option to showcase information related to one airline.
+    static const string INFO_BY_AIRLINES;
 
     //! @brief Defines the string to output in the menu, as an option, to quit the application.
     static const string QUIT_APPLICATION;
@@ -110,6 +125,18 @@ public:
      * @return Void.
      */
     void displayMenu();
+
+    /** @brief Displays the filters menu.
+     *
+     * @return Void.
+     */
+    void displayFilterMenu();
+
+    /** @brief Displays the filtered local menu.
+    *
+    * @return Void.
+    */
+    void displayLocalMenu();
 
     /** @brief Displays the menu with search type information.
      *

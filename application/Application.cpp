@@ -1,6 +1,8 @@
-//
-// Created by Alberto on 04/01/2023.
-//
+/** @file Application.h
+ *  @brief Contains the Application class implementation.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 /** @file Application.cpp
  *  @brief Contains the Application class implementation.
@@ -57,6 +59,13 @@ void Application::airportListMenuSafety(string &option, int &safeOption) {
 void Application::airportNumbersSafety(string &option, int &safeOption) {
     while (!safeOption) {
         menu.displayNumbersMenu();
+        safeInput(option, safeOption);
+    }
+}
+
+void Application::filtersMenuSafety(string &option, int &safeOption) {
+    while (!safeOption) {
+        menu.displayFilterMenu();
         safeInput(option, safeOption);
     }
 }
@@ -208,6 +217,12 @@ void Application::displayMenu() {
                 break;
             }
             case GENERATE_TRAJECTORIES: {
+                break;
+            }
+            case FILTERS: {
+                string option;
+                menu.displayFilterMenu();
+                safeInput(option, safeOption);
                 break;
             }
             default:
