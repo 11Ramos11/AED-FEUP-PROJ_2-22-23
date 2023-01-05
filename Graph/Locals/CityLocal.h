@@ -9,6 +9,7 @@
 
 
 #include "Local.h"
+#include "../City/City.h"
 
 /** @brief CityLocal class to represent an city local.
  *

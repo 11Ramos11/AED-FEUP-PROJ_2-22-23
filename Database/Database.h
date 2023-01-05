@@ -12,7 +12,7 @@
 #include <memory>
 #include <unordered_set>
 #include "../Graph/FlightMap.h"
-
+#include "../Graph/Airline/Airline.h"
 
 /** @brief Database class to read all input files and store all information.
  *

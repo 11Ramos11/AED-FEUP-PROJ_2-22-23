@@ -12,8 +12,9 @@
 #include <queue>
 #include <iostream>
 #include <unordered_map>
-#include "Airport.h"
+#include "Airport/Airport.h"
 #include "Locals/Local.h"
+#include "City/City.h"
 
 using namespace std;
 
