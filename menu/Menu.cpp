@@ -16,6 +16,8 @@ const string Menu::GENERATE_TRAJECTORIES = "Generate flight trajectories based o
 const string Menu::INFO_FILTERED = "Air transports filtered information";
 
 const string Menu::INFO_BY_LOCAL = "Filtered information by Local";
+const string Menu::LOCAL_CITY = "Filter a local by city";
+const string Menu::LOCAL_AIRLINE = "Filter a local by its airline";
 const string Menu::INFO_BY_AIRLINES = "Filtered information by Airlines";
 
 const string Menu::QUIT_APPLICATION = "Quit the application";
@@ -93,7 +95,6 @@ void Menu::displayLocalMenu() {
     cout << "9 - " << QUIT_APPLICATION << endl;
     cout << "Insert option number > ";
 }
-
 
 
 void Menu::displaySearchInfoMenu() {

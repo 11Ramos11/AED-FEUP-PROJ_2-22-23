@@ -6,9 +6,9 @@
 #include "ListingApplication.h"
 #include "../Database/Database.h"
 
-ListingApplication::ListingApplication(DatabasePTR database): database(database){}
+ListingApplication::ListingApplication(DatabasePTR database) : database(database) {}
 
-void ListingApplication::listFlights(std::string code){
+void ListingApplication::listFlights(std::string code) {
 
     AirportPTR airport = database->getAirport(code);
 
@@ -18,7 +18,7 @@ void ListingApplication::listFlights(std::string code){
     std::cout << "Airline | Destination\n";
 
 
-    for (Flight flight: airport->getFlights()){
+    for (Flight flight: airport->getFlights()) {
 
         AirportPTR destination = database->getAirport(flight.destinationCode);
         string airportName = destination->name;
