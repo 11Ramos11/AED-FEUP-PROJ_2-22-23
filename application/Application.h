@@ -25,9 +25,10 @@ private:
 
         AIRPORT_LISTS = 1,
         AIRPORT_NUMBERS = 2,
+        MAX_FLIGHT_LISTS = 2,
         AIRPORT_BY_CITY = 3,
-        MAX_FLIGHT_LISTS = 4,
-        GENERATE_TRAJECTORIES = 5,
+        GENERATE_TRAJECTORIES = 3,
+        FILTERS = 4,
         QUIT = 9
     };
 
@@ -91,6 +92,19 @@ private:
      * @return Void.
      */
     void airportNumbersSafety(string &option, int &safeOption);
+
+
+
+    /** @brief Display the filter option menu (by local or airlines).
+     *
+     * Checks if the safeOption argument is correct for that specific menu.
+     * Then, safeInput method is used with both arguments to cover wrong inputs.
+     *
+     * @param option Of type string, by reference.
+     * @param safeOption Of type int, by reference.
+     * @return Void.
+     */
+    void filtersMenuSafety(string &option, int &safeOption);
 
 
     /** @brief Reads what the user wants to know the occupation of and shows it.

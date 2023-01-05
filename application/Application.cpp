@@ -61,6 +61,13 @@ void Application::airportNumbersSafety(string &option, int &safeOption) {
     }
 }
 
+void Application::filtersMenuSafety(string &option, int &safeOption) {
+    while (!safeOption) {
+        menu.displayFilterMenu();
+        safeInput(option, safeOption);
+    }
+}
+
 
 void Application::airportNumbersMenu(int &oldOption) {
     string option;
@@ -204,6 +211,12 @@ void Application::displayMenu() {
                 break;
             }
             case GENERATE_TRAJECTORIES: {
+                break;
+            }
+            case FILTERS: {
+                string option;
+                menu.displayFilterMenu();
+                safeInput(option, safeOption);
                 break;
             }
             default:
