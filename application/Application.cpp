@@ -167,6 +167,13 @@ void Application::optionFilter(int &option) {
                 airportNumbersMenu(option);
                 break;
             }
+            case AIRPORT_BY_CITY: {
+                string city;
+                cout << "Type city code to check airports:";
+                cin >> city;
+                flightMap.getAirportsPerCity();
+                break;
+            }
             default: {
                 menu.breakLine();
                 menu.getWrongMessage();

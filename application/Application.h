@@ -22,10 +22,12 @@ private:
 
     //! @brief Creates the initial menu options.
     enum {
+
         AIRPORT_LISTS = 1,
         AIRPORT_NUMBERS = 2,
-        MAX_FLIGHT_LISTS = 2,
-        GENERATE_TRAJECTORIES = 3,
+        AIRPORT_BY_CITY = 3,
+        MAX_FLIGHT_LISTS = 4,
+        GENERATE_TRAJECTORIES = 5,
         QUIT = 9
     };
 

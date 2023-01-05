@@ -47,6 +47,9 @@ public:
     //! @brief Defines the string to output in the menu, as a message, for wrong input usage.
     static const string WRONG_USAGE_INPUT;
 
+    //! @brief Defines the string to output in the menu, as an option, to show the airports by city.
+    static const string BY_CITY;
+
     //! @brief Defines the string to output in the menu, as an option, to show the airport info numbers.
     static const string BY_NUMBER;
 
@@ -131,6 +134,13 @@ public:
      * @return Void.
      */
     void displayListsMenu();
+
+
+    /** @brief Displays the menu with trajectories information menu.
+     *
+     * @return Void.
+     */
+    void displayTrajectoriesMenu();
 
 };
 
