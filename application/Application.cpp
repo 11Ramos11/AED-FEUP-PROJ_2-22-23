@@ -18,7 +18,7 @@ Application::Application() {}
 
 
 void Application::startApplication() {
-    database.read();
+    database->read();
     startMenu();
 }
 
@@ -59,6 +59,13 @@ void Application::airportListMenuSafety(string &option, int &safeOption) {
 void Application::airportNumbersSafety(string &option, int &safeOption) {
     while (!safeOption) {
         menu.displayNumbersMenu();
+        safeInput(option, safeOption);
+    }
+}
+
+void Application::filtersMenuSafety(string &option, int &safeOption) {
+    while (!safeOption) {
+        menu.displayFilterMenu();
         safeInput(option, safeOption);
     }
 }
@@ -122,6 +129,7 @@ void Application::airportListMenu(int &oldOption) {
                 string airportCode;
                 cout << "Type the Airport code to check all flights:";
                 cin >> airportCode;
+                listingApplication.listFlights(airportCode);
                 break;
             }
             case BY_AIRLINES: {
@@ -173,7 +181,6 @@ void Application::optionFilter(int &option) {
                 string city;
                 cout << "Type city code to check airports:";
                 cin >> city;
-                flightMap.getAirportsPerCity();
                 break;
             }
             default: {
@@ -206,6 +213,12 @@ void Application::displayMenu() {
                 break;
             }
             case GENERATE_TRAJECTORIES: {
+                break;
+            }
+            case FILTERS: {
+                string option;
+                menu.displayFilterMenu();
+                safeInput(option, safeOption);
                 break;
             }
             default:

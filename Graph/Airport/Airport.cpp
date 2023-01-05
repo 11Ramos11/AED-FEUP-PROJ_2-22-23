@@ -8,10 +8,10 @@
 #include "Airport.h"
 
 
-Airport::Airport(string code, string name, string city, string country, float latitude, float longitude):
-code(code), name(name), city(city), country(country), latitude(latitude), longitude(longitude) {}
+Airport::Airport(string code, string name, string city, string country, float latitude, float longitude) :
+        code(code), name(name), city(city), country(country), latitude(latitude), longitude(longitude) {}
 
-Airport::Airport(const Airport& airport) {
+Airport::Airport(const Airport &airport) {
     this->code = airport.code;
     this->name = airport.name;
     this->city = airport.city;
@@ -20,10 +20,9 @@ Airport::Airport(const Airport& airport) {
     this->longitude = airport.longitude;
 }
 
-Airport::Airport(){}
+Airport::Airport() {}
 
-bool operator==(const AirportPTR& airport1, const AirportPTR& airport2)
-{
+bool operator==(const AirportPTR &airport1, const AirportPTR &airport2) {
     return airport1->code == airport2->code;
 }
 
@@ -32,7 +31,7 @@ size_t Airport::hashFunction::operator()(const AirportPTR &airport) const {
     return hash<string>()(airport->code);
 }
 
-double Airport::distanceTo(float longitude, float latitude) const{
+double Airport::distanceTo(float longitude, float latitude) const {
 
     double thisLatitude = this->latitude, thisLongitude = this->longitude;
     double otherLatitude = latitude, otherLongitude = longitude;
@@ -43,40 +42,40 @@ double Airport::distanceTo(float longitude, float latitude) const{
     otherLatitude = (otherLatitude) * M_PI / 180.0;
     thisLatitude = (thisLatitude) * M_PI / 180.0;
     double a = pow(sin(distanceLat / 2), 2) + pow(sin(distanceLon / 2), 2) *
-            cos(otherLatitude) * cos(thisLatitude);
+                                              cos(otherLatitude) * cos(thisLatitude);
     double earthRadius = 6371;
     double b = 2 * asin(sqrt(a));
     return earthRadius * b;
 }
 
-void Airport::addFlight(Flight flight){
+void Airport::addFlight(Flight flight) {
     flights.push_back(flight);
 }
 
-int Airport::getnumFlights(){
+int Airport::getnumFlights() {
     return flights.size();
 }
 
-list<Flight> Airport::getFlights(){
+list<Flight> Airport::getFlights() {
     return flights;
 }
 
-int Airport::numDifferentAirlines(){
+int Airport::numDifferentAirlines() {
     list<string> airlinesCodes;
-    for(Flight flight: flights){
+    for (Flight flight: flights) {
         auto code = flight.airlineCode;
-        if(std::find(airlinesCodes.begin(), airlinesCodes.end(), code) == airlinesCodes.end()){
+        if (std::find(airlinesCodes.begin(), airlinesCodes.end(), code) == airlinesCodes.end()) {
             airlinesCodes.push_back(code);
         }
     }
     return airlinesCodes.size();
 }
 
-int Airport::numDifferentDestinations(){
+int Airport::numDifferentDestinations() {
     list<string> destinations;
-    for(Flight flight: flights){
+    for (Flight flight: flights) {
         auto code = flight.destinationCode;
-        if(std::find(destinations.begin(), destinations.end(), code) == destinations.end()){
+        if (std::find(destinations.begin(), destinations.end(), code) == destinations.end()) {
             destinations.push_back(code);
         }
     }
