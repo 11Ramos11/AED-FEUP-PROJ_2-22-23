@@ -98,3 +98,10 @@ void Database::read() {
     flightMap->setAirportsPerCity(airportsPerCity);
 }
 
+AirportPTR Database::getAirport(string code){
+    return airports[code];
+}
+
+Airline Database::getAirline(string code){
+    return airlines[code];
+}

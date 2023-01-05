@@ -16,7 +16,7 @@ Application::Application() {}
 
 
 void Application::startApplication() {
-    database.read();
+    database->read();
     startMenu();
 }
 
@@ -120,6 +120,7 @@ void Application::airportListMenu(int &oldOption) {
                 string airportCode;
                 cout << "Type the Airport code to check all flights:";
                 cin >> airportCode;
+                listingApplication.listFlights(airportCode);
                 break;
             }
             case BY_AIRLINES: {
@@ -171,7 +172,6 @@ void Application::optionFilter(int &option) {
                 string city;
                 cout << "Type city code to check airports:";
                 cin >> city;
-                flightMap.getAirportsPerCity();
                 break;
             }
             default: {

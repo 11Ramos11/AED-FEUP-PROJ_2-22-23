@@ -80,6 +80,10 @@ public:
      * @return Void.
      */
     void read();
+
+    AirportPTR getAirport(string code);
+
+    Airline getAirline(string code);
 };
 
 #endif //AED_FEUP_PROJ_22_23_DATABASE_H
