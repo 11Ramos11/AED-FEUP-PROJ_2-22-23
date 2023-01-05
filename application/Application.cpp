@@ -1,6 +1,8 @@
-//
-// Created by Alberto on 04/01/2023.
-//
+/** @file Application.h
+ *  @brief Contains the Application class implementation.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 /** @file Application.cpp
  *  @brief Contains the Application class implementation.

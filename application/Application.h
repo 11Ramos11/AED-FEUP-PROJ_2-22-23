@@ -1,6 +1,8 @@
-//
-// Created by Alberto on 04/01/2023.
-//
+/** @file Application.cpp
+ *  @brief Contains the Application Class implementation.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #ifndef AED_FEUP_PROJ_2_22_23_APPLICATION_H
 #define AED_FEUP_PROJ_2_22_23_APPLICATION_H

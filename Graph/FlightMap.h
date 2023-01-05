@@ -12,6 +12,7 @@
 #include <queue>
 #include <iostream>
 #include <unordered_map>
+#include <stack>
 #include "Airport/Airport.h"
 #include "Locals/Local.h"
 #include "City/City.h"
@@ -166,6 +167,26 @@ public:
      * @return Number of countries.
      */
     int countriesMaxYFlights(string country, int y);
+
+    /** @brief Represents the auxiliary code to calculate articulation points.
+     *
+     * It uses the DFS implementation.
+     *
+     * @param airport of AirportPTR type.
+     * @param index of int type.
+     * @param stack of stack<AirportPTR> type.
+     * @param answer of list<AirportPTR> type.
+     * @return Number of countries.
+     */
+    void dfsArticulationPoints(AirportPTR airport, int &index, stack<AirportPTR> &stack, list<AirportPTR> &answer);
+
+    /** @brief Represents the articulation points.
+     *
+     * It uses the "dfsArticulationPoints" method.
+     *
+     * @return List of airports.
+     */
+    list<AirportPTR> articulationPoints();
 };
 
 #endif

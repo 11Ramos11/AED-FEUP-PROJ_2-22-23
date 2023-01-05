@@ -7,6 +7,8 @@
 #include "FlightMap.h"
 #include "Locals/Local.h"
 #include <algorithm>
+#include <stack>
+#include <string>
 
 FlightMap::FlightMap() {}
 
@@ -244,6 +246,61 @@ int FlightMap::countriesMaxYFlights(string country, int y){
             countryName.push_back(country);
     }
     return countryName.size();
+}
+
+void FlightMap::dfsArticulationPoints(AirportPTR airport, int &index, stack<AirportPTR> &stack, list<AirportPTR> &answer){
+    airport->visited = true;
+    airport->num = airport->low = index++;
+    stack.push(airport);
+    airport->inStack = true;
+
+    int children =0;
+    bool articulation = false;
+
+    for(Flight e: airport->flights){
+        string w = e.destinationCode;
+        AirportPTR destination = airports[w];
+        if(destination->visited == false){
+            children++;
+            dfsArticulationPoints(destination,index, stack, answer);
+            airport->low =min(airport->low, destination->low);
+            if(destination->low >= airport->num) articulation= true;
+        }
+        else if(airports[w]->inStack){
+            airport->low =min(airport->low, destination->num);
+        }
+    }
+    if((airport->num == 1 && children > 1) || (airport->num > 1 && articulation)){
+        AirportPTR w;
+        do{
+            w = stack.top();
+            stack.pop();
+            airport->inStack = false;
+        }
+        while (w != airport);
+        answer.push_front(w);
+    }
+}
+
+list<AirportPTR> FlightMap::articulationPoints() {
+    list<AirportPTR> answer;
+    for(auto pair: airports){
+        AirportPTR airport = pair.second;
+            airport->visited = false;
+            airport->low = 0;
+            airport->num = 0;
+            airport->inStack = false;
+    }
+
+    int index =1;
+    stack<AirportPTR> stack;
+    for(auto pair: airports){
+        AirportPTR airport = pair.second;
+        if(airport->visited == false){
+            dfsArticulationPoints(airport, index, stack, answer);
+        }
+    }
+    return answer;
 }
 
 

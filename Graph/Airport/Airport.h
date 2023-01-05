@@ -41,6 +41,13 @@ public:
     //! @brief Holds the airport longitude.
     float longitude;
 
+
+
+
+
+
+
+
     //! @brief Holds the number of flights.
     int numFlights;
 
@@ -52,6 +59,17 @@ public:
 
     //! @brief Holds all paths from the airport.
     list<AirportPTR> path;
+
+    int num;
+
+    int low;
+
+    bool inStack;
+
+
+
+
+
 
     /** Create a new Airport with a code, a name, a city, a country, a latitude and a longitude.
      *
