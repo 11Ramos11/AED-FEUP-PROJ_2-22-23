@@ -16,7 +16,7 @@ public:
 
     ListingApplication(DatabasePTR database);
 
-    void showTrajectories(LocalPTR local);
+    void showTrajectories(LocalPTR origin, LocalPTR destination);
 
     void listFlights(std::string code);
 

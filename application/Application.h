@@ -74,6 +74,8 @@ private:
      */
     void menuSafety(string &option, int &safeOption);
 
+    void doStuff();
+
     /** @brief Display the listing menu if the given menu option is correct.
      *
      * Checks if the safeOption argument is correct for that specific menu.

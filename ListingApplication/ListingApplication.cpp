@@ -8,7 +8,7 @@
 
 ListingApplication::ListingApplication(DatabasePTR database) : database(database) {}
 
-void ListingApplication::showTrajectories(LocalPTR local){
+void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination){
 
 }
 
