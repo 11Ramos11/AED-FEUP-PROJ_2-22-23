@@ -303,6 +303,7 @@ void Application::displayMenu() {
                 break;
             }
             case MAX_FLIGHT_LISTS: {
+
                 break;
             }
             case GENERATE_TRAJECTORIES: {
