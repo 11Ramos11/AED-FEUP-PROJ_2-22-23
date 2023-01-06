@@ -1,6 +1,8 @@
-//
-// Created by Ramos on 1/5/2023.
-//
+/** @file ListingApplication.cpp
+ *  @brief Contains the ListingApplication Class implementation.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #include <string>
 #include "ListingApplication.h"

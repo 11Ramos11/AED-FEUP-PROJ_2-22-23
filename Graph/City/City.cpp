@@ -1,5 +1,7 @@
-//
-// Created by Ramos on 1/5/2023.
-//
+/** @file City.cpp
+ *  @brief Contains the City class implementation.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #include "City.h"

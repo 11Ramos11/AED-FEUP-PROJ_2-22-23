@@ -1,7 +1,8 @@
-//
-// Created by Ramos on 1/5/2023.
-//
-
+/** @file Flight.h
+ *  @brief Contains the Flight class declaration.
+ *  @author -
+ *  @bug No known bugs.
+ */
 #ifndef AED_FEUP_PROJ_2_22_23_FLIGHT_H
 #define AED_FEUP_PROJ_2_22_23_FLIGHT_H
 

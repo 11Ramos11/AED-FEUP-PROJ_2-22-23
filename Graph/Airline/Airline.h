@@ -1,6 +1,8 @@
-//
-// Created by Ramos on 1/5/2023.
-//
+/** @file Airline.h
+ *  @brief Contains the Airline class declaration.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #ifndef AED_FEUP_PROJ_2_22_23_AIRLINE_H
 #define AED_FEUP_PROJ_2_22_23_AIRLINE_H

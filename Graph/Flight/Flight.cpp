@@ -1,5 +1,7 @@
-//
-// Created by Ramos on 1/5/2023.
-//
+/** @file Flight.cpp
+ *  @brief Contains the Flight class implementation.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #include "Flight.h"
