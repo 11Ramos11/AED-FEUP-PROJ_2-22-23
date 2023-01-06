@@ -105,6 +105,15 @@ public:
     //! @brief Defines the string to output in the menu, as an option, to list different airport flight countries.
     static const string AIRPORT_COUNTRIES;
 
+    //! @brief Defines the string to output in the menu, as an option, to showcase max y flights for an airport.
+    static const string MAX_FLIGHTS_AIRPORTS;
+
+    //! @brief Defines the string to output in the menu, as an option, to showcase max y flights for a city.
+    static const string MAX_FLIGHTS_CITIES;
+
+    //! @brief Defines the string to output in the menu, as an option, to showcase max y flights fora country.
+    static const string MAX_FLIGHTS_COUNTRIES;
+
     //! @brief Defines the string to output in the menu, as an option, to list all airports..
     // static const string ALL_AIRPORTS;
 
@@ -165,6 +174,13 @@ public:
      * @return Void.
      */
     void displayNumbersMenu();
+
+
+    /** @brief Displays the menu with max Y flights options.
+    *
+    * @return Void.
+    */
+    void displayMaxYFlightsMenu();
 
     /** @brief Displays the menu with listing information.
      *

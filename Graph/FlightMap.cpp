@@ -51,8 +51,8 @@ void FlightMap::bfs(const string &code) {
     }
 }
 
-int FlightMap::minimumDistance(AirportPTR airportDepart, AirportPTR airportDestination){
-    for (auto pair: airports){
+int FlightMap::minimumDistance(AirportPTR airportDepart, AirportPTR airportDestination) {
+    for (auto pair: airports) {
         AirportPTR airport = pair.second;
         airport->visited = false;
         airport->dist = 0;
@@ -69,7 +69,7 @@ int FlightMap::minimumDistance(AirportPTR airportDepart, AirportPTR airportDesti
         if (previousAirport->code == "CDG")
             cout << "hello";
 
-        for (auto flight: previousAirport->flights){
+        for (auto flight: previousAirport->flights) {
 
 
             AirportPTR destination = airports[flight.destinationCode];
@@ -194,9 +194,9 @@ list<list<Flight>> FlightMap::getFlights(LocalPTR origin, LocalPTR destination, 
 
     list<list<Flight>> trajectories;
 
-    for (const AirportPTR& originAirport: origin->getAirports(this))
-        for (const AirportPTR& destAirport: destination->getAirports(this))
-            for (const auto& trajectory: getFlights(originAirport, destAirport, airlines))
+    for (const AirportPTR &originAirport: origin->getAirports(this))
+        for (const AirportPTR &destAirport: destination->getAirports(this))
+            for (const auto &trajectory: getFlights(originAirport, destAirport, airlines))
                 trajectories.push_back(trajectory);
 
     return trajectories;
@@ -338,6 +338,7 @@ list<AirportPTR> FlightMap::articulationPoints() {
 }
 
 AirportPTR farthestNode;
+
 void FlightMap::dfsUtil(AirportPTR airport, int &count, int &maxCount) {
     airport->visited = true;
     count++;

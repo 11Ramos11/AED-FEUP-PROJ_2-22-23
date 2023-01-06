@@ -38,6 +38,11 @@ private:
         QUIT = 9
     };
 
+    //! @brief Max Y flights options.
+    enum {
+        MAX_AIRPORTS = 1, MAX_CITIES = 2, MAX_COUNTRIES = 3
+    };
+
     //! @brief Creates the airport numbers options.
     enum {
         FLIGHTS = 1, DIFFERENT_AIRLINES = 2, CITY = 3, BY_COUNTRIES = 4
@@ -128,6 +133,17 @@ private:
     */
     void trajectoriesMenuSafety(string &option, int &safeOption);
 
+    /** @brief Display the max flights menu if the given menu option is correct.
+    *
+    * Checks if the safeOption argument is correct for that specific menu.
+    * Then, safeInput method is used with both arguments to cover wrong inputs.
+    *
+    * @param option Of type string, by reference.
+    * @param safeOption Of type int, by reference.
+    * @return Void.
+    */
+    void maxYFlightsMenuSafety(string &option, int &safeOption);
+
     /** @brief Display the menu of the possible with possible trajectories
      *
      * @param safeOption Of type int, by reference.
@@ -135,7 +151,7 @@ private:
      */
     void displayTrajectoriesMenu(int &safeOption);
 
-    /** @brief Reads what the user wants to know the occupation of and shows it.
+    /** @brief Reads what the user wants to know about airports numbers of and shows it.
      *
      * The oldOption argument is used to take control of the menu before the method is called.
      * So it is possible to know where to return and which menu to display.
@@ -144,6 +160,16 @@ private:
      * @return Void.
      */
     void airportNumbersMenu(int &oldOption);
+
+    /** @brief Reads input from user about max flights and showcase filtered options.
+     *
+     * The oldOption argument is used to take control of the menu before the method is called.
+     * So it is possible to know where to return and which menu to display.
+     *
+     * @param oldOption Of type string, by reference.
+     * @return Void.
+     */
+    void displayMaxYFlightsMenu(int &oldOption);
 
     /** @brief Reads what the user wants to get the listing of and shows it.
      *
@@ -186,6 +212,7 @@ public:
      * @return Void.
      */
     void startApplication();
+
 };
 
 /** @brief Checks if a string represents a number.

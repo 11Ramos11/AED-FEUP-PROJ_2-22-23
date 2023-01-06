@@ -133,6 +133,17 @@ void Menu::displayNumbersMenu() {
     cout << "Insert option number > ";
 }
 
+void Menu::displayMaxYFlightsMenu() {
+    cout << endl;
+    cout << "=============================================" << endl;
+    cout << "         Max Y Flights options" << endl;
+    cout << "=============================================" << endl;
+    cout << "1 - " << MAX_FLIGHTS_AIRPORTS << endl;
+    cout << "2 - " << MAX_FLIGHTS_CITIES << endl;
+    cout << "3 - " << MAX_FLIGHTS_COUNTRIES << endl;
+    cout << "9 - " << GO_BACK << endl;
+    cout << "Insert option number > ";
+}
 
 void Menu::displayListsMenu() {
     cout << endl;

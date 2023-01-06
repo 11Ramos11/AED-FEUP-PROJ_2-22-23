@@ -72,6 +72,14 @@ void Application::trajectoriesMenuSafety(string &option, int &safeOption) {
     }
 }
 
+
+void Application::maxYFlightsMenuSafety(std::string &option, int &safeOption) {
+    while (!safeOption) {
+        menu.displayMaxYFlightsMenu();
+        safeInput(option, safeOption);
+    }
+}
+
 void Application::airportNumbersMenu(int &oldOption) {
     string option;
     int safeOption = 0;
@@ -120,12 +128,76 @@ void Application::airportNumbersMenu(int &oldOption) {
     safeOption = 0;
 }
 
+void Application::displayMaxYFlightsMenu(int &oldOption) {
+    string option;
+    int safeOption = 0;
+    maxYFlightsMenuSafety(option, safeOption);
+    FlightMapPtr flightMap = database->getFlightMapPtr();
+    while (safeOption != QUIT) {
+        switch (safeOption) {
+            case MAX_AIRPORTS: {
+                string airportCode;
+                int y;
+                cout << "Type the Airport code to check the number of its reachable airports:";
+                cin >> airportCode;
+                AirportPTR airport = database->getAirport(airportCode);
+                cout << "Type the desire max Y flights:";
+                cin >> y;
+                cout << "Number of its reachable airports with a max of " << y << " flights: ";
+                cout << flightMap->airportsMaxYFlights(airport, y) << "\n" << endl;
+                cout << "=========== Group of reachable Airports ===========" << endl;
+                cout << "=========== Code | Name | City ===========" << endl;
+                for (auto airP: flightMap->reachableAirports(airport, y))
+                    cout << airP->code << " | " << airP->name << " | " << airP->city << endl;
+                break;
+            }
+            case MAX_CITIES: {
+                string airportCode;
+                int y;
+                cout << "Type the Airport code to check the number of its reachable countries:";
+                cin >> airportCode;
+                AirportPTR airport = database->getAirport(airportCode);
+                City city(airport->city, airport->country);
+                cout << "Type the desire max Y flights:";
+                cin >> y;
+                cout << "The given Airport is from the city of " << airport->city << endl;
+                cout << "Number of its reachable cities with a max of " << y << " flights: ";
+                cout << flightMap->citiesMaxYFlights(city, y) << "\n" << endl;
+                break;
+            }
+            case MAX_COUNTRIES: {
+                string airportCode;
+                int y;
+                cout << "Type the Airport code to check the number of its reachable countries:";
+                cin >> airportCode;
+                AirportPTR airport = database->getAirport(airportCode);
+                cout << "Type the desire max Y flights:";
+                cin >> y;
+                cout << "The given Airport is from the country of " << airport->country << endl;
+                cout << "Number of its reachable countries with a max of " << y << " flights: ";
+                cout << flightMap->countriesMaxYFlights(airport->country, y) << "\n" << endl;
+                break;
+            }
+            default: {
+                menu.breakLine();
+                menu.getWrongMessage();
+                safeOption = 0;
+                break;
+            }
+        }
+        menu.breakLine();
+        safeOption = 0;
+        maxYFlightsMenuSafety(option, safeOption);
+    }
+    oldOption = 0;
+    cout << menu.QUIT_MESSAGE << endl;
+}
+
+
 void Application::airportListMenu(int &oldOption) {
     string option;
-    menu.displayListsMenu();
-    int safeOption;
-    safeInput(option, safeOption);
-
+    int safeOption = 0;
+    airportListMenuSafety(option, safeOption);
     while (safeOption != QUIT) {
         switch (safeOption) {
             case FLIGHTS: {
@@ -303,7 +375,8 @@ void Application::displayMenu() {
                 break;
             }
             case MAX_FLIGHT_LISTS: {
-
+                string option;
+                displayMaxYFlightsMenu(safeOption);
                 break;
             }
             case GENERATE_TRAJECTORIES: {

@@ -119,7 +119,20 @@ public:
      */
     int diameter();
 
+    /** Returns a list of list of flights to showcase possible trajectories
+     * by origin and destination
+     *
+     * @param origin
+     * @param destination
+     * @return list<list<Flight>> with the rajectories by origin and destination.
+     */
     list<list<Flight>> getTrajectories(LocalPTR origin, LocalPTR destination);
+
+    /** Returns the flight map pointer to use outside database class..
+     *
+     * @return  FlightMapPtr.
+     */
+    FlightMapPtr getFlightMapPtr();
 };
 
 #endif //AED_FEUP_PROJ_22_23_DATABASE_H

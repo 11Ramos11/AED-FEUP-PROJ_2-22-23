@@ -109,18 +109,22 @@ AirportsPerCity_Set Database::getAirportsPerCity() {
     return airportsPerCity;
 }
 
-unordered_map<string, AirportPTR> Database::getAirports(){
+unordered_map<string, AirportPTR> Database::getAirports() {
     return airports;
 }
 
-unordered_map<string, Airline> Database::getAirlines(){
+unordered_map<string, Airline> Database::getAirlines() {
     return airlines;
 }
 
-int Database::diameter(){
+int Database::diameter() {
     return flightMap->diameter();
 }
 
-list<list<Flight>> Database::getTrajectories(LocalPTR origin, LocalPTR destination){
+list<list<Flight>> Database::getTrajectories(LocalPTR origin, LocalPTR destination) {
     return flightMap->getFlights(origin, destination, {});
+}
+
+FlightMapPtr Database::getFlightMapPtr() {
+    return flightMap;
 }
