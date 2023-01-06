@@ -26,9 +26,7 @@ void test2(){
 }
 
 int main() {
-
-    test2();
-
+    
     Application app;
     app.startApplication();
 

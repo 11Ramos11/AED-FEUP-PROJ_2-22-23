@@ -45,6 +45,10 @@ const string Menu::AIRPORT_AIRLINES = "List airlines by airport";
 const string Menu::AIRPORT_DESTINATIONS = "List flight destinations by airport";
 const string Menu::AIRPORT_COUNTRIES = "List flight countries by airport";
 
+const string Menu::MAX_FLIGHTS_AIRPORTS = "";
+const string Menu::MAX_FLIGHTS_CITIES = "";
+const string Menu::MAX_FLIGHTS_COUNTRIES = "";
+
 Menu::Menu() {}
 
 void Menu::getWrongMessage() {
