@@ -10,7 +10,7 @@
 Coordinates::Coordinates(float longitude, float latitude, float radius):
     longitude(longitude), latitude(latitude), radius(radius){}
 
-list<AirportPTR> Coordinates::getAirports(FlightMapPtr flightMap) {
+list<AirportPTR> Coordinates::getAirports(FlightMap*  flightMap) {
     list<AirportPTR> airports;
 
     for (auto pair: flightMap->getAirports()) {

@@ -50,7 +50,6 @@ void Database::readAirports() {
         getline(airportFile, latitude, ',');
         getline(airportFile, longitude);
 
-
         AirportPTR airport{new Airport(
                 code, name, cityName, country, stof(latitude), stof(longitude))};
 
@@ -81,6 +80,9 @@ void Database::readFlights() {
         if (originCode == "") break;
         getline(flightsFile, destinationCode, ',');
         getline(flightsFile, companyCode);
+
+        if (originCode == "CDG" && destinationCode == "ORD")
+            cout << "hello";
 
         int distance = airports[originCode]->distanceTo(
                 airports[destinationCode]->longitude, airports[destinationCode]->latitude);
@@ -120,4 +122,8 @@ unordered_map<string, Airline> Database::getAirlines(){
 
 int Database::diameter(){
     return flightMap->diameter();
+}
+
+list<list<Flight>> Database::getTrajectories(LocalPTR origin, LocalPTR destination){
+    return flightMap->getFlights(origin, destination, {});
 }

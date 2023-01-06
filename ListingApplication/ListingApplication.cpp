@@ -8,12 +8,30 @@
 
 ListingApplication::ListingApplication(DatabasePTR database) : database(database) {}
 
+
 bool operator< (const AirportPTR& airport1, const AirportPTR& airport2) {
     return airport1->getFlights().size() < airport2->getFlights().size();
 }
-/*void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination) {
 
-}*/
+void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination){
+
+    auto trajectories = database->getTrajectories(origin, destination);
+
+    for (auto trajectory: trajectories){
+
+        cout << "Porto";
+
+        for (Flight flight: trajectory){
+            AirportPTR destination = database->getAirport(flight.destinationCode);
+            Airline airline = database->getAirline(flight.airlineCode);
+
+            cout << " >>>" << airline.name << ">>> " << destination->name, destination->city, destination->country;
+        }
+
+        cout << endl << endl;
+    }
+
+}
 
 void ListingApplication::listFlights(std::string code) {
 

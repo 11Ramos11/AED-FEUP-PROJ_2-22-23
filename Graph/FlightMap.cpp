@@ -65,22 +65,59 @@ void FlightMap::bfs(const string &code) {
     }
 }
 
-list<list<AirportPTR>>
-FlightMap::getPaths(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines) {
-
-    list<list<AirportPTR>> paths;
-    int mininumFlights = INT_MAX;
-
-    for (auto &[code, airport]: airports) {
+int FlightMap::mininumDistance(AirportPTR airportDepart, AirportPTR airportDestination){
+    for (auto pair: airports){
+        AirportPTR airport = pair.second;
         airport->visited = false;
-        airport->path = {};
-        airport->numFlights = 0;
+        airport->dist = 0;
     }
 
     queue<AirportPTR> unvisitedAirports;
     unvisitedAirports.push(airportDepart);
     airportDepart->visited = true;
-    airportDepart->numFlights = 1;
+
+    while (!unvisitedAirports.empty()) {
+        AirportPTR previousAirport = unvisitedAirports.front();
+        unvisitedAirports.pop();
+
+        if (previousAirport->code == "CDG")
+            cout << "hello";
+
+        for (auto flight: previousAirport->flights){
+
+
+            AirportPTR destination = airports[flight.destinationCode];
+
+            if (!destination->visited) {
+                destination->dist = previousAirport->dist + 1;
+                unvisitedAirports.push(destination);
+                destination->visited = true;
+
+                if (flight.destinationCode == airportDestination->code)
+                    return destination->dist;
+            }
+        }
+    }
+    return -1;
+}
+
+list<list<AirportPTR>>
+FlightMap::getPaths(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines) {
+
+    list<list<AirportPTR>> paths;
+    int minimumFlights = mininumDistance(airportDepart, airportDestination);
+
+    for (auto pair: airports) {
+        AirportPTR airport = pair.second;
+        airport->visited = false;
+        airport->path = {};
+        airport->dist = 0;
+    }
+
+    queue<AirportPTR> unvisitedAirports;
+    unvisitedAirports.push(airportDepart);
+    airportDepart->visited = true;
+    airportDepart->dist = 0;
     airportDepart->path.push_back(airportDepart);
 
     while (!unvisitedAirports.empty()) {
@@ -90,24 +127,31 @@ FlightMap::getPaths(AirportPTR airportDepart, AirportPTR airportDestination, uno
         for (auto flight: previousAirport->flights) {
             AirportPTR destination = airports[flight.destinationCode];
 
-            if (airlines.find(flight.airlineCode) == airlines.end()) continue;
+            // if (airlines.find(flight.airlineCode) == airlines.end()) continue;
 
-            if (destination->numFlights > mininumFlights) break;
-
-            if (!destination->visited) {
-                unvisitedAirports.push(destination);
-                destination->visited = true;
-                destination->numFlights = previousAirport->numFlights + 1;
+            if (flight.destinationCode == airportDestination->code) {
                 destination->path = previousAirport->path;
                 destination->path.push_back(destination);
-
-                if (destination == airportDestination) {
-                    mininumFlights = destination->numFlights;
-                    paths.push_back(destination->path);
-                }
+                paths.push_back(destination->path);
+                break;
             }
+
+            if (!destination->visited) {
+
+                destination->visited = true;
+                if (previousAirport->dist + 1 == minimumFlights)
+                    continue;
+
+                unvisitedAirports.push(destination);
+                destination->dist = previousAirport->dist + 1;
+                destination->path = previousAirport->path;
+                destination->path.push_back(destination);
+            }
+
         }
     }
+
+    return paths;
 }
 
 void getAllFlights(list<list<Flight>> &trajectories, string finalDestination, list<Flight> trajectory,
@@ -127,7 +171,7 @@ void getAllFlights(list<list<Flight>> &trajectories, string finalDestination, li
 
         trajectory.push_back(flight);
 
-        if (airport->code == finalDestination)
+        if ((*nextAirport)->code == finalDestination)
             trajectories.push_back(trajectory);
 
         else
@@ -148,6 +192,8 @@ list<list<Flight>> FlightMap::bestFlights(list<list<AirportPTR>> paths, string f
 
         getAllFlights(trajectories, finalDestination, trajectory, pathIT->begin());
     }
+
+    return trajectories;
 }
 
 list<list<Flight>> FlightMap::getFlights(AirportPTR airport, AirportPTR destination, unordered_set<string> airlines) {
@@ -158,12 +204,12 @@ list<list<Flight>> FlightMap::getFlights(AirportPTR airport, AirportPTR destinat
     return trajectories;
 }
 
-list<list<Flight>> FlightMap::getFlights(Local *origin, Local *destination, unordered_set<string> airlines) {
+list<list<Flight>> FlightMap::getFlights(LocalPTR origin, LocalPTR destination, unordered_set<string> airlines) {
 
     list<list<Flight>> trajectories;
 
-    for (AirportPTR originAirport: origin->getAirports(static_cast<FlightMapPtr>(this)))
-        for (AirportPTR destAirport: destination->getAirports(static_cast<FlightMapPtr>(this)))
+    for (AirportPTR originAirport: origin->getAirports(this))
+        for (AirportPTR destAirport: destination->getAirports(this))
             for (auto trajectory: getFlights(originAirport, destAirport, airlines))
                 trajectories.push_back(trajectory);
 

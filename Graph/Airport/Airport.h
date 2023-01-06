@@ -49,7 +49,7 @@ public:
 
 
     //! @brief Holds the number of flights.
-    int numFlights;
+    int dist;
 
     //! @brief Holds the flight that depart from the airport.
     list<Flight> flights;

@@ -9,7 +9,7 @@
 
 CityLocal::CityLocal(City city): city(city) {}
 
-list<AirportPTR> CityLocal::getAirports(FlightMapPtr flightMap) {
+list<AirportPTR> CityLocal::getAirports(FlightMap*  flightMap) {
 
     list<AirportPTR> airports;
 

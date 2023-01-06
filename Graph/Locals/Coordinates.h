@@ -41,7 +41,7 @@ public:
      * @param flightMap of FlightMapPtr type.
      * @return list<AirportPTR> of airports.
      */
-    list<AirportPTR> getAirports(FlightMapPtr flightMap) override;
+    list<AirportPTR> getAirports(FlightMap* flightMap) override;
 };
 
 
