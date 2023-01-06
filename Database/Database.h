@@ -81,8 +81,18 @@ public:
      */
     void read();
 
+    /** @brief Returns the code of an specific airport.
+    *
+    * @param code of string type.
+    * @return  airport of AirportPTR type.
+    */
     AirportPTR getAirport(string code);
 
+    /** @brief Returns the code of an specific airline.
+    *
+    * @param code of string type.
+    * @return  airline of Airline type.
+    */
     Airline getAirline(string code);
 
     /** @brief Returns group of airport divided by cities.
@@ -105,7 +115,7 @@ public:
 
     /** Invoke diameter from FlightMap class.
      *
-     * @return Void.
+     * @return int.
      */
     int diameter();
 

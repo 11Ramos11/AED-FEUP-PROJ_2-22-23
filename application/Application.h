@@ -1,5 +1,5 @@
-/** @file Application.cpp
- *  @brief Contains the Application Class implementation.
+/** @file Application.h
+ *  @brief Contains the Application class declaration.
  *  @author -
  *  @bug No known bugs.
  */
@@ -22,6 +22,7 @@ using namespace std;
  * Manages the interaction between the user and the application.
  */
 class Application {
+
 private:
 
     //! @brief Creates the initial menu options.
@@ -46,10 +47,10 @@ private:
         BY_AIRPORT_CODE = 1, BY_CITY_COUNTRY = 2, BY_COORDINATES = 3
     };
 
-
     //! @brief Initialization of the database.
     DatabasePTR database = DatabasePTR(new Database());
 
+    //! @brief Initialization of the listingApplication.
     ListingApplication listingApplication = ListingApplication(database);
 
     //! @brief Initialization of the menu.
@@ -80,7 +81,6 @@ private:
      */
     void menuSafety(string &option, int &safeOption);
 
-
     /** @brief Display the listing menu if the given menu option is correct.
      *
      * Checks if the safeOption argument is correct for that specific menu.
@@ -103,7 +103,6 @@ private:
      */
     void airportNumbersSafety(string &option, int &safeOption);
 
-
     /** @brief Display the filter option menu (by local or airlines).
      *
      * Checks if the safeOption argument is correct for that specific menu.
@@ -116,14 +115,14 @@ private:
     void filtersMenuSafety(string &option, int &safeOption);
 
     /** @brief Display the trajectories menu if the given menu option is correct.
-   *
-   * Checks if the safeOption argument is correct for that specific menu.
-   * Then, safeInput method is used with both arguments to cover wrong inputs.
-   *
-   * @param option Of type string, by reference.
-   * @param safeOption Of type int, by reference.
-   * @return Void.
-   */
+    *
+    * Checks if the safeOption argument is correct for that specific menu.
+    * Then, safeInput method is used with both arguments to cover wrong inputs.
+    *
+    * @param option Of type string, by reference.
+    * @param safeOption Of type int, by reference.
+    * @return Void.
+    */
     void trajectoriesMenuSafety(string &option, int &safeOption);
 
     /** @brief Display the menu of the possible with possible trajectories
@@ -132,7 +131,6 @@ private:
      * @return Void.
      */
     void displayTrajectoriesMenu(int &safeOption);
-
 
     /** @brief Reads what the user wants to know the occupation of and shows it.
      *
@@ -164,7 +162,6 @@ private:
      */
     void optionFilter(int &option);
 
-
     /** @brief Main menu that will be the root to reach all other menus.
      *
      * Menu responsible for displaying all other menus depending on user interaction,
@@ -193,7 +190,6 @@ public:
  * @return True if the string represents a number, false if otherwise.
  */
 bool is_number(const std::string &s);
-
 
 /** @brief Reads user input until it its a valid numeric value.
  *
