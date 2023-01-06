@@ -81,9 +81,6 @@ void Database::readFlights() {
         getline(flightsFile, destinationCode, ',');
         getline(flightsFile, companyCode);
 
-        if (originCode == "CDG" && destinationCode == "ORD")
-            cout << "hello";
-
         int distance = airports[originCode]->distanceTo(
                 airports[destinationCode]->longitude, airports[destinationCode]->latitude);
         airports[originCode]->addFlight({destinationCode, distance, companyCode});

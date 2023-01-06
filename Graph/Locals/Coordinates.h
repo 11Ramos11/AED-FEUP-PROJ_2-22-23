@@ -34,7 +34,7 @@ public:
      * @param latitude Of type float.
      * @param radius Of type float.
      */
-    Coordinates(float longitude, float latitude, float radius);
+    Coordinates(float latitude, float longitude, float radius);
 
     /** @brief Returns a list of airports.
      *

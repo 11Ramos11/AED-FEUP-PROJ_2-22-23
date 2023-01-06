@@ -5,3 +5,5 @@
  */
 
 #include "City.h"
+
+City::City(string name, string country): name(name), country(country){};

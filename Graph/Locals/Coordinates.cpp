@@ -7,15 +7,18 @@
 #include "Coordinates.h"
 #include "../FlightMap.h"
 
-Coordinates::Coordinates(float longitude, float latitude, float radius):
-    longitude(longitude), latitude(latitude), radius(radius){}
+Coordinates::Coordinates(float latitude, float longitude, float radius):
+    latitude(latitude), longitude(longitude), radius(radius){}
 
 list<AirportPTR> Coordinates::getAirports(FlightMap*  flightMap) {
     list<AirportPTR> airports;
 
-    for (auto pair: flightMap->getAirports()) {
+    auto allAirports = flightMap->getAirports();
+    for (auto pair: allAirports) {
         AirportPTR airport = pair.second;
-        if (airport->distanceTo(longitude, latitude) < radius)
+        int distance = airport->distanceTo(latitude, longitude);
+        
+        if (distance < radius)
             airports.push_back(airport);
     }
     return airports;

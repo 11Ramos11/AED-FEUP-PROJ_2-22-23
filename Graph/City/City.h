@@ -19,6 +19,7 @@ struct City {
     //! @brief Holds the name of the country that the city belongs to.
     string country;
 
+    City(string name, string country);
     /** @brief Operator overload.
      *
      * Compare if two cities have the same name

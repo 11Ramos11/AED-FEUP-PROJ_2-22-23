@@ -194,9 +194,9 @@ list<list<Flight>> FlightMap::getFlights(LocalPTR origin, LocalPTR destination, 
 
     list<list<Flight>> trajectories;
 
-    for (AirportPTR originAirport: origin->getAirports(this))
-        for (AirportPTR destAirport: destination->getAirports(this))
-            for (auto trajectory: getFlights(originAirport, destAirport, airlines))
+    for (const AirportPTR& originAirport: origin->getAirports(this))
+        for (const AirportPTR& destAirport: destination->getAirports(this))
+            for (const auto& trajectory: getFlights(originAirport, destAirport, airlines))
                 trajectories.push_back(trajectory);
 
     return trajectories;

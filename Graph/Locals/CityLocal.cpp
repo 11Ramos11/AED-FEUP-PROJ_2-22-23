@@ -13,7 +13,9 @@ list<AirportPTR> CityLocal::getAirports(FlightMap*  flightMap) {
 
     list<AirportPTR> airports;
 
-    for (AirportPTR airport: flightMap->getAirportsPerCity()[city])
+    auto cityAirports = flightMap->getAirportsPerCity()[city];
+
+    for (AirportPTR airport: cityAirports)
         airports.push_back(airport);
 
     return airports;
