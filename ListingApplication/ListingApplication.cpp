@@ -16,20 +16,34 @@ bool operator<(const AirportPTR &airport1, const AirportPTR &airport2) {
 
 void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination){
 
-    auto trajectories = database->getTrajectories(origin, destination);
+    auto trajectories = database->getTrajectoriesAllAirlines(origin, destination);
 
     for (auto trajectory: trajectories){
 
-        cout << "Porto";
+        cout << trajectory.first->name << "," << trajectory.first->city;
 
-        for (Flight flight: trajectory){
+        for (Flight flight: trajectory.second){
             AirportPTR destination = database->getAirport(flight.destinationCode);
             Airline airline = database->getAirline(flight.airlineCode);
 
-            cout << " >>>" << airline.name << ">>> " << destination->name, destination->city, destination->country;
+            cout << " -> " << destination->name << ',' << destination->city;
         }
 
-        cout << endl << endl;
+        cout << endl << "(";
+
+        for (auto it = trajectory.second.begin(); it != trajectory.second.end(); it++){
+
+            Flight flight = *it;
+            AirportPTR destination = database->getAirport(flight.destinationCode);
+            Airline airline = database->getAirline(flight.airlineCode);
+
+            cout <<  airline.name;
+
+            if (it != --trajectory.second.end())
+                cout << " , ";
+        }
+
+        cout << ")" << endl << endl;
     }
 
 }

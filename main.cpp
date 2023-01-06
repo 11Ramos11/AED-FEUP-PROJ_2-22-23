@@ -8,7 +8,7 @@ void test1(){
     ListingApplication listingApplication(database);
 
     LocalPTR origin = make_shared<AirportLocal>("OPO");
-    LocalPTR destination = make_shared<AirportLocal>("ORD");
+    LocalPTR destination = make_shared<AirportLocal>("LIS");
 
     listingApplication.showTrajectories(origin, destination);
 }
@@ -19,14 +19,14 @@ void test2(){
     ListingApplication listingApplication(database);
 
 
-    LocalPTR origin = make_shared<Coordinates>(Coordinates(41.24, -8.67, 5));
-    LocalPTR destination = make_shared<Coordinates>(Coordinates(38.771, -9.13, 5));
+    LocalPTR destination = make_shared<CityLocal>(City("London", "United Kingdom"));
+    LocalPTR origin = make_shared<Coordinates>(70, 40, 600);
 
     listingApplication.showTrajectories(origin, destination);
 }
 
 int main() {
-    
+
     Application app;
     app.startApplication();
 

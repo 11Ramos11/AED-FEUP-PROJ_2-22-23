@@ -67,41 +67,38 @@ public:
      */
     void setAirportsPerCity(AirportsPerCity_Set airportsPerCity);
 
-    /** @brief Depth-First Search implementation.
-     *
-     * @param code of string type.
-     * @return Void.
-     */
-    void dfs(string code);
-
-    /** @brief Breadth-First Search implementation.
-     *
-     * @param code of const string type.
-     * @return Void.
-     */
-    void bfs(const string& code);
-
-    int minimumDistance(AirportPTR airportDepart, AirportPTR airportDestination);
-
-    /** @brief Returns all lists with minors airport paths.
+    /** @brief Returns the shortest number of flights from a certain airport to another.
      *
      * It uses BFS implementation.
      *
      * @param airportDepart of AirportPTR type.
      * @param airportDestination of AirportPTR type.
+     * @param airlines of unordered_set<string>
      * @return One or more lists with the minors airport paths.
      */
-    list<list<AirportPTR>> getPaths(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines);
+    int minimumDistance(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines);
 
-    /** @brief Returns the best set of flights that can be used to fly from one airport to another.
+    /** @brief Returns all lists with the shortest airport paths.
+     *
+     * It uses BFS implementation.
+     *
+     * @param airportDepart of AirportPTR type.
+     * @param airportDestination of AirportPTR type.
+     * @param airlines of unordered_set<string>
+     * @return One or more lists with the minors airport paths.
+     */
+    list<list<Flight>> getPaths(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines);
+
+    /** @brief Returns the best set of flights that can be used through a certain path of airports.
      *
      * It uses the return of the "getPaths" method and leach all the lists, keeping only the best of the best ones.
      *
      * @param paths of list<list<AirportPTR>> type.
      * @param destinationCode of string type.
+     * @param airlines of unordered_set<string> type.
      * @return The best set of flights.
      */
-    list<list<Flight>> bestFlights(list<list<AirportPTR>> paths, string destinationCode);
+    list<list<Flight>> bestFlights(list<list<AirportPTR>> paths, string destinationCode, unordered_set<string> airlines);
 
     /** @brief Represents the number of different countries of the flights that arrived at the airport.
      *
@@ -128,7 +125,7 @@ public:
      * @param airlines of unordered_set<string> type.
      * @return list<list<Flight>> of flights.
      */
-    list<list<Flight>> getFlights(LocalPTR origin, LocalPTR destination, unordered_set<string> airlines);
+    list<pair<AirportPTR, list<Flight>>> getFlights(LocalPTR origin, LocalPTR destination, unordered_set<string> airlines);
 
     /** @brief Represents all airports that can be reachable from another specific one.
      *

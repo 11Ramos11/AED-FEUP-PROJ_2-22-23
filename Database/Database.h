@@ -126,7 +126,7 @@ public:
      * @param destination
      * @return list<list<Flight>> with the rajectories by origin and destination.
      */
-    list<list<Flight>> getTrajectories(LocalPTR origin, LocalPTR destination);
+    list<pair<AirportPTR, list<Flight>>> getTrajectoriesAllAirlines(LocalPTR origin, LocalPTR destination);
 
     /** Returns the flight map pointer to use outside database class..
      *

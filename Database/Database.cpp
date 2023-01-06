@@ -121,8 +121,15 @@ int Database::diameter() {
     return flightMap->diameter();
 }
 
-list<list<Flight>> Database::getTrajectories(LocalPTR origin, LocalPTR destination) {
-    return flightMap->getFlights(origin, destination, {});
+list<pair<AirportPTR, list<Flight>>> Database::getTrajectoriesAllAirlines(LocalPTR origin, LocalPTR destination) {
+
+    unordered_set<string> airlinesCodes;
+
+    for (auto airline: airlines){
+        airlinesCodes.insert(airline.first);
+    }
+
+    return flightMap->getFlights(origin, destination, airlinesCodes);
 }
 
 FlightMapPtr Database::getFlightMapPtr() {

@@ -54,7 +54,7 @@ public:
     bool visited;
 
     //! @brief Holds all paths from the airport.
-    list<AirportPTR> path;
+    list<Flight> path;
 
     //! @brief Holds the num from the airport.
     int num;
