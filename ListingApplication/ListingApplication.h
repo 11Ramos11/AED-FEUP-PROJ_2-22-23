@@ -26,15 +26,20 @@ public:
 
     void listAirportsByCity(std::string city);
 
-    /** @brief Print the number of airports that exists in database.
+    /** @brief Listing the global statistic.
      *
+     * @param k of int type.
+     * @return Void.
      */
-    void numAirportsRede();
+    void GlobalStatistic(int k);
 
-    /** @brief Print the number of airports per country.
+    /** @brief Listing the statistic per country.
      *
+     * @param country of string type.
+     * @param k of int type.
+     * @return Void.
      */
-    void numAirportsPerCountry(std::string country);
+    void statisticPerCountry(std::string country, int k);
 };
 
 

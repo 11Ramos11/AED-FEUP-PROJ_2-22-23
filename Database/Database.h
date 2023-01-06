@@ -96,6 +96,19 @@ public:
      * @return unordered_map<string, AirportPTR> with airports.
      */
     unordered_map<string, AirportPTR> getAirports();
+
+    /** Returns all airlines.
+     *
+     * @return unordered_map<string, Airline> with airlines.
+     */
+    unordered_map<string, Airline> getAirlines();
+
+    /** Invoke diameter from FlightMap class.
+     *
+     * @return Void.
+     */
+    int diameter();
+
 };
 
 #endif //AED_FEUP_PROJ_22_23_DATABASE_H
