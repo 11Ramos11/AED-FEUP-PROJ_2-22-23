@@ -1,9 +1,3 @@
-/** @file Application.h
- *  @brief Contains the Application class implementation.
- *  @author -
- *  @bug No known bugs.
- */
-
 /** @file Application.cpp
  *  @brief Contains the Application class implementation.
  *  @author -
@@ -12,7 +6,7 @@
 
 #include "Application.h"
 #include "../Graph/Locals/Coordinates.h"
-#include <stdexcept>      // std::invalid_argument
+#include <stdexcept>
 
 
 Application::Application() {}
@@ -340,15 +334,4 @@ bool is_number(const std::string &s) {
     return !s.empty() && it == s.end();
 }
 
-/*
-string validStudentCode() {
-    string studentCode;
-    cin >> studentCode;
-    while (!is_number(studentCode)) {
-        cout << "Type a valid numeric value for the student code > ";
-        cin >> studentCode;
-    }
-    return studentCode;
-}
-*/
 

@@ -114,3 +114,10 @@ unordered_map<string, AirportPTR> Database::getAirports(){
     return airports;
 }
 
+unordered_map<string, Airline> Database::getAirlines(){
+    return airlines;
+}
+
+int Database::diameter(){
+    return flightMap->diameter();
+}
