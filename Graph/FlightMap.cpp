@@ -30,8 +30,8 @@ AirportsPerCity_Set FlightMap::getAirportsPerCity() {
 
 void FlightMap::bfs(const string &code) {
 
-    for (auto &[code, airport]: airports)
-        airport->visited = false;
+    for (auto pair: airports)
+        pair.second->visited = false;
 
     queue<string> unvisitedNodes;
     unvisitedNodes.push(code);
