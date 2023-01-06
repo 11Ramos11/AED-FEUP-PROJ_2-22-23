@@ -83,6 +83,16 @@ public:
     //! @brief Defines the string to output in the menu, as an option, to show the number of different countries.
     static const string COUNTRIES_NUMBER;
 
+    //! @brief Defines the string to output in the menu, as an option, to generate trajectories by airport code.
+    static const string TRAJECTORIES_BY_AIRPORT_CODE;
+
+    //! @brief Defines the string to output in the menu, as an option, to generate trajectories by city and country.
+    static const string TRAJECTORIES_BY_CITY_COUNTRY;
+
+    //! @brief Defines the string to output in the menu, as an option, to generate trajectories by coordinates.
+    static const string TRAJECTORIES_BY_COORDS;
+
+
     //! @brief Defines the string to output in the menu, as an option, to list airport flights.
     static const string AIRPORT_FLIGHTS;
 

@@ -11,6 +11,7 @@
  */
 
 #include "Application.h"
+#include "../Graph/Locals/Coordinates.h"
 #include <stdexcept>      // std::invalid_argument
 
 
@@ -66,6 +67,13 @@ void Application::airportNumbersSafety(string &option, int &safeOption) {
 void Application::filtersMenuSafety(string &option, int &safeOption) {
     while (!safeOption) {
         menu.displayFilterMenu();
+        safeInput(option, safeOption);
+    }
+}
+
+void Application::trajectoriesMenuSafety(string &option, int &safeOption) {
+    while (!safeOption) {
+        menu.displayTrajectoriesMenu();
         safeInput(option, safeOption);
     }
 }
@@ -201,6 +209,92 @@ void Application::optionFilter(int &option) {
     option = 0;
 }
 
+void Application::displayTrajectoriesMenu(int &oldOption) {
+    string option;
+    int safeOption = 0;
+    trajectoriesMenuSafety(option, safeOption);
+    bool fail = 0;
+    while (safeOption != QUIT) {
+        LocalPTR origin, destination;
+        switch (safeOption) {
+            case BY_AIRPORT_CODE: {
+                string airportCode;
+                cout << "Origin Airport Code: ";
+                std::cin >> airportCode;
+                origin = LocalPTR(new AirportLocal(airportCode));
+                break;
+            }
+            case BY_CITY_COUNTRY: {
+                string cityName, countryName;
+                cout << "Origin City Name: ";
+                std::cin >> cityName;
+                cout << "Origin Country Name: ";
+                std::cin >> countryName;
+                origin = LocalPTR(new CityLocal({cityName, countryName}));
+                break;
+            }
+            case BY_COORDINATES: {
+                float latitude, longitude, radius;
+                cout << "Origin Latitude: ";
+                std::cin >> latitude;
+                cout << "Origin Longitude: ";
+                std::cin >> longitude;
+                cout << "Origin Radius: ";
+                std::cin >> radius;
+                origin = LocalPTR(new Coordinates(longitude, latitude, radius));
+                break;
+            }
+            default:
+                fail = 1;
+                menu.breakLine();
+                menu.getWrongMessage();
+                break;
+        }
+        switch (safeOption) {
+            case BY_AIRPORT_CODE: {
+                string airportCode;
+                cout << "Destiny Airport Code: ";
+                std::cin >> airportCode;
+                destination = LocalPTR(new AirportLocal(airportCode));
+                break;
+            }
+            case BY_CITY_COUNTRY: {
+                string cityName, countryName;
+                cout << "Destiny City Name: ";
+                std::cin >> cityName;
+                cout << "Destiny Country Name: ";
+                std::cin >> countryName;
+                destination = LocalPTR(new CityLocal({cityName, countryName}));
+                break;
+            }
+            case BY_COORDINATES: {
+                float latitude, longitude, radius;
+                cout << "Destiny Latitude: ";
+                std::cin >> latitude;
+                cout << "Destiny Longitude: ";
+                std::cin >> longitude;
+                cout << "Destiny Radius: ";
+                std::cin >> radius;
+                destination = LocalPTR(new Coordinates(longitude, latitude, radius));
+                break;
+            }
+            default: {
+                fail = 1;
+                menu.breakLine();
+                menu.getWrongMessage();
+                break;
+            }
+        }
+        if (!fail)
+            listingApplication.showTrajectories(origin, destination);
+        menu.breakLine();
+        safeOption = 0;
+        trajectoriesMenuSafety(option, safeOption);
+    }
+    oldOption = 0;
+    cout << menu.QUIT_MESSAGE << endl;
+}
+
 void Application::displayMenu() {
     string option;
     int safeOption = 0;
@@ -218,6 +312,8 @@ void Application::displayMenu() {
                 break;
             }
             case GENERATE_TRAJECTORIES: {
+                string option;
+                displayTrajectoriesMenu(safeOption);
                 break;
             }
             case FILTERS: {
@@ -244,6 +340,7 @@ bool is_number(const std::string &s) {
     return !s.empty() && it == s.end();
 }
 
+/*
 string validStudentCode() {
     string studentCode;
     cin >> studentCode;
@@ -253,7 +350,5 @@ string validStudentCode() {
     }
     return studentCode;
 }
-
-
-
+*/
 

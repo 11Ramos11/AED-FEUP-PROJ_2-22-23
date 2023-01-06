@@ -11,7 +11,7 @@
 #include "../Database/Database.h"
 #include "../Graph/Locals/AirportLocal.h"
 #include "../Graph/Locals/CityLocal.h"
-#include "pointers.h"
+#include "../Pointers.h"
 #include "../ListingApplication/ListingApplication.h"
 
 using namespace std;
@@ -40,6 +40,12 @@ private:
     enum {
         FLIGHTS = 1, DIFFERENT_AIRLINES = 2, CITY = 3, BY_COUNTRIES = 4
     };
+
+    //! @brief enum for the trajectories generations..
+    enum {
+        BY_AIRPORT_CODE = 1, BY_CITY_COUNTRY = 2, BY_COORDINATES = 3
+    };
+
 
     //! @brief Initialization of the database.
     DatabasePTR database = DatabasePTR(new Database());
@@ -74,6 +80,7 @@ private:
      */
     void menuSafety(string &option, int &safeOption);
 
+
     /** @brief Display the listing menu if the given menu option is correct.
      *
      * Checks if the safeOption argument is correct for that specific menu.
@@ -97,7 +104,6 @@ private:
     void airportNumbersSafety(string &option, int &safeOption);
 
 
-
     /** @brief Display the filter option menu (by local or airlines).
      *
      * Checks if the safeOption argument is correct for that specific menu.
@@ -108,6 +114,24 @@ private:
      * @return Void.
      */
     void filtersMenuSafety(string &option, int &safeOption);
+
+    /** @brief Display the trajectories menu if the given menu option is correct.
+   *
+   * Checks if the safeOption argument is correct for that specific menu.
+   * Then, safeInput method is used with both arguments to cover wrong inputs.
+   *
+   * @param option Of type string, by reference.
+   * @param safeOption Of type int, by reference.
+   * @return Void.
+   */
+    void trajectoriesMenuSafety(string &option, int &safeOption);
+
+    /** @brief Display the menu of the possible with possible trajectories
+     *
+     * @param safeOption Of type int, by reference.
+     * @return Void.
+     */
+    void displayTrajectoriesMenu(int &safeOption);
 
 
     /** @brief Reads what the user wants to know the occupation of and shows it.

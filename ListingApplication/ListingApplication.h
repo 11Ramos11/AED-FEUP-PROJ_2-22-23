@@ -6,7 +6,7 @@
 #define AED_FEUP_PROJ_2_22_23_LISTINGAPPLICATION_H
 
 
-#include "../application/Pointers.h"
+#include "../Pointers.h"
 
 class ListingApplication {
 
@@ -15,6 +15,8 @@ class ListingApplication {
 public:
 
     ListingApplication(DatabasePTR database);
+
+    void showTrajectories(LocalPTR origin, LocalPTR destination);
 
     void listFlights(std::string code);
 

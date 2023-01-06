@@ -8,9 +8,12 @@
 
 ListingApplication::ListingApplication(DatabasePTR database) : database(database) {}
 
-bool operator< (const AirportPTR& airport1, const AirportPTR& airport2){
+bool operator< (const AirportPTR& airport1, const AirportPTR& airport2) {
     return airport1->getFlights().size() < airport2->getFlights().size();
 }
+/*void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination) {
+
+}*/
 
 void ListingApplication::listFlights(std::string code) {
 
