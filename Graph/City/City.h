@@ -11,6 +11,9 @@
 
 using namespace std;
 
+/** @brief City struct to represent a city.
+ *
+ */
 struct City {
 
     //! @brief Holds the name of the city.

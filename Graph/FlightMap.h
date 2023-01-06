@@ -22,7 +22,7 @@ using namespace std;
 //! @brief Redefinition of the name for ease of use.
 typedef unordered_map<City,  unordered_set<AirportPTR, Airport::hashFunction>, City::hashFunction> AirportsPerCity_Set;
 
-/** @brief FlightMap class to represent a flight map.
+/** @brief FlightMap class to represent a flight map and all implementations that uses a graph directly.
  *
  */
 class FlightMap {

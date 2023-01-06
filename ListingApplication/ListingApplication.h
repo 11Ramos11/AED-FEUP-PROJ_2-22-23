@@ -10,6 +10,9 @@
 
 #include "../Pointers.h"
 
+/** @brief ListingApplication class represents the most interest/important listings.
+ *
+ */
 class ListingApplication {
 
     //! @brief Holds the database.

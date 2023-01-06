@@ -1,6 +1,9 @@
-//
-// Created by Alberto on 05/01/2023.
-//
+/** @file NumbersApplication.cpp
+ *  @brief Contains the NumbersApplication Class implementation.
+ *  @author -
+ *  @bug No known bugs.
+ */
+
 #include <string>
 #include "NumbersApplication.h"
 #include "../Database/Database.h"
