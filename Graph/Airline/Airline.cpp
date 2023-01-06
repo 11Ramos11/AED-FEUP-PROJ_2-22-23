@@ -1,6 +1,8 @@
-//
-// Created by Ramos on 1/5/2023.
-//
+/** @file Airline.cpp
+ *  @brief Contains the Airline class implementation.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #include "Airline.h"
 

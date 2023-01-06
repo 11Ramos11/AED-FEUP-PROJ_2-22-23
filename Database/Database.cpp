@@ -50,7 +50,6 @@ void Database::readAirports() {
         getline(airportFile, latitude, ',');
         getline(airportFile, longitude);
 
-
         AirportPTR airport{new Airport(
                 code, name, cityName, country, stof(latitude), stof(longitude))};
 
@@ -120,4 +119,8 @@ unordered_map<string, Airline> Database::getAirlines(){
 
 int Database::diameter(){
     return flightMap->diameter();
+}
+
+list<list<Flight>> Database::getTrajectories(LocalPTR origin, LocalPTR destination){
+    return flightMap->getFlights(origin, destination, {});
 }

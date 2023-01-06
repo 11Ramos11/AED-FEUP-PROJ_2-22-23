@@ -81,6 +81,8 @@ public:
      */
     void bfs(const string& code);
 
+    int mininumDistance(AirportPTR airportDepart, AirportPTR airportDestination);
+
     /** @brief Returns all lists with minors airport paths.
      *
      * It uses BFS implementation.
@@ -126,7 +128,7 @@ public:
      * @param airlines of unordered_set<string> type.
      * @return list<list<Flight>> of flights.
      */
-    list<list<Flight>> getFlights(Local* origin, Local* destination, unordered_set<string> airlines);
+    list<list<Flight>> getFlights(LocalPTR origin, LocalPTR destination, unordered_set<string> airlines);
 
     /** @brief Represents all airports that can be reachable from another specific one.
      *
@@ -188,10 +190,32 @@ public:
      */
     list<AirportPTR> articulationPoints();
 
+    /** @brief Represents the auxiliary method for diameter.
+     *
+     * It uses the DFS implementation.
+     *
+     * @param airport of AirportPTR type.
+     * @param count of int type.
+     * @param maxCount of int type.
+     *
+     * @return Void.
+     */
     void dfsUtil(AirportPTR airport, int &count, int& maxCount);
 
+    /** @brief Represents the auxiliary method for diameter.
+     *
+     * It uses the DFS implementation.
+     *
+     * @param airport of AirportPTR type.
+     * @param maxCount of int type.
+     * @return Void.
+     */
     void dfsDiameter(AirportPTR airport, int& maxCount);
 
+    /** @brief Represents the diameter of the graph.
+     *
+     * @return diameter of int type.
+     */
     int diameter();
 };
 

@@ -119,6 +119,7 @@ public:
      */
     int diameter();
 
+    list<list<Flight>> getTrajectories(LocalPTR origin, LocalPTR destination);
 };
 
 #endif //AED_FEUP_PROJ_22_23_DATABASE_H
