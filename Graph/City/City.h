@@ -1,6 +1,8 @@
-//
-// Created by Ramos on 1/5/2023.
-//
+/** @file City.h
+ *  @brief Contains the City class declaration.
+ *  @author -
+ *  @bug No known bugs.
+ */
 
 #ifndef AED_FEUP_PROJ_2_22_23_CITY_H
 #define AED_FEUP_PROJ_2_22_23_CITY_H

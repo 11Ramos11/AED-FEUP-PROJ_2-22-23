@@ -41,14 +41,9 @@ public:
     //! @brief Holds the airport longitude.
     float longitude;
 
+    //-----------------------------------------
 
-
-
-
-
-
-
-    //! @brief Holds the number of flights.
+    //! @brief Holds the distance from the source airport.
     int numFlights;
 
     //! @brief Holds the flight that depart from the airport.
@@ -60,16 +55,16 @@ public:
     //! @brief Holds all paths from the airport.
     list<AirportPTR> path;
 
+    //! @brief Holds the num from the airport.
     int num;
 
+    //! @brief Holds the low from the airport.
     int low;
 
+    //! @brief Holds true if airport is in the stack of false if otherwise.
     bool inStack;
 
-
-
-
-
+    //----------------------------------------
 
     /** Create a new Airport with a code, a name, a city, a country, a latitude and a longitude.
      *

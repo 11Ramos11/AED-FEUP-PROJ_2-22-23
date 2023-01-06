@@ -188,10 +188,32 @@ public:
      */
     list<AirportPTR> articulationPoints();
 
+    /** @brief Represents the auxiliary method for diameter.
+     *
+     * It uses the DFS implementation.
+     *
+     * @param airport of AirportPTR type.
+     * @param count of int type.
+     * @param maxCount of int type.
+     *
+     * @return Void.
+     */
     void dfsUtil(AirportPTR airport, int &count, int& maxCount);
 
+    /** @brief Represents the auxiliary method for diameter.
+     *
+     * It uses the DFS implementation.
+     *
+     * @param airport of AirportPTR type.
+     * @param maxCount of int type.
+     * @return Void.
+     */
     void dfsDiameter(AirportPTR airport, int& maxCount);
 
+    /** @brief Represents the diameter of the graph.
+     *
+     * @return diameter of int type.
+     */
     int diameter();
 };
 

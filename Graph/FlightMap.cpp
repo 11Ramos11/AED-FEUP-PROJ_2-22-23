@@ -28,20 +28,6 @@ AirportsPerCity_Set FlightMap::getAirportsPerCity() {
     return airportsPerCity;
 }
 
-/*
-void FlightMap::dfs(string code) {
-    // show node order
-    // cout << v << " ";
-    if (airports.find(code) != airports.end())
-        airports[code]->visited = true;
-
-    for (auto e : airports[code]->flights) {
-        string destinationCode = e.destinationCode;
-        if (!airports[code]->visited)
-            dfs(destinationCode);
-    }
-}*/
-
 void FlightMap::bfs(const string &code) {
 
     for (auto &[code, airport]: airports)
@@ -306,7 +292,6 @@ list<AirportPTR> FlightMap::articulationPoints() {
 }
 
 AirportPTR farthestNode;
-
 void FlightMap::dfsUtil(AirportPTR airport, int &count, int &maxCount) {
     airport->visited = true;
     count++;
@@ -335,12 +320,10 @@ void FlightMap::dfsDiameter(AirportPTR airport, int &maxCount) {
 }
 
 int FlightMap::diameter() {
-
     int maxCount = INT_MIN;
     AirportPTR airport;
 
     dfsDiameter(airport, maxCount);
-
     dfsDiameter(farthestNode, maxCount);
 
     return maxCount;
