@@ -78,7 +78,6 @@ void Application::trajectoriesMenuSafety(string &option, int &safeOption) {
     }
 }
 
-
 void Application::airportNumbersMenu(int &oldOption) {
     string option;
     int safeOption = 0;
@@ -86,30 +85,31 @@ void Application::airportNumbersMenu(int &oldOption) {
     while (safeOption != QUIT) {
         switch (safeOption) {
             case FLIGHTS: {
-                string ucCode;
-                cout << "Type the UC code relative to the class:";
-                cin >> ucCode;
-                string classCode;
-                cout << "Type class code to list:";
-                cin >> classCode;
+                string airportCode;
+                cout << "Type the Airport code to check flights total number:";
+                cin >> airportCode;
+                cout << numbersApplication.numbersFlights(airportCode) << endl;
                 break;
             }
             case DIFFERENT_AIRLINES: {
-                string ucCode;
-                cout << "Type the UC code to check:";
-                cin >> ucCode;
+                string airportCode;
+                cout << "Type the Airport code to check all airlines operating:";
+                cin >> airportCode;
+                cout << numbersApplication.numbersAirlines(airportCode) << endl;
                 break;
             }
             case CITY: {
-                char year;
-                cout << "Type the year to check (1, 2 or 3):";
-                cin >> year;
+                string airportCode;
+                cout << "Type the Airport code to check all flights cities:";
+                cin >> airportCode;
+                cout << numbersApplication.numbersCities(airportCode) << endl;
                 break;
             }
             case BY_COUNTRIES: {
-                char year;
-                cout << "Type the year to check (1, 2 or 3):";
-                cin >> year;
+                string airportCode;
+                cout << "Type the Airport code to check the number of countries to flight:";
+                cin >> airportCode;
+                cout << numbersApplication.numbersCountries(airportCode) << endl;
                 break;
             }
             default: {

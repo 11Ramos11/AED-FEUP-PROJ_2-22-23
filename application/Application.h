@@ -13,6 +13,7 @@
 #include "../Graph/Locals/CityLocal.h"
 #include "../Pointers.h"
 #include "../ListingApplication/ListingApplication.h"
+#include "../NumbersApplication/NumbersApplication.h"
 
 using namespace std;
 
@@ -51,6 +52,8 @@ private:
     DatabasePTR database = DatabasePTR(new Database());
 
     ListingApplication listingApplication = ListingApplication(database);
+
+    NumbersApplication numbersApplication = NumbersApplication(database);
 
     //! @brief Initialization of the menu.
     Menu menu;

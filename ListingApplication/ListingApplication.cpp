@@ -20,7 +20,6 @@ void ListingApplication::listFlights(std::string code) {
     std::cout << title;
     std::cout << "Airline | Destination\n";
 
-
     for (Flight flight: airport->getFlights()) {
         AirportPTR destination = database->getAirport(flight.destinationCode);
         string airportName = destination->name;
@@ -142,6 +141,6 @@ void ListingApplication::numAirportsPerCountry(std::string country) {
 }
 
 /*void ListingApplication::numAirportsAirlineReach(std::string airline){
-    
+
 }*/
 
