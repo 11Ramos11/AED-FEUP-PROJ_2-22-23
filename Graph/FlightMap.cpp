@@ -51,7 +51,7 @@ void FlightMap::bfs(const string &code) {
     }
 }
 
-int FlightMap::mininumDistance(AirportPTR airportDepart, AirportPTR airportDestination){
+int FlightMap::minimumDistance(AirportPTR airportDepart, AirportPTR airportDestination){
     for (auto pair: airports){
         AirportPTR airport = pair.second;
         airport->visited = false;
@@ -91,7 +91,7 @@ list<list<AirportPTR>>
 FlightMap::getPaths(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines) {
 
     list<list<AirportPTR>> paths;
-    int minimumFlights = mininumDistance(airportDepart, airportDestination);
+    int minimumFlights = minimumDistance(airportDepart, airportDestination);
 
     for (auto pair: airports) {
         AirportPTR airport = pair.second;

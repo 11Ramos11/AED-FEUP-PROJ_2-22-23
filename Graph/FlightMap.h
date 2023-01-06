@@ -81,7 +81,7 @@ public:
      */
     void bfs(const string& code);
 
-    int mininumDistance(AirportPTR airportDepart, AirportPTR airportDestination);
+    int minimumDistance(AirportPTR airportDepart, AirportPTR airportDestination);
 
     /** @brief Returns all lists with minors airport paths.
      *
