@@ -37,7 +37,40 @@ void test3(){
     listingApplication.showTrajectories(origin, destination);
 }
 
+void test4(){
+    DatabasePTR database = make_shared<Database>();
+    database->read();
+    ListingApplication listingApplication(database);
+
+
+    LocalPTR local = make_shared<AirportLocal>("OPO");
+
+    listingApplication.numberReachableCountries(local, 1);
+}
+
+void test6(){
+    DatabasePTR database = make_shared<Database>();
+    database->read();
+    ListingApplication listingApplication(database);
+
+
+   listingApplication.listAirportsByCity({"Porto", "Portugal"});
+}
+
+void test7(){
+    DatabasePTR database = make_shared<Database>();
+    database->read();
+    ListingApplication listingApplication(database);
+
+
+    auto n = database->getFlightMapPtr()->articulationPoints();
+
+    cout << "Number of articulation points: " << n.size() << endl << endl;
+}
+
 int main() {
+
+    test7();
 
     Application app;
     app.startApplication();

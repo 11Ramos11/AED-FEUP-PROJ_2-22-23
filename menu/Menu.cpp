@@ -30,9 +30,9 @@ const string Menu::AIRLINES_NUMBER = "Number of airlines of the airport";
 const string Menu::DESTINATIONS_NUMBER = "Number of different flight destinations the airport";
 const string Menu::COUNTRIES_NUMBER = "Number different countries flights of the airport";
 
-const string Menu::TRAJECTORIES_BY_AIRPORT_CODE = "Generate trajectory by giving an Airport code";
-const string Menu::TRAJECTORIES_BY_CITY_COUNTRY = "Generate trajectory by giving a city and country";
-const string Menu::TRAJECTORIES_BY_COORDS = "Generate trajectory by giving coordinates";
+const string Menu::TRAJECTORIES_BY_AIRPORT_CODE = "By Airport";
+const string Menu::TRAJECTORIES_BY_CITY_COUNTRY = "By City";
+const string Menu::TRAJECTORIES_BY_COORDS = "By Coordinates";
 
 const string Menu::GLOBAL_STATISTICS = "Check global air transports statistics";
 const string Menu::STATISTICS_BY_COUNTRY = "Check air transports statistics by country";
@@ -138,10 +138,10 @@ void Menu::displayListsMenu() {
     cout << "Insert option number > ";
 }
 
-void Menu::displayTrajectoriesMenu(string typeLocal) {
+void Menu::displayLocalMenu(string typeLocal) {
     cout << endl;
     cout << "=============================================" << endl;
-    cout << "          Trajectories " << typeLocal << " options" << endl;
+    cout << "          Local choice options" << endl;
     cout << "=============================================" << endl;
     cout << "1 - " << TRAJECTORIES_BY_AIRPORT_CODE << endl;
     cout << "2 - " << TRAJECTORIES_BY_CITY_COUNTRY << endl;

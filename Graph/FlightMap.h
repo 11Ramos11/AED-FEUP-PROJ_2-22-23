@@ -106,9 +106,9 @@ public:
      *
      * @param airportPtr of AirportPTR type.
      * @param y of int type.
-     * @return list<AirportPTR> of airports.
+     * @return unordered_set<AirportPTR> of airports.
      */
-    list<AirportPTR> reachableAirports(AirportPTR airportPtr, int y);
+    unordered_set<AirportPTR> reachableAirports(AirportPTR airportPtr, int y);
 
     /** @brief Determines the reachable airports, parting from a given local and using a maximum number of flights.
      *

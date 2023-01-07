@@ -138,16 +138,16 @@ list<pair<AirportPTR, list<Flight>>> FlightMap::getFlights(LocalPTR origin, Loca
     return trajectoriesPairs;
 }
 
-list<AirportPTR> FlightMap::reachableAirports(AirportPTR airportPtr, int y) {
+unordered_set<AirportPTR> FlightMap::reachableAirports(AirportPTR airportPtr, int y) {
 
     for (auto pair: airports){
         AirportPTR airport = pair.second;
-        airport->visited = true;
+        airport->visited = false;
         airport->dist = 0;
     }
 
     queue<AirportPTR> airportsToVisit;
-    list<AirportPTR> reachableAirports;
+    unordered_set<AirportPTR> reachableAirports;
     airportsToVisit.push(airportPtr);
     airportPtr->visited = true;
 
@@ -158,15 +158,17 @@ list<AirportPTR> FlightMap::reachableAirports(AirportPTR airportPtr, int y) {
         for (auto flight: previousAirport->flights) {
             auto destination = airports[flight.destinationCode];
 
-            if (!destination->dist > y)
+            if (destination->visited)
+                continue;
+
+            destination->dist = previousAirport->dist + 1;
+
+            if (destination->dist > y)
                 return reachableAirports;
 
-            if (!destination->visited) {
-                destination->dist = previousAirport->dist + 1;
-                airportsToVisit.push(destination);
-                reachableAirports.push_back(destination);
-                destination->visited = true;
-            }
+            airportsToVisit.push(destination);
+            reachableAirports.insert(destination);
+            destination->visited = true;
         }
     }
     return reachableAirports;
@@ -190,7 +192,7 @@ unordered_set<City, City::hashFunction> FlightMap::citiesWithMaxYFlights(LocalPT
     for (AirportPTR airport: origin->getAirports(this)) {
 
         for (AirportPTR destination: reachableAirports(airport, y)) {
-            City city = {airport->city, airport->country};
+            City city = {destination->city, airport->country};
             cities.insert(city);
         }
     }
@@ -202,8 +204,10 @@ unordered_set<string> FlightMap::countriesWithMaxYFlights(LocalPTR origin, int y
     unordered_set<string> countriesNames;
     for (AirportPTR airport: origin->getAirports(this)) {
 
-        for (AirportPTR destination: reachableAirports(airport, y)) {
-            string country = airport->country;
+        auto airports = reachableAirports(airport, y);
+
+        for (AirportPTR destination: airports) {
+            string country = destination->country;
             countriesNames.insert(country);
         }
     }
