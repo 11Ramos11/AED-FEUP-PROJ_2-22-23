@@ -293,7 +293,7 @@ void Application::getLocal(int safeOption, bool &fail, LocalPTR &local, string t
             cin.ignore();
             getline(cin, city);
             cout << typeLocal << " Country Name: ";
-            getline(cin, city);
+            getline(cin, country);
             local = LocalPTR(new CityLocal({city, country}));
             break;
         }
