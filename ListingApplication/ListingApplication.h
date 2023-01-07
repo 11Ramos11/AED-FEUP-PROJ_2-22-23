@@ -36,24 +36,24 @@ public:
 
     /** @brief Lists the flights of an airport.
      *
-     * @param code of string type.
+     * @param airportCode of string type.
      * @return Void.
      */
-    void listFlights(std::string code);
+    void listFlights(std::string airportCode);
 
     /** @brief Lists the airlines of an airport.
      *
-     * @param code of string type.
+     * @param airportCode of string type.
      * @return Void.
      */
-    void listAirlines(std::string code);
+    void listAirlines(std::string airportCode);
 
     /** @brief Lists the cities that an airport has flights to.
      *
-     * @param code of string type.
+     * @param airportCode of string type.
      * @return Void.
      */
-    void listCities(std::string code);
+    void listCities(std::string airportCode);
 
     /** @brief Lists the countries that an airport has flights to.
      *

@@ -48,9 +48,9 @@ void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination)
 
 }
 
-void ListingApplication::listFlights(std::string code) {
+void ListingApplication::listFlights(std::string airportCode) {
 
-    AirportPTR airport = database->getAirport(code);
+    AirportPTR airport = database->getAirport(airportCode);
 
     string title = "======= " + airport->name + "'s flights =======\n";
     std::cout << title;
@@ -69,9 +69,9 @@ void ListingApplication::listFlights(std::string code) {
 
 }
 
-void ListingApplication::listAirlines(std::string code) {
+void ListingApplication::listAirlines(std::string airportCode) {
 
-    AirportPTR airport = database->getAirport(code);
+    AirportPTR airport = database->getAirport(airportCode);
 
     string title = "======= " + airport->name + "'s available airlines =======\n";
     std::cout << title;
@@ -85,20 +85,14 @@ void ListingApplication::listAirlines(std::string code) {
     }
 
     for (string airlineCode: airlines) {
-        for (Flight flight: airport->getFlights()) {
-            airlines.insert(flight.airlineCode);
-        }
-
-        for (string airlineCode: airlines) {
-            Airline airline = database->getAirline(airlineCode);
-            std::cout << airline.name << ", " << airline.callSign << ", " << airline.country << endl;
-        }
+        Airline airline = database->getAirline(airlineCode);
+        std::cout << airline.name << ", " << airline.callSign << ", " << airline.country << endl;
     }
 }
 
-void ListingApplication::listCities(std::string code) {
+void ListingApplication::listCities(std::string airportCode) {
 
-    AirportPTR airport = database->getAirport(code);
+    AirportPTR airport = database->getAirport(airportCode);
 
     string title = "======= " + airport->name + "'s reachable countries =======\n";
     std::cout << title;
@@ -107,16 +101,12 @@ void ListingApplication::listCities(std::string code) {
     unordered_set<City, City::hashFunction> cities;
 
     for (Flight flight: airport->getFlights()) {
-        for (Flight flight: airport->getFlights()) {
-            AirportPTR airport = database->getAirport(flight.destinationCode);
-            cities.insert({airport->city, airport->country});
-        }
+        AirportPTR airport = database->getAirport(flight.destinationCode);
+        cities.insert({airport->city, airport->country});
+    }
 
-        for (City city: cities) {
-            for (City city: cities) {
-                std::cout << city.name << ", " << city.country << endl;
-            }
-        }
+    for (City city: cities) {
+        std::cout << city.name << ", " << city.country << endl;
     }
 }
 
