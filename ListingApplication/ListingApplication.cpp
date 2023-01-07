@@ -146,31 +146,31 @@ void ListingApplication::listAirportsByCity(City city) {
 
 void ListingApplication::globalStatistic(int k) {
     int numAirports = database->getAirports().size();
-    std::cout << "Number of airports:" << numAirports;
+    std::cout << "Number of airports:" << numAirports << std::endl;
 
     int numFlights = 0;
     for (auto pair: database->getAirports()) {
         AirportPTR airport = pair.second;
         numFlights += airport->getFlights().size();
     }
-    std::cout << "Number of flights:" << numFlights;
+    std::cout << "Number of flights: " << numFlights << std::endl;
 
     int numAirlines = 0;
     numAirlines = database->getAirlines().size();
-    std::cout << "Number of airlines:" << numAirlines;
+    std::cout << "Number of airlines: " << numAirlines << std::endl;
 
     int diameter;
     diameter = database->diameter();
-    std::cout << "Diameter:" << diameter;
+    std::cout << "Diameter: " << diameter << std::endl;
 
     priority_queue<AirportPTR> pq;
     for (auto pair: database->getAirports()) {
         AirportPTR airport = pair.second;
         pq.push(airport);
     }
-    std::cout << "Airports with more flights - top" << k << ":" << endl;
+    std::cout << "Airports with more flights - top" << k << ": " << std::endl;
     for (int i = 0; i <= k; i++) {
-        std::cout << pq.top()->name << endl;
+        std::cout << pq.top()->name << std::endl;
         pq.pop();
     }
 }
@@ -183,7 +183,7 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
             count++;
         }
     }
-    std::cout << "Number of airports:" << count << endl;
+    std::cout << "Number of airports: " << count << endl;
 
     int numFlights = 0;
     for (auto pair: database->getAirports()) {
@@ -192,7 +192,7 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
             numFlights += airport->getFlights().size();
         }
     }
-    std::cout << "Number of flights:" << numFlights << endl;
+    std::cout << "Number of flights: " << numFlights << endl;
 
     unordered_set<string> airlinesCode;
     for (auto pair: database->getAirports()) {
@@ -203,7 +203,7 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
                 airlinesCode.insert(airlinecode);
             }
     }
-    std::cout << "Number of airlines:" << airlinesCode.size() << endl;
+    std::cout << "Number of airlines: " << airlinesCode.size() << endl;
 
     priority_queue<AirportPTR> pq;
     for (auto pair: database->getAirports()) {
