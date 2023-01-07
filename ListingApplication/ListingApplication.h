@@ -74,7 +74,7 @@ public:
      * @param k of int type.
      * @return Void.
      */
-    void GlobalStatistic(int k);
+    void globalStatistic(int k);
 
     /** @brief Lists the statistic per country.
      *

@@ -34,9 +34,15 @@ private:
         MAX_FLIGHT_LISTS = 2,
         AIRPORT_BY_CITY = 3,
         GENERATE_TRAJECTORIES = 3,
-        FILTERS = 4,
+        STATISTICS = 4,
         QUIT = 9
     };
+
+    //! @brief enum with the Statistics options.
+    enum {
+        GLOBAL_STATISTICS = 1, STATISTICS_BY_COUNTRY = 2
+    };
+
 
     //! @brief Max Y flights options.
     enum {
@@ -111,16 +117,6 @@ private:
      */
     void airportNumbersSafety(string &option, int &safeOption);
 
-    /** @brief Display the filter option menu (by local or airlines).
-     *
-     * Checks if the safeOption argument is correct for that specific menu.
-     * Then, safeInput method is used with both arguments to cover wrong inputs.
-     *
-     * @param option Of type string, by reference.
-     * @param safeOption Of type int, by reference.
-     * @return Void.
-     */
-    void filtersMenuSafety(string &option, int &safeOption);
 
     /** @brief Display the trajectories menu if the given menu option is correct.
     *
@@ -132,6 +128,17 @@ private:
     * @return Void.
     */
     void trajectoriesMenuSafety(string &option, int &safeOption);
+
+    /** @brief Display the statistics menu if the given menu option is correct.
+    *
+    * Checks if the safeOption argument is correct for that specific menu.
+    * Then, safeInput method is used with both arguments to cover wrong inputs.
+    *
+    * @param option Of type string, by reference.
+    * @param safeOption Of type int, by reference.
+    * @return Void.
+    */
+    void statisticsMenuSafety(string &option, int &safeOption);
 
     /** @brief Display the max flights menu if the given menu option is correct.
     *
@@ -156,12 +163,19 @@ private:
     void getLocalTrajectory(int safeOption, bool &fail, LocalPTR &local, string typeLocal);
 
 
-    /** @brief Display the menu of the possible with possible trajectories
+    /** @brief Display the menu of the possible with possible trajectories.
      *
      * @param safeOption Of type int, by reference.
      * @return Void.
      */
-    void displayTrajectoriesMenu(int &safeOption);
+    void displayTrajectoriesMenu(int &oldOption);
+
+    /** @brief Display the menu of the possible statistics showcase options.
+     *
+     * @param oldOption Of type int, by reference.
+     * @return Void.
+     */
+    void displayStatisticsMenu(int &oldOption);
 
     /** @brief Reads what the user wants to know about airports numbers of and shows it.
      *

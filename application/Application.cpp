@@ -58,16 +58,16 @@ void Application::airportNumbersSafety(string &option, int &safeOption) {
     }
 }
 
-void Application::filtersMenuSafety(string &option, int &safeOption) {
+void Application::trajectoriesMenuSafety(string &option, int &safeOption) {
     while (!safeOption) {
-        menu.displayFilterMenu();
+        menu.displayTrajectoriesMenu();
         safeInput(option, safeOption);
     }
 }
 
-void Application::trajectoriesMenuSafety(string &option, int &safeOption) {
+void Application::statisticsMenuSafety(std::string &option, int &safeOption) {
     while (!safeOption) {
-        menu.displayTrajectoriesMenu();
+        menu.displayStatisticsMenu();
         safeInput(option, safeOption);
     }
 }
@@ -331,6 +331,44 @@ void Application::getLocalTrajectory(int safeOption, bool &fail, LocalPTR &local
     }
 }
 
+void Application::displayStatisticsMenu(int &oldOption) {
+    string option;
+    int safeOption = 0;
+    statisticsMenuSafety(option, safeOption);
+    while (safeOption != QUIT) {
+        switch (safeOption) {
+            case GLOBAL_STATISTICS: {
+                int k;
+                cout << "Type the range of results: ";
+                cin >> k;
+                listingApplication.globalStatistic(k);
+                break;
+            }
+            case STATISTICS_BY_COUNTRY: {
+                string country;
+                int k;
+                cout << "Type a country name to check its air transport statistics:";
+                cin >> country;
+                cout << "Type the range of results: ";
+                cin >> k;
+                listingApplication.statisticPerCountry(country, k);
+                break;
+            }
+            default: {
+                menu.breakLine();
+                menu.getWrongMessage();
+                safeOption = 0;
+                break;
+            }
+        }
+        menu.breakLine();
+        safeOption = 0;
+        statisticsMenuSafety(option, safeOption);
+    }
+    oldOption = 0;
+    cout << menu.QUIT_MESSAGE << endl;
+}
+
 void Application::displayMenu() {
     string option;
     int safeOption = 0;
@@ -354,10 +392,9 @@ void Application::displayMenu() {
                 displayTrajectoriesMenu(safeOption);
                 break;
             }
-            case FILTERS: {
+            case STATISTICS: {
                 string option;
-                menu.displayFilterMenu();
-                safeInput(option, safeOption);
+                displayStatisticsMenu(safeOption);
                 break;
             }
             default:

@@ -13,12 +13,7 @@ using namespace std;
 const string Menu::AIRPORT_LISTS = "Listings and related options to the Airports";
 const string Menu::MAX_FLIGHTS_LISTS = "Listings related to a maximum number of flights";
 const string Menu::GENERATE_TRAJECTORIES = "Generate flight trajectories based on origin and destination";
-const string Menu::INFO_FILTERED = "Air transports filtered information";
-
-const string Menu::INFO_BY_LOCAL = "Filtered information by Local";
-const string Menu::LOCAL_CITY = "Filter a local by city";
-const string Menu::LOCAL_AIRLINE = "Filter a local by its airline";
-const string Menu::INFO_BY_AIRLINES = "Filtered information by Airlines";
+const string Menu::AIR_TRANSPORTS_STATISTICS = "Check Air Transports Statistics";
 
 const string Menu::QUIT_APPLICATION = "Quit the application";
 const string Menu::GO_BACK = "Go Back";
@@ -39,6 +34,8 @@ const string Menu::TRAJECTORIES_BY_AIRPORT_CODE = "Generate trajectory by giving
 const string Menu::TRAJECTORIES_BY_CITY_COUNTRY = "Generate trajectory by giving a city and country";
 const string Menu::TRAJECTORIES_BY_COORDS = "Generate trajectory by giving coordinates";
 
+const string Menu::GLOBAL_STATISTICS = "Check global air transports statistics";
+const string Menu::STATISTICS_BY_COUNTRY = "Check air transports statistics by country";
 
 const string Menu::AIRPORT_FLIGHTS = "List flights by airport";
 const string Menu::AIRPORT_AIRLINES = "List airlines by airport";
@@ -78,29 +75,7 @@ void Menu::displayMenu() {
     cout << "1 - " << AIRPORT_LISTS << endl;
     cout << "2 - " << MAX_FLIGHTS_LISTS << endl;
     cout << "3 - " << GENERATE_TRAJECTORIES << endl;
-    cout << "4 - " << INFO_FILTERED << endl;
-    cout << "9 - " << QUIT_APPLICATION << endl;
-    cout << "Insert option number > ";
-}
-
-void Menu::displayFilterMenu() {
-
-    cout << "=============================================" << endl;
-    cout << "         Filters MENU" << endl;
-    cout << "=============================================" << endl;
-    cout << "1 - " << INFO_BY_LOCAL << endl;
-    cout << "2 - " << INFO_BY_AIRLINES << endl;
-    cout << "9 - " << QUIT_APPLICATION << endl;
-    cout << "Insert option number > ";
-}
-
-void Menu::displayLocalMenu() {
-
-    cout << "=============================================" << endl;
-    cout << "         Filter by Local MENU" << endl;
-    cout << "=============================================" << endl;
-    cout << "1 - " << LOCAL_CITY << endl;
-    cout << "2 - " << LOCAL_AIRLINE << endl;
+    cout << "4 - " << AIR_TRANSPORTS_STATISTICS << endl;
     cout << "9 - " << QUIT_APPLICATION << endl;
     cout << "Insert option number > ";
 }
@@ -174,3 +149,15 @@ void Menu::displayTrajectoriesMenu() {
     cout << "9 - " << GO_BACK << endl;
     cout << "Insert option number > ";
 }
+
+void Menu::displayStatisticsMenu() {
+    cout << endl;
+    cout << "=============================================" << endl;
+    cout << "          Trajectories options" << endl;
+    cout << "=============================================" << endl;
+    cout << "1 - " << GLOBAL_STATISTICS << endl;
+    cout << "2 - " << STATISTICS_BY_COUNTRY << endl;
+    cout << "9 - " << GO_BACK << endl;
+    cout << "Insert option number > ";
+}
+

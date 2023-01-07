@@ -29,20 +29,8 @@ public:
     //! @brief Defines the string to output in the menu, as an option to generate flight trajectories.
     static const string GENERATE_TRAJECTORIES;
 
-    //! @brief Defines the string to output in the menu, as an option to showcase possible filters.
-    static const string INFO_FILTERED;
-
-    //! @brief Defines the string to output in the menu, as an option to filter info by city.
-    static const string LOCAL_CITY;
-
-    //! @brief Defines the string to output in the menu, as an option to filter info by airline.
-    static const string LOCAL_AIRLINE;
-
-    //! @brief Defines the string to output in the menu, as an option to showcase information related to one local (specific place).
-    static const string INFO_BY_LOCAL;
-
-    //! @brief Defines the string to output in the menu, as an option to showcase information related to one airline.
-    static const string INFO_BY_AIRLINES;
+    //! @brief Defines the string to output in the menu, as an option to showcase some air transport statistics.
+    static const string AIR_TRANSPORTS_STATISTICS;
 
     //! @brief Defines the string to output in the menu, as an option, to quit the application.
     static const string QUIT_APPLICATION;
@@ -92,7 +80,6 @@ public:
     //! @brief Defines the string to output in the menu, as an option, to generate trajectories by coordinates.
     static const string TRAJECTORIES_BY_COORDS;
 
-
     //! @brief Defines the string to output in the menu, as an option, to list airport flights.
     static const string AIRPORT_FLIGHTS;
 
@@ -117,6 +104,11 @@ public:
     //! @brief Defines the string to output in the menu, as an option, to list all airports..
     // static const string ALL_AIRPORTS;
 
+    //! @brief Defines the string to output in the menu, as an option to showcase global air transport statistics.
+    static const string GLOBAL_STATISTICS;
+
+    //! @brief Defines the string to output in the menu, as an option to showcase statistics by country.
+    static const string STATISTICS_BY_COUNTRY;
 
     //! @brief Does nothing.
     Menu();
@@ -145,11 +137,6 @@ public:
      */
     void displayMenu();
 
-    /** @brief Displays the filters menu.
-     *
-     * @return Void.
-     */
-    void displayFilterMenu();
 
     /** @brief Displays the filtered local menu.
     *
@@ -195,6 +182,11 @@ public:
      */
     void displayTrajectoriesMenu();
 
+    /** @brief Displays the air transports statistics menu.
+     *
+     * @return Void.
+     */
+    void displayStatisticsMenu();
 };
 
 #endif //AED_FEUP_PROJ_2_22_23_MENU_H
