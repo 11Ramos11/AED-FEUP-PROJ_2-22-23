@@ -58,9 +58,9 @@ void Application::airportNumbersSafety(string &option, int &safeOption) {
     }
 }
 
-void Application::trajectoriesMenuSafety(string &option, int &safeOption) {
+void Application::trajectoriesMenuSafety(string &option, int &safeOption, string typeLocal) {
     while (!safeOption) {
-        menu.displayTrajectoriesMenu();
+        menu.displayTrajectoriesMenu(typeLocal);
         safeInput(option, safeOption);
     }
 }
@@ -278,17 +278,19 @@ void Application::optionFilter(int &option) {
 void Application::displayTrajectoriesMenu(int &oldOption) {
     string option;
     int safeOption = 0;
-    trajectoriesMenuSafety(option, safeOption);
+    trajectoriesMenuSafety(option, safeOption, "Origin");
     bool fail = 0;
     while (safeOption != QUIT) {
         LocalPTR origin, destination;
         getLocalTrajectory(safeOption, fail, origin, "Origin");
+        safeOption = 0;
+        trajectoriesMenuSafety(option, safeOption, "Destination");
         getLocalTrajectory(safeOption, fail, destination, "Destination");
         if (!fail)
             listingApplication.showTrajectories(origin, destination);
         menu.breakLine();
         safeOption = 0;
-        trajectoriesMenuSafety(option, safeOption);
+        trajectoriesMenuSafety(option, safeOption, "Origin");
     }
     oldOption = 0;
     cout << menu.QUIT_MESSAGE << endl;

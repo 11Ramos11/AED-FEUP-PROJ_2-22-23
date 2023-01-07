@@ -127,7 +127,7 @@ private:
     * @param safeOption Of type int, by reference.
     * @return Void.
     */
-    void trajectoriesMenuSafety(string &option, int &safeOption);
+    void trajectoriesMenuSafety(string &option, int &safeOption, string typeLocal);
 
     /** @brief Display the statistics menu if the given menu option is correct.
     *

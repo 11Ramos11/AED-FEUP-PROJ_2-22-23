@@ -180,7 +180,7 @@ public:
      *
      * @return Void.
      */
-    void displayTrajectoriesMenu();
+    void displayTrajectoriesMenu(string typeLocal);
 
     /** @brief Displays the air transports statistics menu.
      *

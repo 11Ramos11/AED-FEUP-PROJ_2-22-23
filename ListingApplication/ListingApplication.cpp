@@ -203,11 +203,8 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
                 auto airlinecode = flight.airlineCode;
                 airlinesCode.insert(airlinecode);
             }
-        }
     }
     std::cout << "Number of airlines:" << airlinesCode.size() << endl;
-
-    std::cout << "Number of airlines:" << airlinesCode.size();
 
     priority_queue<AirportPTR> pq;
     for (auto pair: database->getAirports()) {
@@ -222,6 +219,7 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
         pq.pop();
     }
 }
+
 
 void ListingApplication::showReachableAirports(LocalPTR local, int y) {
 

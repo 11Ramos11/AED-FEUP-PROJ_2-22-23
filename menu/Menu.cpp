@@ -138,10 +138,10 @@ void Menu::displayListsMenu() {
     cout << "Insert option number > ";
 }
 
-void Menu::displayTrajectoriesMenu() {
+void Menu::displayTrajectoriesMenu(string typeLocal) {
     cout << endl;
     cout << "=============================================" << endl;
-    cout << "          Trajectories options" << endl;
+    cout << "          Trajectories " << typeLocal << " options" << endl;
     cout << "=============================================" << endl;
     cout << "1 - " << TRAJECTORIES_BY_AIRPORT_CODE << endl;
     cout << "2 - " << TRAJECTORIES_BY_CITY_COUNTRY << endl;
