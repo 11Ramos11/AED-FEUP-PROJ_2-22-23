@@ -127,66 +127,75 @@ list<pair<AirportPTR, list<Flight>>> FlightMap::getFlights(LocalPTR origin, Loca
 }
 
 list<AirportPTR> FlightMap::reachableAirports(AirportPTR airportPtr, int y) {
-    queue<AirportPTR> airports_code;
-    list<AirportPTR> airportsVisited;
-    airports_code.push(airportPtr);
+
+    for (auto pair: airports){
+        AirportPTR airport = pair.second;
+        airport->visited = true;
+        airport->dist = 0;
+    }
+
+    queue<AirportPTR> airportsToVisit;
+    list<AirportPTR> reachableAirports;
+    airportsToVisit.push(airportPtr);
     airportPtr->visited = true;
-    int count = 0;
-    while (!airports_code.empty()) {
-        auto airport = airports_code.front();
-        airports_code.pop();
-        for (auto edge: airport->flights) {
-            auto destination = edge.destinationCode;
-            if (airports[destination]->visited == false) {
-                airports_code.push(airports[destination]);
-                airportsVisited.push_back(airports[destination]);
-                airports[destination]->visited = true;
-                count++;
-                if (count >= y) break;
+
+    while (!airportsToVisit.empty()) {
+        auto previousAirport = airportsToVisit.front();
+        airportsToVisit.pop();
+
+        for (auto flight: previousAirport->flights) {
+            auto destination = airports[flight.destinationCode];
+
+            if (!destination->dist > y)
+                return reachableAirports;
+
+            if (!destination->visited) {
+                destination->dist = previousAirport->dist + 1;
+                airportsToVisit.push(destination);
+                reachableAirports.push_back(destination);
+                destination->visited = true;
             }
         }
     }
-    return airportsVisited;
+    return reachableAirports;
 }
 
-int FlightMap::airportsMaxYFlights(AirportPTR airportPtr, int y) {
-    return reachableAirports(airportPtr, y).size();
-}
+unordered_set<AirportPTR> FlightMap::airportsWithMaxYFlights(LocalPTR origin, int y){
 
-int FlightMap::citiesMaxYFlights(City city, int y) {
-    list<AirportPTR> allAirports;
-    for (AirportPTR airportptr: airportsPerCity[city]) {
-        list<AirportPTR> airports = reachableAirports(airportptr, y);
-        for (auto airport: airports) {
-            allAirports.push_back(airport);
+    unordered_set<AirportPTR> airports;
+    for (AirportPTR airport: origin->getAirports(this)) {
+
+        for (AirportPTR destination: reachableAirports(airport, y)) {
+            airports.insert(destination);
         }
     }
-    list<string> cityName;
-    for (auto airport: allAirports) {
-        auto city = airport->city;
-        if (find(cityName.begin(), cityName.end(), city) == cityName.end())
-            cityName.push_back(city);
-    }
-    return cityName.size();
+    return airports;
 }
 
-int FlightMap::countriesMaxYFlights(string country, int y) {
-    list<AirportPTR> allAirports;
-    for (auto pair: airports) {
-        if (pair.second->country == country) {
-            list<AirportPTR> airports = reachableAirports(pair.second, y);
-            for (auto airport: airports) {
-                allAirports.push_back(airport);
-            }
+unordered_set<City, City::hashFunction> FlightMap::citiesWithMaxYFlights(LocalPTR origin, int y){
+
+    unordered_set<City, City::hashFunction> cities;
+    for (AirportPTR airport: origin->getAirports(this)) {
+
+        for (AirportPTR destination: reachableAirports(airport, y)) {
+            City city = {airport->city, airport->country};
+            cities.insert(city);
         }
     }
-    list<string> countryName;
-    for (auto airport: allAirports) {
-        auto country = airport->country;
-        if (find(countryName.begin(), countryName.end(), country) == countryName.end())
-            countryName.push_back(country);
+    return cities;
+}
+
+unordered_set<string> FlightMap::countriesWithMaxYFlights(LocalPTR origin, int y){
+
+    unordered_set<string> countriesNames;
+    for (AirportPTR airport: origin->getAirports(this)) {
+
+        for (AirportPTR destination: reachableAirports(airport, y)) {
+            string country = airport->country;
+            countriesNames.insert(country);
+        }
     }
-    return countryName.size();
+    return countriesNames;
 }
 
 void

@@ -83,6 +83,18 @@ public:
      * @return Void.
      */
     void statisticPerCountry(std::string country, int k);
+
+    void showReachableAirports(LocalPTR local, int y);
+
+    void showReachableCities(LocalPTR local, int y);
+
+    void showReachableCountries(LocalPTR local, int y);
+
+    void numberReachableAirports(LocalPTR local, int y);
+
+    void numberReachableCities(LocalPTR local, int y);
+
+    void numberReachableCountries(LocalPTR local, int y);
 };
 
 

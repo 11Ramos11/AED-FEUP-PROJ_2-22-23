@@ -141,10 +141,10 @@ void Application::displayMaxYFlightsMenu(int &oldOption) {
                 cout << "Type the Airport code to check the number of its reachable airports:";
                 cin >> airportCode;
                 AirportPTR airport = database->getAirport(airportCode);
-                cout << "Type the desire max Y flights:";
+                cout << "Type the desired maximum number of flights:";
                 cin >> y;
                 cout << "Number of its reachable airports with a max of " << y << " flights: ";
-                cout << flightMap->airportsMaxYFlights(airport, y) << "\n" << endl;
+                //cout << flightMap->airportsMaxYFlights(airport, y) << "\n" << endl;
                 cout << "=========== Group of reachable Airports ===========" << endl;
                 cout << "=========== Code | Name | City ===========" << endl;
                 for (auto airP: flightMap->reachableAirports(airport, y))
@@ -158,11 +158,11 @@ void Application::displayMaxYFlightsMenu(int &oldOption) {
                 cin >> airportCode;
                 AirportPTR airport = database->getAirport(airportCode);
                 City city(airport->city, airport->country);
-                cout << "Type the desire max Y flights:";
+                cout << "Type the desired maximum number of flights:";
                 cin >> y;
                 cout << "The given Airport is from the city of " << airport->city << endl;
                 cout << "Number of its reachable cities with a max of " << y << " flights: ";
-                cout << flightMap->citiesMaxYFlights(city, y) << "\n" << endl;
+                //cout << flightMap->citiesMaxYFlights(city, y) << "\n" << endl;
                 break;
             }
             case MAX_COUNTRIES: {
@@ -171,11 +171,11 @@ void Application::displayMaxYFlightsMenu(int &oldOption) {
                 cout << "Type the Airport code to check the number of its reachable countries:";
                 cin >> airportCode;
                 AirportPTR airport = database->getAirport(airportCode);
-                cout << "Type the desire max Y flights:";
+                cout << "Type the desired maximum number of flights:";
                 cin >> y;
                 cout << "The given Airport is from the country of " << airport->country << endl;
                 cout << "Number of its reachable countries with a max of " << y << " flights: ";
-                cout << flightMap->countriesMaxYFlights(airport->country, y) << "\n" << endl;
+                //cout << flightMap->countriesMaxYFlights(airport->country, y) << "\n" << endl;
                 break;
             }
             default: {

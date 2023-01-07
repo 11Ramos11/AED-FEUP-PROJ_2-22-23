@@ -110,35 +110,35 @@ public:
      */
     list<AirportPTR> reachableAirports(AirportPTR airportPtr, int y);
 
-    /** @brief Represents the number of reachable airports , using a maximum number of flights.
+    /** @brief Determines the reachable airports, parting from a given local and using a maximum number of flights.
      *
      * It uses the "reachableAirports" method.
      *
-     * @param airportPtr of AirportPTR type.
+     * @param origin of LocalPTR type.
      * @param y of int type.
-     * @return Number of airports.
+     * @return set of reachable airports, of type unordered_set<AirportPTR>
      */
-    int airportsMaxYFlights(AirportPTR airportPtr, int y);
+    unordered_set<AirportPTR> airportsWithMaxYFlights(LocalPTR origin, int y);
 
-    /** @brief Represents the number of reachable cities , using a maximum number of flights.
+    /** @brief Determines the reachable cities, parting from a given local and using a maximum number of flights.
      *
      * It uses the "reachableAirports" method.
      *
-     * @param city of City type.
+     * @param origin of LocalPTR type.
      * @param y of int type.
-     * @return Number of cities.
+     * @return set of reachable cities, of type unordered_set<City, City::hashFunction>
      */
-    int citiesMaxYFlights(City city, int y);
+    unordered_set<City, City::hashFunction> citiesWithMaxYFlights(LocalPTR origin, int y);
 
-    /** @brief Represents the number of reachable countries, using a maximum number of flights.
+    /** @brief Determines the reachable countries, parting from a given local and using a maximum number of flights.
      *
      * It uses the "reachableAirports" method.
      *
-     * @param country of string type.
+     * @param origin of LocalPTR type.
      * @param y of int type.
-     * @return Number of countries.
+     * @return set of reachable countries, of type unordered_set<string>
      */
-    int countriesMaxYFlights(string country, int y);
+    unordered_set<string> countriesWithMaxYFlights(LocalPTR origin, int y);
 
     /** @brief Represents the auxiliary code to calculate articulation points.
      *
@@ -187,6 +187,8 @@ public:
      * @return diameter of int type.
      */
     int diameter();
+
+
 };
 
 #endif

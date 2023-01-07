@@ -128,6 +128,30 @@ public:
      */
     list<pair<AirportPTR, list<Flight>>> getTrajectoriesAllAirlines(LocalPTR origin, LocalPTR destination);
 
+    /** Invokes getTrajectoriesAllAirlines from FlightMap class.
+     *
+     * @param origin
+     * @param destination
+     * @return set of reachable airports, of type unordered_set<AirportPTR>.
+     */
+    unordered_set<AirportPTR> airportsWithMaxYFlights(LocalPTR origin, int y);
+
+    /** Invokes getTrajectoriesAllAirlines from FlightMap class.
+     *
+     * @param origin
+     * @param destination
+     * @return set of reachable cities, of type unordered_set<City, City::hashFunction>.
+     */
+    unordered_set<City, City::hashFunction> citiesWithMaxYFlights(LocalPTR origin, int y);
+
+    /** Invokes getTrajectoriesAllAirlines from FlightMap class.
+     *
+     * @param origin
+     * @param destination
+     * @return set of reachable countries, of type unordered_set<string>.
+     */
+    unordered_set<string> countriesWithMaxYFlights(LocalPTR origin, int y);
+
     /** Returns the flight map pointer to use outside database class..
      *
      * @return  FlightMapPtr.

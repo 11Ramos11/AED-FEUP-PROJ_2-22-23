@@ -195,15 +195,13 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
     }
     std::cout << "Number of flights:" << numFlights;
 
-    list<string> airlinesCode;
+    unordered_set<string> airlinesCode;
     for (auto pair: database->getAirports()) {
         AirportPTR airport = pair.second;
         if (airport->country == country) {
             for (auto flight: airport->getFlights()) {
                 auto airlinecode = flight.airlineCode;
-                if (find(airlinesCode.begin(), airlinesCode.end(), airlinecode) == airlinesCode.end()) {
-                    airlinesCode.push_back(airlinecode);
-                }
+                airlinesCode.insert(airlinecode);
             }
         }
         std::cout << "Number of airlines:" << airlinesCode.size();
@@ -223,7 +221,50 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
     }
 }
 
-/*void ListingApplication::numAirportsAirlineReach(std::string airline){
+void ListingApplication::showReachableAirports(LocalPTR local, int y){
 
-}*/
+    string title = "=========== Reachable Airports ==========\n\n";
+
+    for (AirportPTR airport: database->airportsWithMaxYFlights(local, y)){
+        cout << airport->name + "," + airport->city + "," + airport->country << endl;
+    }
+
+}
+
+void ListingApplication::showReachableCities(LocalPTR local, int y){
+
+    string title = "=========== Reachable Cities ==========\n\n";
+
+    for (City city:  database->citiesWithMaxYFlights(local, y)){
+        cout << city.name + "," + city.country << endl;
+    }
+}
+
+void ListingApplication::showReachableCountries(LocalPTR local, int y){
+
+    string title = "=========== Reachable Countries ==========\n\n";
+
+    for (string country:  database->countriesWithMaxYFlights(local, y)){
+        cout << country << endl;
+    }
+}
+
+void ListingApplication::numberReachableAirports(LocalPTR local, int y){
+    int number =  database->airportsWithMaxYFlights(local, y).size();
+
+    cout << "Number of reachable airports: " << number;
+}
+
+void ListingApplication::numberReachableCities(LocalPTR local, int y){
+    int number =  database->citiesWithMaxYFlights(local, y).size();
+
+    cout << "Number of reachable cities: " << number;
+
+}
+
+void ListingApplication::numberReachableCountries(LocalPTR local, int y){
+    int number = database->countriesWithMaxYFlights(local, y).size();
+
+    cout << "Number of reachable countries: " << number;
+}
 
