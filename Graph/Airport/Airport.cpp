@@ -60,27 +60,5 @@ list<Flight> Airport::getFlights() {
     return flights;
 }
 
-int Airport::numDifferentAirlines() {
-    list<string> airlinesCodes;
-    for (Flight flight: flights) {
-        auto code = flight.airlineCode;
-        if (std::find(airlinesCodes.begin(), airlinesCodes.end(), code) == airlinesCodes.end()) {
-            airlinesCodes.push_back(code);
-        }
-    }
-    return airlinesCodes.size();
-}
-
-int Airport::numDifferentDestinations() {
-    list<string> destinations;
-    for (Flight flight: flights) {
-        auto code = flight.destinationCode;
-        if (std::find(destinations.begin(), destinations.end(), code) == destinations.end()) {
-            destinations.push_back(code);
-        }
-    }
-    return destinations.size();
-}
-
 
 
