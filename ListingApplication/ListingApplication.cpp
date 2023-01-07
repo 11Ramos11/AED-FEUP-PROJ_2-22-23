@@ -198,14 +198,14 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
     unordered_set<string> airlinesCode;
     for (auto pair: database->getAirports()) {
         AirportPTR airport = pair.second;
-        if (airport->country == country) {
+        if (airport->country == country)
             for (auto flight: airport->getFlights()) {
                 auto airlinecode = flight.airlineCode;
                 airlinesCode.insert(airlinecode);
             }
-        }
-        std::cout << "Number of airlines:" << airlinesCode.size();
     }
+
+    std::cout << "Number of airlines:" << airlinesCode.size();
 
     priority_queue<AirportPTR> pq;
     for (auto pair: database->getAirports()) {
