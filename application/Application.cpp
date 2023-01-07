@@ -260,7 +260,7 @@ void Application::optionFilter(int &option) {
                 cout << "Type the name of city to check airports:";
                 cin >> city;
                 cout << "Type the name of its country:";
-                cin >> city;
+                cin >> country;
                 listingApplication.listAirportsByCity({city,country});
                 break;
             }

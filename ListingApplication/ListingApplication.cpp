@@ -133,7 +133,9 @@ void ListingApplication::listCountries(std::string code) {
 void ListingApplication::listAirportsByCity(City city) {
     string title = "======= " + city.name + "'s existing Airports =======\n";
     std::cout << title;
-    for (auto airport: database->getAirportsPerCity()[city]) {
+
+    auto airports = database->getAirportsPerCity()[city];
+    for (auto airport: airports) {
 
         std::cout << "Airport Name |  Airport city & country! \n";
         std::cout << airport->name << " | " << airport->city << ", "
