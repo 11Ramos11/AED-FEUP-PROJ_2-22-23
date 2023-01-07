@@ -43,6 +43,9 @@ int FlightMap::minimumDistance(AirportPTR airportDepart, AirportPTR airportDesti
         AirportPTR previousAirport = unvisitedAirports.front();
         unvisitedAirports.pop();
 
+        if (previousAirport->code == "JFK" || previousAirport->code == "EWR")
+            cout << "hello";
+
         for (auto flight: previousAirport->flights) {
 
             if (airlines.find(flight.airlineCode) == airlines.end())
@@ -64,10 +67,9 @@ int FlightMap::minimumDistance(AirportPTR airportDepart, AirportPTR airportDesti
 }
 
 list<list<Flight>>
-FlightMap::getTrajectories(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines) {
+FlightMap::getTrajectories(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines, int minimumFlights) {
 
     list<list<Flight>> paths;
-    int minimumFlights = minimumDistance(airportDepart, airportDestination, airlines);
 
     for (auto pair: airports) {
         AirportPTR airport = pair.second;
@@ -85,6 +87,9 @@ FlightMap::getTrajectories(AirportPTR airportDepart, AirportPTR airportDestinati
         AirportPTR previousAirport = unvisitedAirports.front();
         unvisitedAirports.pop();
 
+        if (previousAirport->code == "CLT")
+            cout << "hello";
+
         for (auto flight: previousAirport->flights) {
             AirportPTR destination = airports[flight.destinationCode];
 
@@ -100,7 +105,7 @@ FlightMap::getTrajectories(AirportPTR airportDepart, AirportPTR airportDestinati
             if (!destination->visited) {
 
                 destination->visited = true;
-                if (previousAirport->dist + 1 == minimumFlights)
+                if (previousAirport->dist + 1 >= minimumFlights)
                     continue;
 
                 unvisitedAirports.push(destination);
@@ -116,14 +121,21 @@ FlightMap::getTrajectories(AirportPTR airportDepart, AirportPTR airportDestinati
 
 list<pair<AirportPTR, list<Flight>>> FlightMap::getFlights(LocalPTR origin, LocalPTR destination, unordered_set<string> airlines) {
 
-    list<pair<AirportPTR, list<Flight>>> trajectories;
+    list<pair<AirportPTR, list<Flight>>> trajectoriesPairs;
+    int minimum;
 
     for (const AirportPTR &originAirport: origin->getAirports(this))
         for (const AirportPTR &destAirport: destination->getAirports(this))
-            for (const auto &trajectory: getTrajectories(originAirport, destAirport, airlines))
-                trajectories.push_back(make_pair(originAirport, trajectory));
+            minimum = minimumDistance(originAirport, destAirport, airlines);
 
-    return trajectories;
+    for (const AirportPTR &originAirport: origin->getAirports(this))
+        for (const AirportPTR &destAirport: destination->getAirports(this)) {
+            auto trajectories = getTrajectories(originAirport, destAirport, airlines, minimum);
+            for (const auto &trajectory: trajectories)
+                trajectoriesPairs.push_back(make_pair(originAirport, trajectory));
+        }
+
+    return trajectoriesPairs;
 }
 
 list<AirportPTR> FlightMap::reachableAirports(AirportPTR airportPtr, int y) {

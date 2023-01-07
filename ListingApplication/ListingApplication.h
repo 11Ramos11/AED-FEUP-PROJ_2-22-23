@@ -9,6 +9,7 @@
 
 
 #include "../Pointers.h"
+#include "../Graph/City/City.h"
 
 /** @brief ListingApplication class represents the most interest/important listings.
  *
@@ -64,10 +65,10 @@ public:
 
     /** @brief Lists the airports per city.
      *
-     * @param city of string type.
+     * @param city of City type.
      * @return Void.
      */
-    void listAirportsByCity(std::string city);
+    void listAirportsByCity(City city);
 
     /** @brief Lists the global statistic.
      *

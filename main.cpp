@@ -25,6 +25,18 @@ void test2(){
     listingApplication.showTrajectories(origin, destination);
 }
 
+void test3(){
+    DatabasePTR database = make_shared<Database>();
+    database->read();
+    ListingApplication listingApplication(database);
+
+
+    LocalPTR origin = make_shared<Coordinates>(Coordinates(48.8584, 2.2944, 30));
+    LocalPTR destination = make_shared<Coordinates>(Coordinates(40.6894, -74.0444, 30));
+
+    listingApplication.showTrajectories(origin, destination);
+}
+
 int main() {
 
     Application app;

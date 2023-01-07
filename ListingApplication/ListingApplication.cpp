@@ -130,18 +130,15 @@ void ListingApplication::listCountries(std::string code) {
     }
 }
 
-void ListingApplication::listAirportsByCity(std::string city) {
-    string title = "======= " + city + "'s existing Airports =======\n";
-    for (auto cityObj: database->getAirportsPerCity()) {
-        if (cityObj.first.name == city) {
-            for (auto airport: cityObj.second) {
-                std::cout << title;
-                std::cout << "Airport Name |  Airport city & country! \n";
-                std::cout << airport->name << " | " << airport->city << ", "
-                          << cityObj.first.country
-                          << "\n\n";
-            }
-        }
+void ListingApplication::listAirportsByCity(City city) {
+    string title = "======= " + city.name + "'s existing Airports =======\n";
+    std::cout << title;
+    for (auto airport: database->getAirportsPerCity()[city]) {
+
+        std::cout << "Airport Name |  Airport city & country! \n";
+        std::cout << airport->name << " | " << airport->city << ", "
+                  << airport->country
+                  << endl;
     }
 }
 

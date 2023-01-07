@@ -256,10 +256,12 @@ void Application::optionFilter(int &option) {
                 break;
             }
             case AIRPORT_BY_CITY: {
-                string city;
-                cout << "Type name of city to check airports:";
+                string city,country;
+                cout << "Type the name of city to check airports:";
                 cin >> city;
-                listingApplication.listAirportsByCity(city);
+                cout << "Type the name of its country:";
+                cin >> city;
+                listingApplication.listAirportsByCity({city,country});
                 break;
             }
             default: {
@@ -282,10 +284,10 @@ void Application::displayTrajectoriesMenu(int &oldOption) {
     bool fail = 0;
     while (safeOption != QUIT) {
         LocalPTR origin, destination;
-        getLocalTrajectory(safeOption, fail, origin, "Origin");
+        getLocal(safeOption, fail, origin, "Origin");
         safeOption = 0;
         trajectoriesMenuSafety(option, safeOption, "Destination");
-        getLocalTrajectory(safeOption, fail, destination, "Destination");
+        getLocal(safeOption, fail, destination, "Destination");
         if (!fail)
             listingApplication.showTrajectories(origin, destination);
         menu.breakLine();
@@ -296,7 +298,7 @@ void Application::displayTrajectoriesMenu(int &oldOption) {
     cout << menu.QUIT_MESSAGE << endl;
 }
 
-void Application::getLocalTrajectory(int safeOption, bool &fail, LocalPTR &local, string typeLocal) {
+void Application::getLocal(int safeOption, bool &fail, LocalPTR &local, string typeLocal) {
     switch (safeOption) {
         case Application::BY_AIRPORT_CODE: {
             string airportCode;
@@ -322,7 +324,7 @@ void Application::getLocalTrajectory(int safeOption, bool &fail, LocalPTR &local
             cin >> longitude;
             cout << typeLocal << " Radius: ";
             cin >> radius;
-            local = LocalPTR(new Coordinates(longitude, latitude, radius));
+            local = LocalPTR(new Coordinates(latitude, longitude, radius));
             break;
         }
         default:

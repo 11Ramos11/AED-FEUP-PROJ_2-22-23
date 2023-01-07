@@ -160,7 +160,7 @@ private:
      * @param local
      * @param typeLocal
      */
-    void getLocalTrajectory(int safeOption, bool &fail, LocalPTR &local, string typeLocal);
+    void getLocal(int safeOption, bool &fail, LocalPTR &local, string typeLocal);
 
 
     /** @brief Display the menu of the possible with possible trajectories.

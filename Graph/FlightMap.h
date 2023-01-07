@@ -87,7 +87,7 @@ public:
      * @param airlines of unordered_set<string>
      * @return One or more lists with the minors airport paths.
      */
-    list<list<Flight>> getTrajectories(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines);
+    list<list<Flight>> getTrajectories(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines, int minimumFlights);
 
     /** @brief Represents the minor flights using an specific local.
      *
