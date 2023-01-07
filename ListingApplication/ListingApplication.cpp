@@ -184,7 +184,7 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
             count++;
         }
     }
-    std::cout << "Number of airports:" << count;
+    std::cout << "Number of airports:" << count << endl;
 
     int numFlights = 0;
     for (auto pair: database->getAirports()) {
@@ -193,7 +193,7 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
             numFlights += airport->getFlights().size();
         }
     }
-    std::cout << "Number of flights:" << numFlights;
+    std::cout << "Number of flights:" << numFlights << endl;
 
     unordered_set<string> airlinesCode;
     for (auto pair: database->getAirports()) {
@@ -204,8 +204,8 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
                 airlinesCode.insert(airlinecode);
             }
         }
-        std::cout << "Number of airlines:" << airlinesCode.size();
     }
+    std::cout << "Number of airlines:" << airlinesCode.size() << endl;
 
     priority_queue<AirportPTR> pq;
     for (auto pair: database->getAirports()) {
@@ -215,7 +215,7 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
         }
     }
     std::cout << "Airports with more flights in " << country << "- top" << k << ":" << endl;
-    for (int i = 0; i <= k; i++) {
+    for (int i = 0; i < k; i++) {
         std::cout << pq.top()->name << endl;
         pq.pop();
     }
