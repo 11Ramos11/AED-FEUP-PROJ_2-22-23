@@ -141,14 +141,11 @@ void Application::displayMaxYFlightsMenu(int &oldOption) {
                 cout << "Type the Airport code to check the number of its reachable airports:";
                 cin >> airportCode;
                 AirportPTR airport = database->getAirport(airportCode);
+                LocalPTR local = LocalPTR(new AirportLocal(airportCode));
                 cout << "Type the desired maximum number of flights:";
                 cin >> y;
-                cout << "Number of its reachable airports with a max of " << y << " flights: ";
-                //cout << flightMap->airportsMaxYFlights(airport, y) << "\n" << endl;
-                cout << "=========== Group of reachable Airports ===========" << endl;
-                cout << "=========== Code | Name | City ===========" << endl;
-                for (auto airP: flightMap->reachableAirports(airport, y))
-                    cout << airP->code << " | " << airP->name << " | " << airP->city << endl;
+                listingApplication.numberReachableAirports(local, y);
+                listingApplication.showReachableAirports(local, y);
                 break;
             }
             case MAX_CITIES: {
@@ -158,11 +155,12 @@ void Application::displayMaxYFlightsMenu(int &oldOption) {
                 cin >> airportCode;
                 AirportPTR airport = database->getAirport(airportCode);
                 City city(airport->city, airport->country);
+                LocalPTR local = LocalPTR(new CityLocal(city));
                 cout << "Type the desired maximum number of flights:";
                 cin >> y;
                 cout << "The given Airport is from the city of " << airport->city << endl;
-                cout << "Number of its reachable cities with a max of " << y << " flights: ";
-                //cout << flightMap->citiesMaxYFlights(city, y) << "\n" << endl;
+                listingApplication.numberReachableCities(local, y);
+                listingApplication.showReachableCities(local, y);
                 break;
             }
             case MAX_COUNTRIES: {
@@ -171,11 +169,13 @@ void Application::displayMaxYFlightsMenu(int &oldOption) {
                 cout << "Type the Airport code to check the number of its reachable countries:";
                 cin >> airportCode;
                 AirportPTR airport = database->getAirport(airportCode);
+                City city(airport->city, airport->country);
+                LocalPTR local = LocalPTR(new CityLocal(city));
                 cout << "Type the desired maximum number of flights:";
                 cin >> y;
                 cout << "The given Airport is from the country of " << airport->country << endl;
-                cout << "Number of its reachable countries with a max of " << y << " flights: ";
-                //cout << flightMap->countriesMaxYFlights(airport->country, y) << "\n" << endl;
+                listingApplication.numberReachableCountries(local, y);
+                listingApplication.showReachableCountries(local, y);
                 break;
             }
             default: {
@@ -282,75 +282,8 @@ void Application::displayTrajectoriesMenu(int &oldOption) {
     bool fail = 0;
     while (safeOption != QUIT) {
         LocalPTR origin, destination;
-        switch (safeOption) {
-            case BY_AIRPORT_CODE: {
-                string airportCode;
-                cout << "Origin Airport Code: ";
-                std::cin >> airportCode;
-                origin = LocalPTR(new AirportLocal(airportCode));
-                break;
-            }
-            case BY_CITY_COUNTRY: {
-                string cityName, countryName;
-                cout << "Origin City Name: ";
-                std::cin >> cityName;
-                cout << "Origin Country Name: ";
-                std::cin >> countryName;
-                origin = LocalPTR(new CityLocal({cityName, countryName}));
-                break;
-            }
-            case BY_COORDINATES: {
-                float latitude, longitude, radius;
-                cout << "Origin Latitude: ";
-                std::cin >> latitude;
-                cout << "Origin Longitude: ";
-                std::cin >> longitude;
-                cout << "Origin Radius: ";
-                std::cin >> radius;
-                origin = LocalPTR(new Coordinates(longitude, latitude, radius));
-                break;
-            }
-            default:
-                fail = 1;
-                menu.breakLine();
-                menu.getWrongMessage();
-                break;
-        }
-        switch (safeOption) {
-            case BY_AIRPORT_CODE: {
-                string airportCode;
-                cout << "Destiny Airport Code: ";
-                std::cin >> airportCode;
-                destination = LocalPTR(new AirportLocal(airportCode));
-                break;
-            }
-            case BY_CITY_COUNTRY: {
-                string cityName, countryName;
-                cout << "Destiny City Name: ";
-                std::cin >> cityName;
-                cout << "Destiny Country Name: ";
-                std::cin >> countryName;
-                destination = LocalPTR(new CityLocal({cityName, countryName}));
-                break;
-            }
-            case BY_COORDINATES: {
-                float latitude, longitude, radius;
-                cout << "Destiny Latitude: ";
-                std::cin >> latitude;
-                cout << "Destiny Longitude: ";
-                std::cin >> longitude;
-                cout << "Destiny Radius: ";
-                std::cin >> radius;
-                destination = LocalPTR(new Coordinates(longitude, latitude, radius));
-                break;
-            }
-            default: {
-                fail = 1;
-                menu.breakLine();
-                menu.getWrongMessage();
-                break;
-            }
-        }
+        getLocalTrajectory(safeOption, fail, origin, "Origin");
+        getLocalTrajectory(safeOption, fail, destination, "Destination");
         if (!fail)
             listingApplication.showTrajectories(origin, destination);
         menu.breakLine();
@@ -359,6 +292,43 @@ void Application::displayTrajectoriesMenu(int &oldOption) {
     }
     oldOption = 0;
     cout << menu.QUIT_MESSAGE << endl;
+}
+
+void Application::getLocalTrajectory(int safeOption, bool &fail, LocalPTR &local, string typeLocal) {
+    switch (safeOption) {
+        case Application::BY_AIRPORT_CODE: {
+            string airportCode;
+            cout << typeLocal << " Airport Code: ";
+            cin >> airportCode;
+            local = LocalPTR(new AirportLocal(airportCode));
+            break;
+        }
+        case Application::BY_CITY_COUNTRY: {
+            string cityName, countryName;
+            cout << typeLocal << " City Name: ";
+            cin >> cityName;
+            cout << typeLocal << " Country Name: ";
+            cin >> countryName;
+            local = LocalPTR(new CityLocal({cityName, countryName}));
+            break;
+        }
+        case Application::BY_COORDINATES: {
+            float latitude, longitude, radius;
+            cout << typeLocal << " Latitude: ";
+            cin >> latitude;
+            cout << typeLocal << " Longitude: ";
+            cin >> longitude;
+            cout << typeLocal << " Radius: ";
+            cin >> radius;
+            local = LocalPTR(new Coordinates(longitude, latitude, radius));
+            break;
+        }
+        default:
+            fail = 1;
+            this->menu.breakLine();
+            this->menu.getWrongMessage();
+            break;
+    }
 }
 
 void Application::displayMenu() {

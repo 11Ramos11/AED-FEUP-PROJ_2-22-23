@@ -144,6 +144,18 @@ private:
     */
     void maxYFlightsMenuSafety(string &option, int &safeOption);
 
+
+    /** @brief Gets the user local by origin or destination.
+     *
+     * Checks if the safeOption argument is correct for that specific menu.
+     * @param safeOption
+     * @param fail
+     * @param local
+     * @param typeLocal
+     */
+    void getLocalTrajectory(int safeOption, bool &fail, LocalPTR &local, string typeLocal);
+
+
     /** @brief Display the menu of the possible with possible trajectories
      *
      * @param safeOption Of type int, by reference.
@@ -213,6 +225,7 @@ public:
      */
     void startApplication();
 
+    void getLocalTrajectoryDestiny(int safeOption, bool &fail, LocalPTR &destination);
 };
 
 /** @brief Checks if a string represents a number.
