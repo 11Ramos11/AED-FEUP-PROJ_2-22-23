@@ -64,7 +64,7 @@ int FlightMap::minimumDistance(AirportPTR airportDepart, AirportPTR airportDesti
 }
 
 list<list<Flight>>
-FlightMap::getPaths(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines) {
+FlightMap::getTrajectories(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines) {
 
     list<list<Flight>> paths;
     int minimumFlights = minimumDistance(airportDepart, airportDestination, airlines);
@@ -111,16 +111,7 @@ FlightMap::getPaths(AirportPTR airportDepart, AirportPTR airportDestination, uno
 
         }
     }
-
     return paths;
-}
-
-
-list<list<Flight>> FlightMap::getFlights(AirportPTR airport, AirportPTR destination, unordered_set<string> airlines) {
-
-    auto trajectories = getPaths(airport, destination, airlines);
-
-    return trajectories;
 }
 
 list<pair<AirportPTR, list<Flight>>> FlightMap::getFlights(LocalPTR origin, LocalPTR destination, unordered_set<string> airlines) {
@@ -129,28 +120,10 @@ list<pair<AirportPTR, list<Flight>>> FlightMap::getFlights(LocalPTR origin, Loca
 
     for (const AirportPTR &originAirport: origin->getAirports(this))
         for (const AirportPTR &destAirport: destination->getAirports(this))
-            for (const auto &trajectory: getFlights(originAirport, destAirport, airlines))
+            for (const auto &trajectory: getTrajectories(originAirport, destAirport, airlines))
                 trajectories.push_back(make_pair(originAirport, trajectory));
 
     return trajectories;
-}
-
-int FlightMap::numDifferentCountries(AirportPTR airportPtr) {
-    list<string> countries;
-    auto airportcode = airportPtr->code;
-    for (auto pair: airports) {
-        for (auto edge: pair.second->flights) {
-            string destinationCode = edge.destinationCode;
-            if (destinationCode == airportcode) {
-                auto country = pair.second->country;
-                if (std::find(countries.begin(),
-                              countries.end(), country) == countries.end()) {
-                    countries.push_back(country);
-                }
-            }
-        }
-    }
-    return countries.size();
 }
 
 list<AirportPTR> FlightMap::reachableAirports(AirportPTR airportPtr, int y) {

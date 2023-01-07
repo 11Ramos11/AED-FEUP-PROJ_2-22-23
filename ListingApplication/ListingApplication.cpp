@@ -131,16 +131,12 @@ void ListingApplication::listCountries(std::string code) {
     unordered_set<string> countries;
 
     for (Flight flight: airport->getFlights()) {
-        for (Flight flight: airport->getFlights()) {
-            AirportPTR airport = database->getAirport(flight.destinationCode);
-            countries.insert(airport->country);
-        }
+        AirportPTR airport = database->getAirport(flight.destinationCode);
+        countries.insert(airport->country);
+    }
 
-        for (string country: countries) {
-            for (string country: countries) {
-                std::cout << country << endl;
-            }
-        }
+    for (string country: countries) {
+        std::cout << country << endl;
     }
 }
 

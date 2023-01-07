@@ -20,12 +20,14 @@ void test2(){
 
 
     LocalPTR destination = make_shared<CityLocal>(City("London", "United Kingdom"));
-    LocalPTR origin = make_shared<Coordinates>(70, 40, 600);
+    LocalPTR origin = make_shared<CityLocal>(City("Porto", "Portugal"));
 
     listingApplication.showTrajectories(origin, destination);
 }
 
 int main() {
+
+    test2();
 
     Application app;
     app.startApplication();
