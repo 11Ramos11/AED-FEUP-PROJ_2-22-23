@@ -126,19 +126,6 @@ public:
      * @return A list of flights.
      */
     list<Flight> getFlights();
-
-    /** @brief Represents the number of different airlines departing from the airport.
-     *
-     * @return Number of different airlines.
-     */
-    int numDifferentAirlines();
-
-    /** @brief Represents the number of different destinations of the flights departing from the airport.
-     *
-     * @return Number of different destinations.
-     */
-    int numDifferentDestinations();
-
 };
 
 /** @brief Operator overload.
