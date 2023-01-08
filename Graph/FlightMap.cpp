@@ -266,7 +266,7 @@ list<AirportPTR> FlightMap::articulationPoints() {
     return answer;
 }
 
-void FlightMap::diameterBFS(AirportPTR airportDepart, AirportPTR& furthest, int& diameter){
+void FlightMap::diameterBFS(AirportPTR airportDepart, int& diameter){
     for (auto pair: airports) {
         AirportPTR airport = pair.second;
         airport->visited = false;
@@ -289,7 +289,6 @@ void FlightMap::diameterBFS(AirportPTR airportDepart, AirportPTR& furthest, int&
                 destination->dist = previousAirport->dist + 1;
                 if (destination->dist > diameter){
                     diameter = destination->dist;
-                    furthest = destination;
                 }
                 unvisitedAirports.push(destination);
                 destination->visited = true;
@@ -306,10 +305,9 @@ int FlightMap::diameter() {
     AirportPTR startAirport = airports.begin()->second;
     AirportPTR furthestAirport;
 
-    while (backup == diameter) {
-        backup = diameter;
-        diameterBFS(startAirport, furthestAirport, diameter);
-        startAirport = furthestAirport;
+    for (auto pair: airports){
+        AirportPTR airport = pair.second;
+        diameterBFS(airport, diameter);
     }
 
     return diameter;

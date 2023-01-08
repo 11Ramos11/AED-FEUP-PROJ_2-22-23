@@ -172,6 +172,8 @@ public:
     int connectedComponents();
 
     void diameterBFS(AirportPTR airportDepart, AirportPTR &furthest, int& diameter);
+
+    void diameterBFS(AirportPTR airportDepart, int &diameter);
 };
 
 #endif
