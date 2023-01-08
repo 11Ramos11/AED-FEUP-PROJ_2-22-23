@@ -70,6 +70,7 @@ private:
     //! @brief Initialization of the listingApplication.
     ListingApplication listingApplication = ListingApplication(database);
 
+    //! @brief Initialization of the NumbersApplication.
     NumbersApplication numbersApplication = NumbersApplication(database);
 
     //! @brief Initialization of the menu.
@@ -156,29 +157,28 @@ private:
     */
     void maxYFlightsMenuSafety(string &option, int &safeOption);
 
-
     /** @brief Display the filter network trajectories menu if the given menu option is correct.
-   *
-   * Checks if the safeOption argument is correct for that specific menu.
-   * Then, safeInput method is used with both arguments to cover wrong inputs.
-   *
-   * @param option Of type string, by reference.
-   * @param safeOption Of type int, by reference.
-   * @return Void.
-   */
+     *
+     * Checks if the safeOption argument is correct for that specific menu.
+     * Then, safeInput method is used with both arguments to cover wrong inputs.
+     *
+     * @param option Of type string, by reference.
+     * @param safeOption Of type int, by reference.
+     * @return Void.
+     */
     void filterNetworkTrajectoriesSafety(std::string &option, int &safeOption);
-
 
     /** @brief Gets the user local by origin or destination.
      *
      * Checks if the safeOption argument is correct for that specific menu.
-     * @param safeOption
-     * @param fail
-     * @param local
-     * @param typeLocal
+     *
+     * @param safeOption Of int type.
+     * @param fail Of bool type, by reference.
+     * @param local Of LocalPTR type, by reference.
+     * @param typeLocal Of string type.
+     * @return Void.
      */
     void getLocal(int safeOption, bool &fail, LocalPTR &local, string typeLocal);
-
 
     /** @brief Display the menu of the possible with possible trajectories.
      *
@@ -256,39 +256,23 @@ public:
      */
     void startApplication();
 
-    /** @brief Gets the trajectory buy local destination, always checking for possible
+    /** @brief Gets the trajectory by local destination, always checking for possible
      * fail moment and verifying that.
      *
      * @param safeOption  Of type int, by reference.
-     * @param fail
-     * @param destination
-     *
+     * @param fail Of bool type, by reference.
+     * @param destination Of LocalPTR type, by reference.
      * @return Void.
      */
     void getLocalTrajectoryDestiny(int safeOption, bool &fail, LocalPTR &destination);
 
-
     /** @brief Menu display that filters the type of network to showcase to the
      * user in the form of possible flight trajectories.
      *
-     * @param oldOption
-     *
+     * @param oldOption Of int type, by reference.
      * @return Void.
      */
     void filterNetworkTrajectories(int &oldOption);
 };
-
-/** @brief Checks if a string represents a number.
- *
- * @return True if the string represents a number, false if otherwise.
- */
-bool is_number(const std::string &s);
-
-/** @brief Reads user input until it its a valid numeric value.
- *
- * @return User input of string type.
- */
-string validStudentCode();
-
 
 #endif //AED_FEUP_PROJ_2_22_23_APPLICATION_H

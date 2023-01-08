@@ -18,9 +18,6 @@ struct Flight {
     //! @brief Holds the destination code of the flight.
     string destinationCode;
 
-    //! @brief Holds the flight distance.
-    int distance;
-
     //! @brief Holds the airline that can be used to the flight.
     string airlineCode;
 };

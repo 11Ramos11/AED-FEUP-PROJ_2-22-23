@@ -81,9 +81,7 @@ void Database::readFlights() {
         getline(flightsFile, destinationCode, ',');
         getline(flightsFile, companyCode);
 
-        int distance = airports[originCode]->distanceTo(
-                airports[destinationCode]->longitude, airports[destinationCode]->latitude);
-        airports[originCode]->addFlight({destinationCode, distance, companyCode});
+        airports[originCode]->addFlight({destinationCode, companyCode});
 
     } while (true);
 }

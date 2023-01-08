@@ -7,7 +7,6 @@
 #ifndef AED_FEUP_PROJ_2_22_23_AIRPORTLOCAL_H
 #define AED_FEUP_PROJ_2_22_23_AIRPORTLOCAL_H
 
-
 #include "Local.h"
 
 /** @brief AirportLocal class to represent an airport local.
@@ -30,11 +29,10 @@ public:
 
     /** @brief Returns a list of airports.
      *
-     * @param flightMap of FlightMapPtr type.
+     * @param flightMap of FlightMap type.
      * @return list<AirportPTR> of airports.
      */
     list<AirportPTR> getAirports(FlightMap*  flightMap) override;
 };
-
 
 #endif //AED_FEUP_PROJ_2_22_23_AIRPORTLOCAL_H

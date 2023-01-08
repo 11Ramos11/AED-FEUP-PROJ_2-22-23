@@ -12,8 +12,8 @@ Coordinates::Coordinates(float latitude, float longitude, float radius):
 
 list<AirportPTR> Coordinates::getAirports(FlightMap*  flightMap) {
     list<AirportPTR> airports;
-
     auto allAirports = flightMap->getAirports();
+
     for (auto pair: allAirports) {
         AirportPTR airport = pair.second;
         int distance = airport->distanceTo(latitude, longitude);
