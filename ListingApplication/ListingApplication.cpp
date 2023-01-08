@@ -239,25 +239,6 @@ void ListingApplication::showReachableCountries(LocalPTR local, int y) {
     cout << endl;
 }
 
-void ListingApplication::numberReachableAirports(LocalPTR local, int y) {
-    int number = database->airportsWithMaxYFlights(local, y).size();
-
-    cout << "Number of reachable airports: " << number << endl;
-}
-
-void ListingApplication::numberReachableCities(LocalPTR local, int y) {
-    int number = database->citiesWithMaxYFlights(local, y).size();
-
-    cout << "Number of reachable cities: " << number << endl;
-
-}
-
-void ListingApplication::numberReachableCountries(LocalPTR local, int y) {
-    int number = database->countriesWithMaxYFlights(local, y).size();
-
-    cout << "Number of reachable countries: " << number << endl;
-}
-
 void ListingApplication::listArticulationPoints() {
 
     auto articulationPoints = database->getArticulationPoints();
