@@ -23,6 +23,11 @@ void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination,
     else
         trajectories = database->getTrajectories(origin, destination);
 
+    if (trajectories.empty()){
+        std::cout << "No trajectories were found for the given criteria";
+        return;
+    }
+
     for (auto trajectory: trajectories) {
         cout << trajectory.first->name << "," << trajectory.first->city;
 
