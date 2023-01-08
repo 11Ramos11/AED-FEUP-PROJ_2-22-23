@@ -167,7 +167,7 @@ void ListingApplication::globalStatistic(int k) {
         pq.push(airport);
     }
     std::cout << "Airports with more flights - top" << k << ": " << std::endl;
-    for (int i = 0; i <= k; i++) {
+    for (int i = 0; i < k; i++) {
         std::cout << pq.top()->name << std::endl;
         pq.pop();
     }
