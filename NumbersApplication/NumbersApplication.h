@@ -90,5 +90,4 @@ public:
     void showNumberOfComponents();
 };
 
-
 #endif //AED_FEUP_PROJ_2_22_23_NUMBERSAPPLICATION_H
