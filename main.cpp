@@ -81,8 +81,6 @@ void test8(){
 
 int main() {
 
-    test8();
-
     Application app;
     app.startApplication();
 

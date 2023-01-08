@@ -43,9 +43,6 @@ int FlightMap::minimumDistance(AirportPTR airportDepart, AirportPTR airportDesti
         AirportPTR previousAirport = unvisitedAirports.front();
         unvisitedAirports.pop();
 
-        if (previousAirport->code == "JFK" || previousAirport->code == "EWR")
-            cout << "hello";
-
         for (auto flight: previousAirport->flights) {
 
             if (airlines.find(flight.airlineCode) == airlines.end())
@@ -86,9 +83,6 @@ FlightMap::getTrajectories(AirportPTR airportDepart, AirportPTR airportDestinati
     while (!unvisitedAirports.empty()) {
         AirportPTR previousAirport = unvisitedAirports.front();
         unvisitedAirports.pop();
-
-        if (previousAirport->code == "CLT")
-            cout << "hello";
 
         for (auto flight: previousAirport->flights) {
             AirportPTR destination = airports[flight.destinationCode];
@@ -268,43 +262,53 @@ list<AirportPTR> FlightMap::articulationPoints() {
     return answer;
 }
 
-AirportPTR farthestNode;
+void FlightMap::diameterBFS(AirportPTR airportDepart, AirportPTR& furthest, int& diameter){
+    for (auto pair: airports) {
+        AirportPTR airport = pair.second;
+        airport->visited = false;
+        airport->dist = 0;
+    }
 
-void FlightMap::dfsUtil(AirportPTR airport, int &count, int &maxCount) {
-    airport->visited = true;
-    count++;
-    for (Flight flight: airport->flights) {
-        string w = flight.destinationCode;
-        AirportPTR destination = airports[w];
-        if (destination->visited == false) {
-            if (count >= maxCount) {
-                maxCount = count;
-                farthestNode = destination;
+    queue<AirportPTR> unvisitedAirports;
+    unvisitedAirports.push(airportDepart);
+    airportDepart->visited = true;
+
+    while (!unvisitedAirports.empty()) {
+        AirportPTR previousAirport = unvisitedAirports.front();
+        unvisitedAirports.pop();
+
+        for (auto flight: previousAirport->flights) {
+
+            AirportPTR destination = airports[flight.destinationCode];
+
+            if (!destination->visited) {
+                destination->dist = previousAirport->dist + 1;
+                if (destination->dist > diameter){
+                    diameter = destination->dist;
+                    furthest = destination;
+                }
+                unvisitedAirports.push(destination);
+                destination->visited = true;
             }
-            dfsUtil(destination, count, maxCount);
         }
     }
 }
 
-void FlightMap::dfsDiameter(AirportPTR airport, int &maxCount) {
-    int count = 0;
-
-    for (auto pair: airports) {
-        AirportPTR airport = pair.second;
-        airport->visited = false;
-    }
-    count++;
-    dfsUtil(airport, count, maxCount);
-}
-
 int FlightMap::diameter() {
-    int maxCount = INT_MIN;
-    AirportPTR airport;
 
-    dfsDiameter(airport, maxCount);
-    dfsDiameter(farthestNode, maxCount);
+    int diameter = INT_MIN;
 
-    return maxCount;
+    int backup = INT_MIN;
+    AirportPTR startAirport = airports.begin()->second;
+    AirportPTR furthestAirport;
+
+    while (backup == diameter) {
+        backup = diameter;
+        diameterBFS(startAirport, furthestAirport, diameter);
+        startAirport = furthestAirport;
+    }
+
+    return diameter;
 }
 
 void FlightMap::dfs(AirportPTR airport) {

@@ -16,7 +16,7 @@ bool operator<(const AirportPTR &airport1, const AirportPTR &airport2) {
 
 void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination) {
 
-    auto trajectories = database->getTrajectoriesAllAirlines(origin, destination);
+    auto trajectories = database->getTrajectories(origin, destination);
 
     for (auto trajectory: trajectories) {
 

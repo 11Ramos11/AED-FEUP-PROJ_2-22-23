@@ -120,13 +120,13 @@ public:
     int diameter();
 
     /** Returns a list of list of flights to showcase possible trajectories
-     * by origin and destination
+     * by origin and destination, for all airlines.
      *
      * @param origin
      * @param destination
      * @return list<list<Flight>> with the rajectories by origin and destination.
      */
-    list<pair<AirportPTR, list<Flight>>> getTrajectoriesAllAirlines(LocalPTR origin, LocalPTR destination);
+    list<pair<AirportPTR, list<Flight>>> getTrajectories(LocalPTR origin, LocalPTR destination);
 
     /** Invokes getTrajectoriesAllAirlines from FlightMap class.
      *
@@ -161,6 +161,9 @@ public:
     list<AirportPTR> getArticulationPoints();
 
     int getConnectedComponents();
+
+    list<pair<AirportPTR, list<Flight>>>
+    getTrajectories(LocalPTR origin, LocalPTR destination, unordered_set<string> airlines);
 };
 
 #endif //AED_FEUP_PROJ_22_23_DATABASE_H
