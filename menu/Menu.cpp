@@ -18,8 +18,8 @@ const string Menu::AIR_TRANSPORTS_STATISTICS = "Check Air Transports Statistics"
 const string Menu::QUIT_APPLICATION = "Quit the application";
 const string Menu::GO_BACK = "Go Back";
 const string Menu::QUIT_MESSAGE = "Thanks for using Air Transports application!";
-const string Menu::INVALID_INPUT = "Invalid input! Read options and try 0, 1, 2, 3 (...)";
-const string Menu::WRONG_INPUT = "That option does not exist! Read options and try 0, 1, 2, 3 (...)";
+const string Menu::INVALID_INPUT = "Invalid input! Read options and try  1, 2, 3, (...), 9";
+const string Menu::WRONG_INPUT = "That option does not exist! Read options and try  1, 2, 3, (...), 9";
 
 const string Menu::BY_CITY = "Check airports in a certain city";
 const string Menu::BY_NUMBER = "Airport information by numbers";
@@ -155,7 +155,7 @@ void Menu::displayLocalMenu(string typeLocal) {
 void Menu::displayStatisticsMenu() {
     cout << endl;
     cout << "=============================================" << endl;
-    cout << "          Trajectories options" << endl;
+    cout << "          Statistics options" << endl;
     cout << "=============================================" << endl;
     cout << "1 - " << GLOBAL_STATISTICS << endl;
     cout << "2 - " << STATISTICS_BY_COUNTRY << endl;
