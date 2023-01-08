@@ -60,7 +60,7 @@ void Application::airportNumbersSafety(string &option, int &safeOption) {
 
 void Application::localMenuSafety(string &option, int &safeOption, string typeLocal) {
     while (!safeOption) {
-        menu.displayLocalMenu(typeLocal);
+        menu.displayLocalMenu();
         safeInput(option, safeOption);
     }
 }
@@ -76,6 +76,13 @@ void Application::statisticsMenuSafety(std::string &option, int &safeOption) {
 void Application::maxYFlightsMenuSafety(std::string &option, int &safeOption) {
     while (!safeOption) {
         menu.displayMaxYFlightsMenu();
+        safeInput(option, safeOption);
+    }
+}
+
+void Application::filterNetworkTrajectoriesSafety(std::string &option, int &safeOption) {
+    while (!safeOption) {
+        menu.displayNetworkMenu();
         safeInput(option, safeOption);
     }
 }
@@ -167,6 +174,41 @@ void Application::displayMaxYFlightsMenu(int &oldOption) {
         menu.breakLine();
         safeOption = 0;
         maxYFlightsMenuSafety(option, safeOption);
+    }
+    oldOption = 0;
+    cout << menu.QUIT_MESSAGE << endl;
+}
+
+void Application::filterNetworkTrajectories(int &oldOption) {
+    string option;
+    int safeOption = 0;
+    bool fail = 0;
+    filterNetworkTrajectoriesSafety(option, safeOption);
+    while (safeOption != QUIT) {
+        switch (safeOption) {
+            case ALL_AIRLINES: {
+                displayTrajectoriesMenu(oldOption);
+                break;
+            }
+            case FILTER_AIRLINES: {
+                string tempOption;
+                database
+                while (tempOption != "Q" && tempOption != "q") {
+                    cout << "Enter an Airline code to add to the filter or Q to exit: ";
+
+                }
+                break;
+            }
+            default: {
+                menu.breakLine();
+                menu.getWrongMessage();
+                safeOption = 0;
+                break;
+            }
+        }
+        menu.breakLine();
+        safeOption = 0;
+        filterNetworkTrajectoriesSafety(option, safeOption);
     }
     oldOption = 0;
     cout << menu.QUIT_MESSAGE << endl;
@@ -385,7 +427,7 @@ void Application::displayMenu() {
             }
             case GENERATE_TRAJECTORIES: {
                 string option;
-                displayTrajectoriesMenu(safeOption);
+                filterNetworkTrajectories(safeOption);
                 break;
             }
             case STATISTICS: {

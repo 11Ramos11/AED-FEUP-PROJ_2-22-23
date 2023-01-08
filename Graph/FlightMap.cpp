@@ -5,7 +5,6 @@
  */
 
 #include "FlightMap.h"
-#include "Locals/Local.h"
 #include <algorithm>
 #include <stack>
 #include <string>
@@ -63,8 +62,10 @@ int FlightMap::minimumDistance(AirportPTR airportDepart, AirportPTR airportDesti
     return -1;
 }
 
-list<list<Flight>>
-FlightMap::getTrajectories(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines, int minimumFlights) {
+list<list<Flight>>FlightMap::getTrajectories(AirportPTR airportDepart,
+                                             AirportPTR airportDestination,
+                                             unordered_set<string> airlines,
+                                             int minimumFlights) {
 
     list<list<Flight>> paths;
 
@@ -113,7 +114,9 @@ FlightMap::getTrajectories(AirportPTR airportDepart, AirportPTR airportDestinati
     return paths;
 }
 
-list<pair<AirportPTR, list<Flight>>> FlightMap::getFlights(LocalPTR origin, LocalPTR destination, unordered_set<string> airlines) {
+list<pair<AirportPTR, list<Flight>>> FlightMap::getFlights(LocalPTR origin,
+                                                           LocalPTR destination,
+                                                           unordered_set<string> airlines) {
 
     list<pair<AirportPTR, list<Flight>>> trajectoriesPairs;
     int minimum;
@@ -124,7 +127,8 @@ list<pair<AirportPTR, list<Flight>>> FlightMap::getFlights(LocalPTR origin, Loca
 
     for (const AirportPTR &originAirport: origin->getAirports(this))
         for (const AirportPTR &destAirport: destination->getAirports(this)) {
-            auto trajectories = getTrajectories(originAirport, destAirport, airlines, minimum);
+            auto trajectories = getTrajectories(originAirport,
+                                                destAirport, airlines, minimum);
             for (const auto &trajectory: trajectories)
                 trajectoriesPairs.push_back(make_pair(originAirport, trajectory));
         }

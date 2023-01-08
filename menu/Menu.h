@@ -80,6 +80,12 @@ public:
     //! @brief Defines the string to output in the menu, as an option, to generate trajectories by coordinates.
     static const string TRAJECTORIES_BY_COORDS;
 
+    //! @brief Defines the string to output in the menu, as an option, to generate trajectories of all airlines.
+    static const string ALL_AIRLINES;
+
+    //! @brief Defines the string to output in the menu, as an option, to generate trajectories filtered by airlines.
+    static const string FILTER_AIRLINES;
+
     //! @brief Defines the string to output in the menu, as an option, to list airport flights.
     static const string AIRPORT_FLIGHTS;
 
@@ -181,18 +187,20 @@ public:
      */
     void displayListsMenu();
 
-
-    /** @brief Displays the menu with trajectories information menu.
+    /** @brief Displays the menu with trajectories by airline networks options.
      *
      * @return Void.
      */
-    void displayLocalMenu(string typeLocal);
+    void displayNetworkMenu();
+
 
     /** @brief Displays the air transports statistics menu.
      *
      * @return Void.
      */
     void displayStatisticsMenu();
+
+
 };
 
 #endif //AED_FEUP_PROJ_2_22_23_MENU_H

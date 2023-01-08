@@ -54,9 +54,14 @@ private:
         FLIGHTS = 1, DIFFERENT_AIRLINES = 2, CITY = 3, BY_COUNTRIES = 4
     };
 
-    //! @brief enum for the trajectories generations..
+    //! @brief enum for the trajectories generations.
     enum {
         BY_AIRPORT_CODE = 1, BY_CITY_COUNTRY = 2, BY_COORDINATES = 3
+    };
+
+    //! @brief enum for the filter networks trajectories.
+    enum {
+        ALL_AIRLINES = 1, FILTER_AIRLINES = 2
     };
 
     //! @brief Initialization of the database.
@@ -152,6 +157,18 @@ private:
     void maxYFlightsMenuSafety(string &option, int &safeOption);
 
 
+    /** @brief Display the filter network trajectories menu if the given menu option is correct.
+   *
+   * Checks if the safeOption argument is correct for that specific menu.
+   * Then, safeInput method is used with both arguments to cover wrong inputs.
+   *
+   * @param option Of type string, by reference.
+   * @param safeOption Of type int, by reference.
+   * @return Void.
+   */
+    void filterNetworkTrajectoriesSafety(std::string &option, int &safeOption);
+
+
     /** @brief Gets the user local by origin or destination.
      *
      * Checks if the safeOption argument is correct for that specific menu.
@@ -239,7 +256,26 @@ public:
      */
     void startApplication();
 
+    /** @brief Gets the trajectory buy local destination, always checking for possible
+     * fail moment and verifying that.
+     *
+     * @param safeOption  Of type int, by reference.
+     * @param fail
+     * @param destination
+     *
+     * @return Void.
+     */
     void getLocalTrajectoryDestiny(int safeOption, bool &fail, LocalPTR &destination);
+
+
+    /** @brief Menu display that filters the type of network to showcase to the
+     * user in the form of possible flight trajectories.
+     *
+     * @param oldOption
+     *
+     * @return Void.
+     */
+    void filterNetworkTrajectories(int &oldOption);
 };
 
 /** @brief Checks if a string represents a number.
