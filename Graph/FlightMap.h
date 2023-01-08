@@ -189,6 +189,9 @@ public:
     int diameter();
 
 
+    void dfs(AirportPTR airport);
+
+    int connectedComponents();
 };
 
 #endif

@@ -68,9 +68,20 @@ void test7(){
     cout << "Number of articulation points: " << n.size() << endl << endl;
 }
 
+void test8(){
+    DatabasePTR database = make_shared<Database>();
+    database->read();
+    ListingApplication listingApplication(database);
+
+
+    auto n = database->getFlightMapPtr()->connectedComponents();
+
+    cout << "Number of components: " << n << endl << endl;
+}
+
 int main() {
 
-    test7();
+    test8();
 
     Application app;
     app.startApplication();

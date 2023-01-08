@@ -306,3 +306,27 @@ int FlightMap::diameter() {
 
     return maxCount;
 }
+
+void FlightMap::dfs(AirportPTR airport) {
+    airport->visited = true;
+    for (Flight flight: airport->flights) {
+        AirportPTR destination = airports[flight.destinationCode];
+        if(!destination->visited)
+            dfs(destination);
+    }
+}
+
+
+
+int FlightMap::connectedComponents() {
+    int counter = 0;
+    for(auto pair: airports)
+        pair.second->visited = false;
+
+    for(auto pair: airports)
+    if(!pair.second->visited) {
+        counter ++;
+        dfs(pair.second);
+    }
+    return counter;
+}
