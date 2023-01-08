@@ -10,8 +10,8 @@
 
 using namespace std;
 
-const string Menu::AIRPORT_LISTS = "Listings and related options to the Airports";
-const string Menu::MAX_FLIGHTS_LISTS = "Listings related to a maximum number of flights";
+const string Menu::AIRPORT_LISTS = "Airports information";
+const string Menu::MAX_FLIGHTS_LISTS = "Reachable places with a maximum number of flights";
 const string Menu::GENERATE_TRAJECTORIES = "Generate flight trajectories based on origin and destination";
 const string Menu::AIR_TRANSPORTS_STATISTICS = "Check Air Transports Statistics";
 
@@ -22,8 +22,8 @@ const string Menu::INVALID_INPUT = "Invalid input! Read options and try  1, 2, 3
 const string Menu::WRONG_INPUT = "That option does not exist! Read options and try  1, 2, 3, (...), 9";
 
 const string Menu::BY_CITY = "Check airports in a certain city";
-const string Menu::BY_NUMBER = "Airport information by numbers";
-const string Menu::BY_LISTS = "Airport information by listings";
+const string Menu::BY_NUMBER = "Counts";
+const string Menu::BY_LISTS = "Listings";
 
 const string Menu::FLIGHTS_NUMBER = "Number of flights of the airport";
 const string Menu::AIRLINES_NUMBER = "Number of airlines of the airport";
@@ -34,8 +34,8 @@ const string Menu::TRAJECTORIES_BY_AIRPORT_CODE = "By Airport";
 const string Menu::TRAJECTORIES_BY_CITY_COUNTRY = "By City";
 const string Menu::TRAJECTORIES_BY_COORDS = "By Coordinates";
 
-const string Menu::GLOBAL_STATISTICS = "Check global air transports statistics";
-const string Menu::STATISTICS_BY_COUNTRY = "Check air transports statistics by country";
+const string Menu::GLOBAL_STATISTICS = "Check global statistics";
+const string Menu::STATISTICS_BY_COUNTRY = "Check statistics per country";
 const string Menu::ARTICULATION_POINTS = "Check articulation points in the flight map";
 const string Menu::CONNECTED_COMPONENTS = "Check number of connected components in the flight map";
 
