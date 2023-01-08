@@ -166,7 +166,12 @@ public:
      */
     int diameter();
 
-
+    /** @brief Visits all airports through depth first search.
+     *
+     * @param airport
+     *
+     * @return void
+     */
     void dfs(AirportPTR airport);
 
     int connectedComponents();
