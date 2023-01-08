@@ -41,11 +41,8 @@ public:
     //! @brief Holds the airport longitude.
     float longitude;
 
-    //-----------------------------------------
-
     //! @brief Holds the distance from the source airport.
     int dist;
-
 
     //! @brief Holds the flight that depart from the airport.
     list<Flight> flights;
@@ -62,10 +59,8 @@ public:
     //! @brief Holds the low from the airport.
     int low;
 
-    //! @brief Holds true if airport is in the stack of false if otherwise.
+    //! @brief Holds true if airport is in the stack or false if otherwise.
     bool inStack;
-
-    //----------------------------------------
 
     /** Create a new Airport with a code, a name, a city, a country, a latitude and a longitude.
      *
@@ -130,9 +125,10 @@ public:
 
 /** @brief Operator overload.
  *
- * Compare if two airports have the same code.
+ * Compares if two airports have the same code.
  *
- * @param airport of type const Airport.
+ * @param airport1 Of type const AirportPTR, by reference.
+ * @param airport2 Of type const AirportPTR, by reference.
  * @return True if the codes are equals.
  */
 bool operator ==(const AirportPTR& airport1, const AirportPTR& airport2);

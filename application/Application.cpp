@@ -8,9 +8,7 @@
 #include "../Graph/Locals/Coordinates.h"
 #include <stdexcept>
 
-
 Application::Application() {}
-
 
 void Application::startApplication() {
     database->read();
@@ -71,7 +69,6 @@ void Application::statisticsMenuSafety(std::string &option, int &safeOption) {
         safeInput(option, safeOption);
     }
 }
-
 
 void Application::maxYFlightsMenuSafety(std::string &option, int &safeOption) {
     while (!safeOption) {
@@ -149,18 +146,18 @@ void Application::displayMaxYFlightsMenu(int &oldOption) {
         if (!fail) {
             switch (safeOption) {
                 case MAX_AIRPORTS: {
-                    listingApplication.numberReachableAirports(local, y);
                     listingApplication.showReachableAirports(local, y);
+                    numbersApplication.numberReachableAirports(local, y);
                     break;
                 }
                 case MAX_CITIES: {
-                    listingApplication.numberReachableCities(local, y);
                     listingApplication.showReachableCities(local, y);
+                    numbersApplication.numberReachableCities(local, y);
                     break;
                 }
                 case MAX_COUNTRIES: {
-                    listingApplication.numberReachableCountries(local, y);
                     listingApplication.showReachableCountries(local, y);
+                    numbersApplication.numberReachableCountries(local, y);
                     break;
                 }
                 default: {
@@ -192,7 +189,7 @@ void Application::filterNetworkTrajectories(int &oldOption) {
             }
             case FILTER_AIRLINES: {
                 string tempOption;
-                database
+                database;
                 while (tempOption != "Q" && tempOption != "q") {
                     cout << "Enter an Airline code to add to the filter or Q to exit: ";
 
@@ -383,13 +380,11 @@ void Application::displayStatisticsMenu(int &oldOption) {
                 break;
             }
             case ARTICULATION_POINTS: {
-
                 listingApplication.listArticulationPoints();
                 break;
             }
             case CONNECTED_COMPONENTS: {
-
-                listingApplication.showNumberOfComponents();
+                numbersApplication.showNumberOfComponents();
                 break;
             }
             default: {
@@ -445,12 +440,6 @@ void Application::displayMenu() {
         menuSafety(option, safeOption);
     }
     cout << menu.QUIT_MESSAGE << endl;
-}
-
-bool is_number(const std::string &s) {
-    std::string::const_iterator it = s.begin();
-    while (it != s.end() && std::isdigit(*it)) ++it;
-    return !s.empty() && it == s.end();
 }
 
 

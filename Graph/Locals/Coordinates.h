@@ -7,7 +7,6 @@
 #ifndef AED_FEUP_PROJ_2_22_23_COORDINATES_H
 #define AED_FEUP_PROJ_2_22_23_COORDINATES_H
 
-
 #include "Local.h"
 
 /** @brief Coordinates class to represent distances.
@@ -38,11 +37,10 @@ public:
 
     /** @brief Returns a list of airports.
      *
-     * @param flightMap of FlightMapPtr type.
+     * @param flightMap of FlightMap type.
      * @return list<AirportPTR> of airports.
      */
     list<AirportPTR> getAirports(FlightMap* flightMap) override;
 };
-
 
 #endif //AED_FEUP_PROJ_2_22_23_COORDINATES_H

@@ -15,11 +15,9 @@ bool operator<(const AirportPTR &airport1, const AirportPTR &airport2) {
 }
 
 void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination) {
-
     auto trajectories = database->getTrajectories(origin, destination);
 
     for (auto trajectory: trajectories) {
-
         cout << trajectory.first->name << "," << trajectory.first->city;
 
         for (Flight flight: trajectory.second) {
@@ -28,7 +26,6 @@ void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination)
 
             cout << " -> " << destination->name << ',' << destination->city;
         }
-
         cout << endl << "(";
 
         for (auto it = trajectory.second.begin(); it != trajectory.second.end(); it++) {
@@ -42,14 +39,11 @@ void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination)
             if (it != --trajectory.second.end())
                 cout << " , ";
         }
-
         cout << ")" << endl << endl;
     }
-
 }
 
 void ListingApplication::listFlights(std::string airportCode) {
-
     AirportPTR airport = database->getAirport(airportCode);
 
     string title = "======= " + airport->name + "'s flights =======\n";
@@ -66,11 +60,9 @@ void ListingApplication::listFlights(std::string airportCode) {
 
         std::cout << airline << " | " << airportName << ',' << city << ',' << country << std::endl;
     }
-
 }
 
 void ListingApplication::listAirlines(std::string airportCode) {
-
     AirportPTR airport = database->getAirport(airportCode);
 
     string title = "======= " + airport->name + "'s available airlines =======\n";
@@ -78,7 +70,6 @@ void ListingApplication::listAirlines(std::string airportCode) {
     std::cout << "Name, Call Sign, Country \n\n";
 
     unordered_set<string> airlines;
-
 
     for (Flight flight: airport->getFlights()) {
         airlines.insert(flight.airlineCode);
@@ -91,7 +82,6 @@ void ListingApplication::listAirlines(std::string airportCode) {
 }
 
 void ListingApplication::listCities(std::string airportCode) {
-
     AirportPTR airport = database->getAirport(airportCode);
 
     string title = "======= " + airport->name + "'s reachable countries =======\n";
@@ -111,7 +101,6 @@ void ListingApplication::listCities(std::string airportCode) {
 }
 
 void ListingApplication::listCountries(std::string code) {
-
     AirportPTR airport = database->getAirport(code);
 
     string title = "======= " + airport->name + "'s reachable countries =======\n";
@@ -219,19 +208,15 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
     }
 }
 
-
 void ListingApplication::showReachableAirports(LocalPTR local, int y) {
-
     string title = "=========== Reachable Airports ==========\n\n";
 
     for (AirportPTR airport: database->airportsWithMaxYFlights(local, y)) {
         cout << airport->name + "," + airport->city + "," + airport->country << endl;
     }
-
 }
 
 void ListingApplication::showReachableCities(LocalPTR local, int y) {
-
     string title = "=========== Reachable Cities ==========\n\n";
 
     for (City city: database->citiesWithMaxYFlights(local, y)) {
@@ -240,49 +225,21 @@ void ListingApplication::showReachableCities(LocalPTR local, int y) {
 }
 
 void ListingApplication::showReachableCountries(LocalPTR local, int y) {
-
     string title = "=========== Reachable Countries ==========\n\n";
 
     for (string country: database->countriesWithMaxYFlights(local, y)) {
         cout << country << endl;
     }
-
     cout << endl;
 }
 
-void ListingApplication::numberReachableAirports(LocalPTR local, int y) {
-    int number = database->airportsWithMaxYFlights(local, y).size();
-
-    cout << "Number of reachable airports: " << number << endl;
-}
-
-void ListingApplication::numberReachableCities(LocalPTR local, int y) {
-    int number = database->citiesWithMaxYFlights(local, y).size();
-
-    cout << "Number of reachable cities: " << number << endl;
-
-}
-
-void ListingApplication::numberReachableCountries(LocalPTR local, int y) {
-    int number = database->countriesWithMaxYFlights(local, y).size();
-
-    cout << "Number of reachable countries: " << number << endl;
-}
-
 void ListingApplication::listArticulationPoints(){
-
     auto articulationPoints = database->getArticulationPoints();
-
     cout << "Airports that serve as articulation points:\n\n";
+
     for (AirportPTR airport: articulationPoints){
         cout << airport->name << "," << airport->city << "," << airport->country << endl;
     }
-
     cout << endl << "Total of " << articulationPoints.size() << " articulation points.";
-}
-
-void ListingApplication::showNumberOfComponents() {
-
-    cout << "Number of connected components: " << database->getConnectedComponents() << endl;
 }
 

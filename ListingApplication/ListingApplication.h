@@ -85,22 +85,41 @@ public:
      */
     void statisticPerCountry(std::string country, int k);
 
+    /** @brief Lists the reachable airports from a Local.
+     *
+     * A local can be am airport, a city or coordinates.
+     *
+     * @param local Of LocalPTR type.
+     * @param y Of int type.
+     * @return Void.
+     */
     void showReachableAirports(LocalPTR local, int y);
 
+    /** @brief Lists the reachable cities from a Local.
+     *
+     * A local can be am airport, a city or coordinates.
+     *
+     * @param local Of LocalPTR type.
+     * @param y Of int type.
+     * @return Void.
+     */
     void showReachableCities(LocalPTR local, int y);
 
+    /** @brief Lists the reachable countries from a Local.
+     *
+     * A local can be am airport, a city or coordinates.
+     *
+     * @param local Of LocalPTR type.
+     * @param y Of int type.
+     * @return Void.
+     */
     void showReachableCountries(LocalPTR local, int y);
 
-    void numberReachableAirports(LocalPTR local, int y);
-
-    void numberReachableCities(LocalPTR local, int y);
-
-    void numberReachableCountries(LocalPTR local, int y);
-
+    /** @brief Lists the articulation points.
+     *
+     * @return Void.
+     */
     void listArticulationPoints();
-
-    void showNumberOfComponents();
 };
-
 
 #endif //AED_FEUP_PROJ_2_22_23_LISTINGAPPLICATION_H

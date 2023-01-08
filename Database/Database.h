@@ -101,69 +101,85 @@ public:
     */
     AirportsPerCity_Set getAirportsPerCity();
 
-    /** Returns all airports.
+    /** @brief Returns all airports.
      *
      * @return unordered_map<string, AirportPTR> with airports.
      */
     unordered_map<string, AirportPTR> getAirports();
 
-    /** Returns all airlines.
+    /** @brief Returns all airlines.
      *
      * @return unordered_map<string, Airline> with airlines.
      */
     unordered_map<string, Airline> getAirlines();
 
-    /** Invoke diameter from FlightMap class.
+    /** @brief Invoke diameter from FlightMap class.
      *
      * @return int.
      */
     int diameter();
 
-    /** Returns a list of list of flights to showcase possible trajectories
+    /** @brief Returns a list of list of flights to showcase possible trajectories
      * by origin and destination, for all airlines.
      *
-     * @param origin
-     * @param destination
-     * @return list<list<Flight>> with the rajectories by origin and destination.
+     * @param origin Of LocalPTR type.
+     * @param destination Of LocalPTR type.
+     * @return list<list<Flight>> with the trajectories by origin and destination.
      */
     list<pair<AirportPTR, list<Flight>>> getTrajectories(LocalPTR origin, LocalPTR destination);
 
-    /** Invokes getTrajectoriesAllAirlines from FlightMap class.
+    /** @brief Invokes getTrajectoriesAllAirlines from FlightMap class.
      *
-     * @param origin
-     * @param destination
+     * @param origin Of LocalPTR type.
+     * @param destination Of int type.
      * @return set of reachable airports, of type unordered_set<AirportPTR>.
      */
     unordered_set<AirportPTR> airportsWithMaxYFlights(LocalPTR origin, int y);
 
-    /** Invokes getTrajectoriesAllAirlines from FlightMap class.
+    /** @brief Invokes getTrajectoriesAllAirlines from FlightMap class.
      *
-     * @param origin
-     * @param destination
+     * @param origin Of LocalPTR type.
+     * @param destination Of int type.
      * @return set of reachable cities, of type unordered_set<City, City::hashFunction>.
      */
     unordered_set<City, City::hashFunction> citiesWithMaxYFlights(LocalPTR origin, int y);
 
-    /** Invokes getTrajectoriesAllAirlines from FlightMap class.
+    /** @brief Invokes getTrajectoriesAllAirlines from FlightMap class.
      *
-     * @param origin
-     * @param destination
+     * @param origin Of LocalPTR type.
+     * @param destination Of int type.
      * @return set of reachable countries, of type unordered_set<string>.
      */
     unordered_set<string> countriesWithMaxYFlights(LocalPTR origin, int y);
 
-    /** Returns the flight map pointer to use outside database class..
+    /** @brief Returns the flight map pointer to use outside database class.
      *
-     * @return  FlightMapPtr.
+     * @return FlightMapPtr.
      */
     FlightMapPtr getFlightMapPtr();
 
+    /** @brief Returns a list of articulation points.
+     *
+     * @return list<AirportPTR> of airports.
+     */
     list<AirportPTR> getArticulationPoints();
 
+    /** @brief Returns the number of connected components.
+     *
+     * @return int number.
+     */
     int getConnectedComponents();
 
-    list<pair<AirportPTR, list<Flight>>>
-    getTrajectories(LocalPTR origin, LocalPTR destination, unordered_set<string> airlines);
+    /** @brief Returns a list of trajectories.
+     *
+     * @param origin Of LocalPTR type.
+     * @param destination Of LocalPTR type.
+     * @param airlines Of unordered_set<string> type.
+     * @return list<pair<AirportPTR, list<Flight>>>.
+     */
+    list<pair<AirportPTR, list<Flight>>>getTrajectories(LocalPTR origin,
+                                                        LocalPTR destination,
+                                                        unordered_set<string> airlines);
 };
 
 #endif //AED_FEUP_PROJ_22_23_DATABASE_H

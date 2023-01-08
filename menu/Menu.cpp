@@ -85,7 +85,6 @@ void Menu::displayMenu() {
     cout << "Insert option number > ";
 }
 
-
 void Menu::displaySearchInfoMenu() {
 
     cout << endl;
@@ -98,7 +97,6 @@ void Menu::displaySearchInfoMenu() {
     cout << "9 - " << GO_BACK << endl;
     cout << "Insert option number > ";
 }
-
 
 void Menu::breakLine() {
     cout << "\n" << endl;

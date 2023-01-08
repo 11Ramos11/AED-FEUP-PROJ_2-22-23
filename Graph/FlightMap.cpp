@@ -137,7 +137,6 @@ list<pair<AirportPTR, list<Flight>>> FlightMap::getFlights(LocalPTR origin,
 }
 
 unordered_set<AirportPTR> FlightMap::reachableAirports(AirportPTR airportPtr, int y) {
-
     for (auto pair: airports){
         AirportPTR airport = pair.second;
         airport->visited = false;
@@ -173,8 +172,8 @@ unordered_set<AirportPTR> FlightMap::reachableAirports(AirportPTR airportPtr, in
 }
 
 unordered_set<AirportPTR> FlightMap::airportsWithMaxYFlights(LocalPTR origin, int y){
-
     unordered_set<AirportPTR> airports;
+
     for (AirportPTR airport: origin->getAirports(this)) {
 
         for (AirportPTR destination: reachableAirports(airport, y)) {
@@ -185,10 +184,9 @@ unordered_set<AirportPTR> FlightMap::airportsWithMaxYFlights(LocalPTR origin, in
 }
 
 unordered_set<City, City::hashFunction> FlightMap::citiesWithMaxYFlights(LocalPTR origin, int y){
-
     unordered_set<City, City::hashFunction> cities;
-    for (AirportPTR airport: origin->getAirports(this)) {
 
+    for (AirportPTR airport: origin->getAirports(this)) {
         for (AirportPTR destination: reachableAirports(airport, y)) {
             City city = {destination->city, airport->country};
             cities.insert(city);
@@ -198,12 +196,10 @@ unordered_set<City, City::hashFunction> FlightMap::citiesWithMaxYFlights(LocalPT
 }
 
 unordered_set<string> FlightMap::countriesWithMaxYFlights(LocalPTR origin, int y){
-
     unordered_set<string> countriesNames;
+
     for (AirportPTR airport: origin->getAirports(this)) {
-
         auto airports = reachableAirports(airport, y);
-
         for (AirportPTR destination: airports) {
             string country = destination->country;
             countriesNames.insert(country);
@@ -212,8 +208,8 @@ unordered_set<string> FlightMap::countriesWithMaxYFlights(LocalPTR origin, int y
     return countriesNames;
 }
 
-void
-FlightMap::dfsArticulationPoints(AirportPTR airport, int &index, stack<AirportPTR> &stack, list<AirportPTR> &answer) {
+void FlightMap::dfsArticulationPoints(AirportPTR airport, int &index,
+                                      stack<AirportPTR> &stack, list<AirportPTR> &answer) {
     airport->visited = true;
     airport->num = airport->low = index++;
     stack.push(airport);
@@ -298,10 +294,8 @@ void FlightMap::diameterBFS(AirportPTR airportDepart, int& diameter){
 }
 
 int FlightMap::diameter() {
-
     int diameter = INT_MIN;
 
-    int backup = INT_MIN;
     AirportPTR startAirport = airports.begin()->second;
     AirportPTR furthestAirport;
 
@@ -309,7 +303,6 @@ int FlightMap::diameter() {
         AirportPTR airport = pair.second;
         diameterBFS(airport, diameter);
     }
-
     return diameter;
 }
 
@@ -321,8 +314,6 @@ void FlightMap::dfs(AirportPTR airport) {
             dfs(destination);
     }
 }
-
-
 
 int FlightMap::connectedComponents() {
     int counter = 0;

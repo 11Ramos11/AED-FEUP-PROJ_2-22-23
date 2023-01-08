@@ -6,7 +6,6 @@
 #ifndef AED_FEUP_PROJ_2_22_23_LOCAL_H
 #define AED_FEUP_PROJ_2_22_23_LOCAL_H
 
-
 #include "../Airport/Airport.h"
 
 /** @brief Local class to represent a local.
@@ -23,6 +22,5 @@ public:
      */
     virtual list<AirportPTR > getAirports(FlightMap *flightMap) = 0;
 };
-
 
 #endif //AED_FEUP_PROJ_2_22_23_LOCAL_H

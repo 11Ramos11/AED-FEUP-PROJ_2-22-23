@@ -45,7 +45,7 @@ void test4(){
 
     LocalPTR local = make_shared<AirportLocal>("OPO");
 
-    listingApplication.numberReachableCountries(local, 1);
+    //listingApplication.numberReachableCountries(local, 1);
 }
 
 void test6(){

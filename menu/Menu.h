@@ -149,7 +149,6 @@ public:
      */
     void displayMenu();
 
-
     /** @brief Displays the filtered local menu.
     *
     * @return Void.
@@ -174,7 +173,6 @@ public:
      */
     void displayNumbersMenu();
 
-
     /** @brief Displays the menu with max Y flights options.
     *
     * @return Void.
@@ -193,14 +191,11 @@ public:
      */
     void displayNetworkMenu();
 
-
     /** @brief Displays the air transports statistics menu.
      *
      * @return Void.
      */
     void displayStatisticsMenu();
-
-
 };
 
 #endif //AED_FEUP_PROJ_2_22_23_MENU_H

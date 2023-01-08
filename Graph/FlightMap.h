@@ -62,7 +62,7 @@ public:
 
     /** @brief Sets the airportsPerCity to the given argument.
      *
-     * @param airports of const unordered_map<City,  unordered_set<AirportPTR>> type.
+     * @param airportsPerCity of AirportsPerCity_Set type.
      * @return Void.
      */
     void setAirportsPerCity(AirportsPerCity_Set airportsPerCity);
@@ -73,7 +73,7 @@ public:
      *
      * @param airportDepart of AirportPTR type.
      * @param airportDestination of AirportPTR type.
-     * @param airlines of unordered_set<string>
+     * @param airlines of unordered_set<string> type.
      * @return One or more lists with the minors airport paths.
      */
     int minimumDistance(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines);
@@ -84,21 +84,24 @@ public:
      *
      * @param airportDepart of AirportPTR type.
      * @param airportDestination of AirportPTR type.
-     * @param airlines of unordered_set<string>
+     * @param airlines of unordered_set<string> type.
+     * @param minimumFlights of int type.
      * @return One or more lists with the minors airport paths.
      */
-    list<list<Flight>> getTrajectories(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines, int minimumFlights);
+    list<list<Flight>> getTrajectories(AirportPTR airportDepart, AirportPTR airportDestination,
+                                       unordered_set<string> airlines, int minimumFlights);
 
     /** @brief Represents the minor flights using an specific local.
      *
      * The local can be an airport, a city or a pair of coordinates.
      *
-     * @param origin of Local type.
-     * @param destination of Local type.
+     * @param origin of LocalPTR type.
+     * @param destination of LocalPTR type.
      * @param airlines of unordered_set<string> type.
      * @return list<list<Flight>> of flights.
      */
-    list<pair<AirportPTR, list<Flight>>> getFlights(LocalPTR origin, LocalPTR destination, unordered_set<string> airlines);
+    list<pair<AirportPTR, list<Flight>>> getFlights(LocalPTR origin, LocalPTR destination,
+                                                    unordered_set<string> airlines);
 
     /** @brief Represents all airports that can be reachable from another specific one.
      *
@@ -145,10 +148,10 @@ public:
      * It uses the DFS implementation.
      *
      * @param airport of AirportPTR type.
-     * @param index of int type.
-     * @param stack of stack<AirportPTR> type.
-     * @param answer of list<AirportPTR> type.
-     * @return Number of countries.
+     * @param index of int type, by reference.
+     * @param stack of stack<AirportPTR> type, by reference.
+     * @param answer of list<AirportPTR> type, by reference.
+     * @return Void.
      */
     void dfsArticulationPoints(AirportPTR airport, int &index, stack<AirportPTR> &stack, list<AirportPTR> &answer);
 
@@ -160,25 +163,34 @@ public:
      */
     list<AirportPTR> articulationPoints();
 
+    /** @brief Updates the maximum diameter.
+     *
+     * @param airportDepart Of AirportPTR type.
+     * @param diameter Of int type, by reference.
+     * @return Void.
+     */
+    void diameterBFS(AirportPTR airportDepart, int &diameter);
+
     /** @brief Represents the diameter of the graph.
      *
      * @return diameter of int type.
      */
     int diameter();
 
-    /** @brief Visits all airports through depth first search.
+    /** @brief Visits all airports through depth first search(BFS).
      *
-     * @param airport
-     *
-     * @return void
+     * @param airport Of AirportPTR type.
+     * @return void.
      */
     void dfs(AirportPTR airport);
 
+    /** @brief Represents the number of connected components.
+     *
+     * It uses the DFS implementation.
+     *
+     * @return int number.
+     */
     int connectedComponents();
-
-    void diameterBFS(AirportPTR airportDepart, AirportPTR &furthest, int& diameter);
-
-    void diameterBFS(AirportPTR airportDepart, int &diameter);
 };
 
 #endif
