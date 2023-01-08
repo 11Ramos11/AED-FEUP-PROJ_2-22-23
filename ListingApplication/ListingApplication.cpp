@@ -269,3 +269,20 @@ void ListingApplication::numberReachableCountries(LocalPTR local, int y) {
     cout << "Number of reachable countries: " << number << endl;
 }
 
+void ListingApplication::listArticulationPoints(){
+
+    auto articulationPoints = database->getArticulationPoints();
+
+    cout << "Airports that serve as articulation points:\n\n";
+    for (AirportPTR airport: articulationPoints){
+        cout << airport->name << "," << airport->city << "," << airport->country << endl;
+    }
+
+    cout << endl << "Total of " << articulationPoints.size() << " articulation points.";
+}
+
+void ListingApplication::showNumberOfComponents() {
+
+    cout << "Number of connected components: " << database->getConnectedComponents() << endl;
+}
+

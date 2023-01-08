@@ -40,7 +40,7 @@ private:
 
     //! @brief enum with the Statistics options.
     enum {
-        GLOBAL_STATISTICS = 1, STATISTICS_BY_COUNTRY = 2
+        GLOBAL_STATISTICS = 1, STATISTICS_BY_COUNTRY = 2, ARTICULATION_POINTS = 3, CONNECTED_COMPONENTS = 4
     };
 
 

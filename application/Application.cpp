@@ -340,6 +340,16 @@ void Application::displayStatisticsMenu(int &oldOption) {
                 listingApplication.statisticPerCountry(country, k);
                 break;
             }
+            case ARTICULATION_POINTS: {
+
+                listingApplication.listArticulationPoints();
+                break;
+            }
+            case CONNECTED_COMPONENTS: {
+
+                listingApplication.showNumberOfComponents();
+                break;
+            }
             default: {
                 menu.breakLine();
                 menu.getWrongMessage();

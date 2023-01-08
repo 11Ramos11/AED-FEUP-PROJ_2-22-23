@@ -36,6 +36,8 @@ const string Menu::TRAJECTORIES_BY_COORDS = "By Coordinates";
 
 const string Menu::GLOBAL_STATISTICS = "Check global air transports statistics";
 const string Menu::STATISTICS_BY_COUNTRY = "Check air transports statistics by country";
+const string Menu::ARTICULATION_POINTS = "Check articulation points in the flight map";
+const string Menu::CONNECTED_COMPONENTS = "Check number of connected components in the flight map";
 
 const string Menu::AIRPORT_FLIGHTS = "List flights by airport";
 const string Menu::AIRPORT_AIRLINES = "List airlines by airport";
@@ -157,6 +159,8 @@ void Menu::displayStatisticsMenu() {
     cout << "=============================================" << endl;
     cout << "1 - " << GLOBAL_STATISTICS << endl;
     cout << "2 - " << STATISTICS_BY_COUNTRY << endl;
+    cout << "3 - " << ARTICULATION_POINTS << endl;
+    cout << "4 - " << CONNECTED_COMPONENTS << endl;
     cout << "9 - " << GO_BACK << endl;
     cout << "Insert option number > ";
 }
