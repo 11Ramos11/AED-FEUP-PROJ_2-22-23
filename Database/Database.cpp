@@ -132,11 +132,11 @@ list<pair<AirportPTR, list<Flight>>> Database::getTrajectories(LocalPTR origin, 
     return flightMap->getFlights(origin, destination, airlinesCodes);
 }
 
-list<pair<AirportPTR, list<Flight>>> Database::getTrajectories(LocalPTR origin, LocalPTR destination, unordered_set<string> airlines) {
+list<pair<AirportPTR, list<Flight>>>
+Database::getTrajectories(LocalPTR origin, LocalPTR destination, unordered_set<string> airlines) {
 
-    unordered_set<string> airlinesCodes;
 
-    return flightMap->getFlights(origin, destination, airlinesCodes);
+    return flightMap->getFlights(origin, destination, airlines);
 }
 
 FlightMapPtr Database::getFlightMapPtr() {

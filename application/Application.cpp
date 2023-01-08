@@ -192,11 +192,29 @@ void Application::filterNetworkTrajectories(int &oldOption) {
             }
             case FILTER_AIRLINES: {
                 string tempOption;
-                database
+                unordered_set<string> airlines;
                 while (tempOption != "Q" && tempOption != "q") {
+                    menu.breakLine();
+                    if (!airlines.empty()) {
+                        cout << "Filter contains " << airlines.size() << " airlines..." << endl;
+                        for (auto a: airlines)
+                            cout << a << endl;
+                        menu.breakLine();
+                    }
                     cout << "Enter an Airline code to add to the filter or Q to exit: ";
-
+                    cin >> tempOption;
+                    if (tempOption != "Q" && tempOption != "q")
+                        airlines.insert(tempOption);
                 }
+                LocalPTR origin, destination;
+                safeOption = 0;
+                localMenuSafety(option, safeOption, "Origin");
+                getLocal(safeOption, fail, origin, "Origin");
+                safeOption = 0;
+                localMenuSafety(option, safeOption, "Destination");
+                getLocal(safeOption, fail, destination, "Destination");
+                listingApplication.showTrajectories(origin, destination, true, airlines);
+                menu.breakLine();
                 break;
             }
             default: {
@@ -311,7 +329,7 @@ void Application::displayTrajectoriesMenu(int &oldOption) {
         localMenuSafety(option, safeOption, "Destination");
         getLocal(safeOption, fail, destination, "Destination");
         if (!fail)
-            listingApplication.showTrajectories(origin, destination);
+            listingApplication.showTrajectories(origin, destination, false, {});
         menu.breakLine();
         safeOption = 0;
         localMenuSafety(option, safeOption, "Origin");

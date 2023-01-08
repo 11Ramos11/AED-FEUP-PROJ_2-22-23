@@ -8,6 +8,8 @@
 #define AED_FEUP_PROJ_2_22_23_LISTINGAPPLICATION_H
 
 
+#include <list>
+#include <unordered_set>
 #include "../Pointers.h"
 #include "../Graph/City/City.h"
 
@@ -33,7 +35,8 @@ public:
      * @param destination of LocalPTR type.
      * @return Void.
      */
-    void showTrajectories(LocalPTR origin, LocalPTR destination);
+    void showTrajectories(LocalPTR origin, LocalPTR destination, bool hasFilter,
+                          unordered_set <string> airlines);
 
     /** @brief Lists the flights of an airport.
      *

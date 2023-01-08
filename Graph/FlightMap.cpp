@@ -27,7 +27,8 @@ AirportsPerCity_Set FlightMap::getAirportsPerCity() {
     return airportsPerCity;
 }
 
-int FlightMap::minimumDistance(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines){
+int
+FlightMap::minimumDistance(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines) {
     for (auto pair: airports) {
         AirportPTR airport = pair.second;
         airport->visited = false;
@@ -62,10 +63,10 @@ int FlightMap::minimumDistance(AirportPTR airportDepart, AirportPTR airportDesti
     return -1;
 }
 
-list<list<Flight>>FlightMap::getTrajectories(AirportPTR airportDepart,
-                                             AirportPTR airportDestination,
-                                             unordered_set<string> airlines,
-                                             int minimumFlights) {
+list<list<Flight>> FlightMap::getTrajectories(AirportPTR airportDepart,
+                                              AirportPTR airportDestination,
+                                              unordered_set<string> airlines,
+                                              int minimumFlights) {
 
     list<list<Flight>> paths;
 
@@ -138,7 +139,7 @@ list<pair<AirportPTR, list<Flight>>> FlightMap::getFlights(LocalPTR origin,
 
 unordered_set<AirportPTR> FlightMap::reachableAirports(AirportPTR airportPtr, int y) {
 
-    for (auto pair: airports){
+    for (auto pair: airports) {
         AirportPTR airport = pair.second;
         airport->visited = false;
         airport->dist = 0;
@@ -172,7 +173,7 @@ unordered_set<AirportPTR> FlightMap::reachableAirports(AirportPTR airportPtr, in
     return reachableAirports;
 }
 
-unordered_set<AirportPTR> FlightMap::airportsWithMaxYFlights(LocalPTR origin, int y){
+unordered_set<AirportPTR> FlightMap::airportsWithMaxYFlights(LocalPTR origin, int y) {
 
     unordered_set<AirportPTR> airports;
     for (AirportPTR airport: origin->getAirports(this)) {
@@ -184,7 +185,7 @@ unordered_set<AirportPTR> FlightMap::airportsWithMaxYFlights(LocalPTR origin, in
     return airports;
 }
 
-unordered_set<City, City::hashFunction> FlightMap::citiesWithMaxYFlights(LocalPTR origin, int y){
+unordered_set<City, City::hashFunction> FlightMap::citiesWithMaxYFlights(LocalPTR origin, int y) {
 
     unordered_set<City, City::hashFunction> cities;
     for (AirportPTR airport: origin->getAirports(this)) {
@@ -197,7 +198,7 @@ unordered_set<City, City::hashFunction> FlightMap::citiesWithMaxYFlights(LocalPT
     return cities;
 }
 
-unordered_set<string> FlightMap::countriesWithMaxYFlights(LocalPTR origin, int y){
+unordered_set<string> FlightMap::countriesWithMaxYFlights(LocalPTR origin, int y) {
 
     unordered_set<string> countriesNames;
     for (AirportPTR airport: origin->getAirports(this)) {
@@ -266,7 +267,7 @@ list<AirportPTR> FlightMap::articulationPoints() {
     return answer;
 }
 
-void FlightMap::diameterBFS(AirportPTR airportDepart, int& diameter){
+void FlightMap::diameterBFS(AirportPTR airportDepart, int &diameter) {
     for (auto pair: airports) {
         AirportPTR airport = pair.second;
         airport->visited = false;
@@ -287,7 +288,7 @@ void FlightMap::diameterBFS(AirportPTR airportDepart, int& diameter){
 
             if (!destination->visited) {
                 destination->dist = previousAirport->dist + 1;
-                if (destination->dist > diameter){
+                if (destination->dist > diameter) {
                     diameter = destination->dist;
                 }
                 unvisitedAirports.push(destination);
@@ -305,7 +306,7 @@ int FlightMap::diameter() {
     AirportPTR startAirport = airports.begin()->second;
     AirportPTR furthestAirport;
 
-    for (auto pair: airports){
+    for (auto pair: airports) {
         AirportPTR airport = pair.second;
         diameterBFS(airport, diameter);
     }
@@ -317,22 +318,21 @@ void FlightMap::dfs(AirportPTR airport) {
     airport->visited = true;
     for (Flight flight: airport->flights) {
         AirportPTR destination = airports[flight.destinationCode];
-        if(!destination->visited)
+        if (!destination->visited)
             dfs(destination);
     }
 }
 
 
-
 int FlightMap::connectedComponents() {
     int counter = 0;
-    for(auto pair: airports)
+    for (auto pair: airports)
         pair.second->visited = false;
 
-    for(auto pair: airports)
-    if(!pair.second->visited) {
-        counter ++;
-        dfs(pair.second);
-    }
+    for (auto pair: airports)
+        if (!pair.second->visited) {
+            counter++;
+            dfs(pair.second);
+        }
     return counter;
 }

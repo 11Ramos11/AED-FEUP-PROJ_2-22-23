@@ -2,7 +2,7 @@
 #include "application/Application.h"
 #include "Graph/Locals/Coordinates.h"
 
-void test1(){
+void test1() {
     DatabasePTR database = make_shared<Database>();
     database->read();
     ListingApplication listingApplication(database);
@@ -10,10 +10,10 @@ void test1(){
     LocalPTR origin = make_shared<AirportLocal>("OPO");
     LocalPTR destination = make_shared<AirportLocal>("LIS");
 
-    listingApplication.showTrajectories(origin, destination);
+    listingApplication.showTrajectories(origin, destination, false, {});
 }
 
-void test2(){
+void test2() {
     DatabasePTR database = make_shared<Database>();
     database->read();
     ListingApplication listingApplication(database);
@@ -22,10 +22,10 @@ void test2(){
     LocalPTR destination = make_shared<CityLocal>(City("London", "United Kingdom"));
     LocalPTR origin = make_shared<CityLocal>(City("Porto", "Portugal"));
 
-    listingApplication.showTrajectories(origin, destination);
+    listingApplication.showTrajectories(origin, destination, false, {});
 }
 
-void test3(){
+void test3() {
     DatabasePTR database = make_shared<Database>();
     database->read();
     ListingApplication listingApplication(database);
@@ -34,10 +34,10 @@ void test3(){
     LocalPTR origin = make_shared<Coordinates>(Coordinates(48.8584, 2.2944, 30));
     LocalPTR destination = make_shared<Coordinates>(Coordinates(40.6894, -74.0444, 30));
 
-    listingApplication.showTrajectories(origin, destination);
+    listingApplication.showTrajectories(origin, destination, false, {});
 }
 
-void test4(){
+void test4() {
     DatabasePTR database = make_shared<Database>();
     database->read();
     ListingApplication listingApplication(database);
@@ -48,16 +48,16 @@ void test4(){
     listingApplication.numberReachableCountries(local, 1);
 }
 
-void test6(){
+void test6() {
     DatabasePTR database = make_shared<Database>();
     database->read();
     ListingApplication listingApplication(database);
 
 
-   listingApplication.listAirportsByCity({"Porto", "Portugal"});
+    listingApplication.listAirportsByCity({"Porto", "Portugal"});
 }
 
-void test7(){
+void test7() {
     DatabasePTR database = make_shared<Database>();
     database->read();
     ListingApplication listingApplication(database);
@@ -68,7 +68,7 @@ void test7(){
     cout << endl << "Number of articulation points: " << n.size() << endl << endl;
 }
 
-void test8(){
+void test8() {
     DatabasePTR database = make_shared<Database>();
     database->read();
     ListingApplication listingApplication(database);

@@ -14,9 +14,14 @@ bool operator<(const AirportPTR &airport1, const AirportPTR &airport2) {
     return airport1->getFlights().size() < airport2->getFlights().size();
 }
 
-void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination) {
+void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination, bool hasFilter,
+                                          unordered_set<string> airlines) {
 
-    auto trajectories = database->getTrajectories(origin, destination);
+    list<pair<AirportPTR, list<Flight>>> trajectories;
+    if (hasFilter)
+        trajectories = database->getTrajectories(origin, destination, airlines);
+    else
+        trajectories = database->getTrajectories(origin, destination);
 
     for (auto trajectory: trajectories) {
 
@@ -269,12 +274,12 @@ void ListingApplication::numberReachableCountries(LocalPTR local, int y) {
     cout << "Number of reachable countries: " << number << endl;
 }
 
-void ListingApplication::listArticulationPoints(){
+void ListingApplication::listArticulationPoints() {
 
     auto articulationPoints = database->getArticulationPoints();
 
     cout << "Airports that serve as articulation points:\n\n";
-    for (AirportPTR airport: articulationPoints){
+    for (AirportPTR airport: articulationPoints) {
         cout << airport->name << "," << airport->city << "," << airport->country << endl;
     }
 
