@@ -146,6 +146,8 @@ public:
     /** @brief Represents the auxiliary code to calculate articulation points.
      *
      * It uses the DFS implementation.
+     * Temporal Complexity : O(|A| + |F|), A represents the number
+     * of airports and F represents the number of flights.
      *
      * @param airport of AirportPTR type.
      * @param index of int type, by reference.
@@ -158,12 +160,17 @@ public:
     /** @brief Represents the articulation points.
      *
      * It uses the "dfsArticulationPoints" method.
+     * Temporal Complexity : O(|A| + |F|), A represents the number
+     * of airports and F represents the number of flights.
      *
      * @return List of airports.
      */
     list<AirportPTR> articulationPoints();
 
     /** @brief Updates the maximum diameter.
+     *
+     * Temporal Complexity : O(|A| + |F|), A represents the number
+     * of airports and F represents the number of flights.
      *
      * @param airportDepart Of AirportPTR type.
      * @param diameter Of int type, by reference.
@@ -173,11 +180,17 @@ public:
 
     /** @brief Represents the diameter of the graph.
      *
+     * Temporal Complexity : O(|A|(|A|+|F|)), A represents the number
+     * of airports and F represents the number of flights.
+     *
      * @return diameter of int type.
      */
     int diameter();
 
     /** @brief Visits all airports through depth first search(BFS).
+     *
+     * Temporal Complexity : O(|A| + |F|), A represents the number
+     * of airports and F represents the number of flights.
      *
      * @param airport Of AirportPTR type.
      * @return void.
@@ -187,6 +200,8 @@ public:
     /** @brief Represents the number of connected components.
      *
      * It uses the DFS implementation.
+     * Temporal Complexity : O(|A| + |F|), A represents the number
+     * of airports and F represents the number of flights.
      *
      * @return int number.
      */
