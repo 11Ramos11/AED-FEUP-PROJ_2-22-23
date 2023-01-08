@@ -55,16 +55,25 @@ int NumbersApplication::numbersCountries(std::string code) {
 
 void NumbersApplication::numberReachableAirports(LocalPTR local, int y) {
     int number = database->airportsWithMaxYFlights(local, y).size();
+
+    if (!number) return;
+
     cout << "Number of reachable airports: " << number << endl;
 }
 
 void NumbersApplication::numberReachableCities(LocalPTR local, int y) {
     int number = database->citiesWithMaxYFlights(local, y).size();
+
+    if (!number) return;
+
     cout << "Number of reachable cities: " << number << endl;
 }
 
 void NumbersApplication::numberReachableCountries(LocalPTR local, int y) {
     int number = database->countriesWithMaxYFlights(local, y).size();
+
+    if (!number) return;
+
     cout << "Number of reachable countries: " << number << endl;
 }
 

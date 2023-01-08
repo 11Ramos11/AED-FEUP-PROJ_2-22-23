@@ -23,6 +23,11 @@ void ListingApplication::showTrajectories(LocalPTR origin, LocalPTR destination,
     else
         trajectories = database->getTrajectories(origin, destination);
 
+    if (trajectories.empty()) {
+        std::cout << "No trajectories were found for the given criteria!";
+        return;
+    }
+
     for (auto trajectory: trajectories) {
         cout << trajectory.first->name << "," << trajectory.first->city;
 
@@ -109,9 +114,6 @@ void ListingApplication::listCities(std::string airportCode) {
 void ListingApplication::listCountries(std::string code) {
     AirportPTR airport = database->getAirport(code);
 
-    string title = "======= " + airport->name + "'s reachable countries =======\n";
-    std::cout << title;
-    std::cout << "Name \n\n";
 
     unordered_set<string> countries;
 
@@ -120,17 +122,33 @@ void ListingApplication::listCountries(std::string code) {
         countries.insert(airport->country);
     }
 
+    if (countries.empty()) {
+        std::cout << "No countries were found for the given airport!" << endl;
+        return;
+    }
+
+    string title = "======= " + airport->name + "'s reachable countries =======\n";
+    std::cout << title;
+    std::cout << "Name \n\n";
+
     for (string country: countries) {
         std::cout << country << endl;
     }
 }
 
 void ListingApplication::listAirportsByCity(City city) {
+
+    auto airports = database->getAirportsPerCity()[city];
+
+    if (airports.empty()) {
+        std::cout << "No airports were found for the given city!" << endl;
+        return;
+    }
     std::cout << "======= " << city.name << "'s existing Airports =======";
     std::cout << endl;
     std::cout << "Airport Name |  Airport city & country \n";
 
-    auto airports = database->getAirportsPerCity()[city];
+
     for (auto airport: airports) {
 
         std::cout << airport->name << " | " << airport->city << ", "
@@ -154,7 +172,7 @@ void ListingApplication::globalStatistic(int k) {
     numAirlines = database->getAirlines().size();
     std::cout << "Number of airlines: " << numAirlines << std::endl;
 
-    std::cout << endl <<"Calculating Diameter..." << std::endl << endl;
+    std::cout << endl << "Calculating Diameter..." << std::endl << endl;
 
     int diameter;
     diameter = database->diameter();
@@ -180,6 +198,12 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
             count++;
         }
     }
+
+    if (!count) {
+        std::cout << "No airports were found for the given country!" << endl;
+        return;
+    }
+
     std::cout << "Number of airports: " << count << endl;
 
     int numFlights = 0;
@@ -217,25 +241,46 @@ void ListingApplication::statisticPerCountry(std::string country, int k) {
 }
 
 void ListingApplication::showReachableAirports(LocalPTR local, int y) {
-    string title = "=========== Reachable Airports ==========\n\n";
+    auto maxYF = database->airportsWithMaxYFlights(local, y);
 
-    for (AirportPTR airport: database->airportsWithMaxYFlights(local, y)) {
+    if (maxYF.empty()) {
+        std::cout << "No reachable airports were found for the given criteria!";
+        return;
+    }
+
+    string title = "=========== Reachable Airports ==========\n\n";
+    for (AirportPTR airport: maxYF) {
         cout << airport->name + "," + airport->city + "," + airport->country << endl;
     }
 }
 
 void ListingApplication::showReachableCities(LocalPTR local, int y) {
+    auto maxCities = database->citiesWithMaxYFlights(local, y);
+
+    if (maxCities.empty()) {
+        std::cout << "No reachable cities were found for the given criteria!";
+        return;
+    }
+
     string title = "=========== Reachable Cities ==========\n\n";
 
-    for (City city: database->citiesWithMaxYFlights(local, y)) {
+    for (City city: maxCities) {
         cout << city.name + "," + city.country << endl;
     }
 }
 
 void ListingApplication::showReachableCountries(LocalPTR local, int y) {
+
+    auto maxCountries = database->countriesWithMaxYFlights(local, y);
+
+    if (maxCountries.empty()) {
+        std::cout << "No reachable countries were found for the given criteria!";
+        return;
+    }
+
     string title = "=========== Reachable Countries ==========\n\n";
 
-    for (string country: database->countriesWithMaxYFlights(local, y)) {
+    for (string country: maxCountries) {
         cout << country << endl;
     }
     cout << endl;

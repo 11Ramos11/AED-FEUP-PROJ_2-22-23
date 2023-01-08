@@ -45,10 +45,10 @@ FlightMap::minimumDistance(AirportPTR airportDepart, AirportPTR airportDestinati
 
         for (auto flight: previousAirport->flights) {
 
+            AirportPTR destination = airports[flight.destinationCode];
+
             if (airlines.find(flight.airlineCode) == airlines.end())
                 continue;
-
-            AirportPTR destination = airports[flight.destinationCode];
 
             if (!destination->visited) {
                 destination->dist = previousAirport->dist + 1;
@@ -123,8 +123,12 @@ list<pair<AirportPTR, list<Flight>>> FlightMap::getFlights(LocalPTR origin,
     int minimum;
 
     for (const AirportPTR &originAirport: origin->getAirports(this))
-        for (const AirportPTR &destAirport: destination->getAirports(this))
-            minimum = minimumDistance(originAirport, destAirport, airlines);
+        for (const AirportPTR &destAirport: destination->getAirports(this)) {
+            int foundMinimum = minimumDistance(originAirport, destAirport, airlines);
+
+            if (foundMinimum < minimum && foundMinimum != -1)
+                minimum = foundMinimum;
+        }
 
     for (const AirportPTR &originAirport: origin->getAirports(this))
         for (const AirportPTR &destAirport: destination->getAirports(this)) {

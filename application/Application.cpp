@@ -58,7 +58,7 @@ void Application::airportNumbersSafety(string &option, int &safeOption) {
 
 void Application::localMenuSafety(string &option, int &safeOption, string typeLocal) {
     while (!safeOption) {
-        menu.displayLocalMenu();
+        menu.displayLocalMenu(typeLocal);
         safeInput(option, safeOption);
     }
 }
@@ -142,6 +142,8 @@ void Application::displayMaxYFlightsMenu(int &oldOption) {
         cout << "Type the desired maximum number of flights:";
         cin >> y;
         LocalPTR local;
+        safeOption = 0;
+        localMenuSafety(option, safeOption, "Target");
         getLocal(safeOption, fail, local, "Target");
         if (!fail) {
             switch (safeOption) {
@@ -173,7 +175,6 @@ void Application::displayMaxYFlightsMenu(int &oldOption) {
         maxYFlightsMenuSafety(option, safeOption);
     }
     oldOption = 0;
-    cout << menu.QUIT_MESSAGE << endl;
 }
 
 void Application::filterNetworkTrajectories(int &oldOption) {
@@ -226,7 +227,6 @@ void Application::filterNetworkTrajectories(int &oldOption) {
         filterNetworkTrajectoriesSafety(option, safeOption);
     }
     oldOption = 0;
-    cout << menu.QUIT_MESSAGE << endl;
 }
 
 
@@ -277,7 +277,6 @@ void Application::airportListMenu(int &oldOption) {
         airportListMenuSafety(option, safeOption);
     }
     oldOption = 0;
-    cout << menu.QUIT_MESSAGE << endl;
 }
 
 void Application::optionFilter(int &option) {
@@ -332,7 +331,6 @@ void Application::displayTrajectoriesMenu(int &oldOption) {
         localMenuSafety(option, safeOption, "Origin");
     }
     oldOption = 0;
-    cout << menu.QUIT_MESSAGE << endl;
 }
 
 void Application::getLocal(int safeOption, bool &fail, LocalPTR &local, string typeLocal) {
@@ -417,7 +415,6 @@ void Application::displayStatisticsMenu(int &oldOption) {
         statisticsMenuSafety(option, safeOption);
     }
     oldOption = 0;
-    cout << menu.QUIT_MESSAGE << endl;
 }
 
 void Application::displayMenu() {

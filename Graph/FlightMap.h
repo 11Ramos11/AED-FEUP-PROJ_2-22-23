@@ -69,7 +69,9 @@ public:
 
     /** @brief Returns the shortest number of flights from a certain airport to another.
      *
-     * It uses BFS implementation.
+     * It uses BFS algorithm.
+     * Temporal Complexity : O(|A| + |F|), A represents the number
+     * of airports and F represents the number of flights.
      *
      * @param airportDepart of AirportPTR type.
      * @param airportDestination of AirportPTR type.
@@ -78,9 +80,11 @@ public:
      */
     int minimumDistance(AirportPTR airportDepart, AirportPTR airportDestination, unordered_set<string> airlines);
 
-    /** @brief Returns all lists with the shortest airport paths.
+    /** @brief Returns list with the shortest trajectories.
      *
-     * It uses BFS implementation.
+     * It uses BFS algorithm.
+     * Temporal Complexity : O(|A| + |F|), A represents the number
+     * of airports and F represents the number of flights.
      *
      * @param airportDepart of AirportPTR type.
      * @param airportDestination of AirportPTR type.
@@ -105,7 +109,9 @@ public:
 
     /** @brief Represents all airports that can be reachable from another specific one.
      *
-     * It uses the BFS implementation.
+     * It uses the BFS algorithm.
+     * Temporal Complexity : O(|A| + |F|), A represents the number
+     * of airports and F represents the number of flights.
      *
      * @param airportPtr of AirportPTR type.
      * @param y of int type.
