@@ -191,7 +191,7 @@ unordered_set<City, City::hashFunction> FlightMap::citiesWithMaxYFlights(LocalPT
 
     for (AirportPTR airport: origin->getAirports(this)) {
         for (AirportPTR destination: reachableAirports(airport, y)) {
-            City city = {destination->city, airport->country};
+            City city = {destination->city, destination->country};
             cities.insert(city);
         }
     }

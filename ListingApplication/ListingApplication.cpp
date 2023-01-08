@@ -156,7 +156,6 @@ void ListingApplication::globalStatistic(int k) {
 
     std::cout << endl <<"Calculating Diameter..." << std::endl << endl;
 
-
     int diameter;
     diameter = database->diameter();
     std::cout << "Diameter: " << diameter << std::endl;
