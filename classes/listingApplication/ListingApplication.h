@@ -1,5 +1,5 @@
-/** @file ListingApplication.h
- *  @brief Contains the ListingApplication class declaration.
+/** @file listingApplication.h
+ *  @brief Contains the listingApplication class declaration.
  *  @author -
  *  @bug No known bugs.
  */
@@ -10,10 +10,10 @@
 
 #include <list>
 #include <unordered_set>
-#include "../Pointers.h"
+#include "../../Pointers.h"
 #include "../Graph/City/City.h"
 
-/** @brief ListingApplication class represents the most interest/important listings.
+/** @brief listingApplication class represents the most interest/important listings.
  *
  */
 class ListingApplication {
@@ -23,7 +23,7 @@ class ListingApplication {
 
 public:
 
-    /** Creates a new ListingApplication with a database.
+    /** Creates a new listingApplication with a database.
      *
      * @param database of DatabasePTR type.
      */
@@ -68,7 +68,7 @@ public:
 
     /** @brief Lists the airports per city.
      *
-     * @param city of City type.
+     * @param city of city type.
      * @return Void.
      */
     void listAirportsByCity(City city);

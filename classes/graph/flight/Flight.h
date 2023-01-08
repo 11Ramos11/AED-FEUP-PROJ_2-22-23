@@ -1,5 +1,5 @@
-/** @file Flight.h
- *  @brief Contains the Flight class declaration.
+/** @file flight.h
+ *  @brief Contains the flight class declaration.
  *  @author -
  *  @bug No known bugs.
  */
@@ -10,7 +10,7 @@ using namespace std;
 
 #include <string>
 
-/** @brief Flight struct to represent a flight.
+/** @brief flight struct to represent a flight.
  *
  */
 struct Flight {

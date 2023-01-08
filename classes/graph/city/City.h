@@ -1,5 +1,5 @@
-/** @file City.h
- *  @brief Contains the City class declaration.
+/** @file city.h
+ *  @brief Contains the city class declaration.
  *  @author -
  *  @bug No known bugs.
  */
@@ -11,7 +11,7 @@
 
 using namespace std;
 
-/** @brief City struct to represent a city.
+/** @brief city struct to represent a city.
  *
  */
 struct City {
@@ -22,7 +22,7 @@ struct City {
     //! @brief Holds the name of the country that the city belongs to.
     string country;
 
-    /** Create a new City with a name and a country.
+    /** Create a new city with a name and a country.
      *
      * @param name Of string type.
      * @param country Of string type.
@@ -34,7 +34,7 @@ struct City {
      * Compare if two cities have the same name
      * and if they belong to the same country.
      *
-     * @param city of type const City, by reference.
+     * @param city of type const city, by reference.
      * @return True if the names and the counties are equals.
      */
     bool operator == (const City& city) const {

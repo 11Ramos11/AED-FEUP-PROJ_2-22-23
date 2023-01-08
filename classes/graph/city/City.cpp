@@ -1,5 +1,5 @@
-/** @file City.cpp
- *  @brief Contains the City class implementation.
+/** @file city.cpp
+ *  @brief Contains the city class implementation.
  *  @author -
  *  @bug No known bugs.
  */

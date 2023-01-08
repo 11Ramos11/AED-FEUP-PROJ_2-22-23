@@ -5,8 +5,10 @@
  */
 
 #include "Application.h"
-#include "../Graph/Locals/Coordinates.h"
 #include <stdexcept>
+#include "../Graph/Locals/Coordinates.h"
+#include "../Graph/Locals/CityLocal.h"
+#include "../Graph/Locals/AirportLocal.h"
 
 Application::Application() {}
 
@@ -92,28 +94,28 @@ void Application::airportNumbersMenu(int &oldOption) {
         switch (safeOption) {
             case FLIGHTS: {
                 string airportCode;
-                cout << "Type the Airport code to check flights total number:";
+                cout << "Type the airport code to check flights total number:";
                 cin >> airportCode;
                 cout << numbersApplication.numbersFlights(airportCode) << endl;
                 break;
             }
             case DIFFERENT_AIRLINES: {
                 string airportCode;
-                cout << "Type the Airport code to check all airlines operating:";
+                cout << "Type the airport code to check all airlines operating:";
                 cin >> airportCode;
                 cout << numbersApplication.numbersAirlines(airportCode) << endl;
                 break;
             }
             case CITY: {
                 string airportCode;
-                cout << "Type the Airport code to check all flights cities:";
+                cout << "Type the airport code to check all flights cities:";
                 cin >> airportCode;
                 cout << numbersApplication.numbersCities(airportCode) << endl;
                 break;
             }
             case BY_COUNTRIES: {
                 string airportCode;
-                cout << "Type the Airport code to check the number of countries to flight:";
+                cout << "Type the airport code to check the number of countries to flight:";
                 cin >> airportCode;
                 cout << numbersApplication.numbersCountries(airportCode) << endl;
                 break;
@@ -142,11 +144,12 @@ void Application::displayMaxYFlightsMenu(int &oldOption) {
         cout << "Type the desired maximum number of flights:";
         cin >> y;
         LocalPTR local;
+        int trueOption = safeOption;
         safeOption = 0;
         localMenuSafety(option, safeOption, "Target");
         getLocal(safeOption, fail, local, "Target");
         if (!fail) {
-            switch (safeOption) {
+            switch (trueOption) {
                 case MAX_AIRPORTS: {
                     listingApplication.showReachableAirports(local, y);
                     numbersApplication.numberReachableAirports(local, y);
@@ -199,7 +202,7 @@ void Application::filterNetworkTrajectories(int &oldOption) {
                             cout << a << endl;
                         menu.breakLine();
                     }
-                    cout << "Enter an Airline code to add to the filter or Q to exit: ";
+                    cout << "Enter an airline code to add to the filter or Q to exit: ";
                     cin >> tempOption;
                     if (tempOption != "Q" && tempOption != "q")
                         airlines.insert(tempOption);
@@ -238,21 +241,21 @@ void Application::airportListMenu(int &oldOption) {
         switch (safeOption) {
             case FLIGHTS: {
                 string airportCode;
-                cout << "Type the Airport code to check all flights:";
+                cout << "Type the airport code to check all flights:";
                 cin >> airportCode;
                 listingApplication.listFlights(airportCode);
                 break;
             }
             case DIFFERENT_AIRLINES: {
                 string airportCode;
-                cout << "Type the Airport code to check all flights:";
+                cout << "Type the airport code to check all flights:";
                 cin >> airportCode;
                 listingApplication.listAirlines(airportCode);
                 break;
             }
             case CITY: {
                 string airportCode;
-                cout << "Type the Airport code to check all flights:";
+                cout << "Type the airport code to check all flights:";
                 cin >> airportCode;
                 listingApplication.listCities(airportCode);
                 break;
@@ -260,7 +263,7 @@ void Application::airportListMenu(int &oldOption) {
 
             case BY_COUNTRIES: {
                 string airportCode;
-                cout << "Type the Airport code to check all flights:";
+                cout << "Type the airport code to check all flights:";
                 cin >> airportCode;
                 listingApplication.listCountries(airportCode);
                 break;
@@ -337,14 +340,14 @@ void Application::getLocal(int safeOption, bool &fail, LocalPTR &local, string t
     switch (safeOption) {
         case Application::BY_AIRPORT_CODE: {
             string airportCode;
-            cout << typeLocal << " Airport Code: ";
+            cout << typeLocal << " airport Code: ";
             cin >> airportCode;
             local = LocalPTR(new AirportLocal(airportCode));
             break;
         }
         case Application::BY_CITY_COUNTRY: {
             string city, country;
-            cout << typeLocal << " City Name: ";
+            cout << typeLocal << " city Name: ";
             cin.ignore();
             getline(cin, city);
             cout << typeLocal << " Country Name: ";

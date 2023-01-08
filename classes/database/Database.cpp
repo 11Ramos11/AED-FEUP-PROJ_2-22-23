@@ -4,7 +4,7 @@
  *  @bug No known bugs.
  */
 
-#include "DataBase.h"
+#include "Database.h"
 #include <sstream>
 #include <fstream>
 #include <unordered_set>

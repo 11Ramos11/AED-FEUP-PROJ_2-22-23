@@ -1,5 +1,5 @@
-/** @file Airport.cpp
- *  @brief Contains the Airport Class implementation.
+/** @file airport.cpp
+ *  @brief Contains the airport Class implementation.
  *  @author -
  *  @bug No known bugs.
  */

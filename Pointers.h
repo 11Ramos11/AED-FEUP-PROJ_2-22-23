@@ -28,7 +28,7 @@ typedef std::shared_ptr<FlightMap> FlightMapPtr;
 //! @brief Redefinition of shared pointers of Airports for ease of use.
 typedef std::shared_ptr<Airport> AirportPTR;
 
-//! @brief Redefinition of shared pointers of Database for ease of use.
+//! @brief Redefinition of shared pointers of database for ease of use.
 typedef std::shared_ptr<Database> DatabasePTR;
 
 //! @brief Redefinition of shared pointers of Local for ease of use.

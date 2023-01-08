@@ -1,5 +1,5 @@
-/** @file Airline.h
- *  @brief Contains the Airline class declaration.
+/** @file airline.h
+ *  @brief Contains the airline class declaration.
  *  @author -
  *  @bug No known bugs.
  */
@@ -11,7 +11,7 @@
 
 using namespace std;
 
-/** @brief Airline struct to represent a airline.
+/** @brief airline struct to represent a airline.
  *
  */
 struct Airline{

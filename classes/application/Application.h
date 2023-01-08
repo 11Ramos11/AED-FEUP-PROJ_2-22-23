@@ -7,13 +7,11 @@
 #ifndef AED_FEUP_PROJ_2_22_23_APPLICATION_H
 #define AED_FEUP_PROJ_2_22_23_APPLICATION_H
 
-#include "../menu/Menu.h"
-#include "../Database/Database.h"
-#include "../Graph/Locals/AirportLocal.h"
-#include "../Graph/Locals/CityLocal.h"
-#include "../Pointers.h"
+#include "../../Pointers.h"
 #include "../ListingApplication/ListingApplication.h"
 #include "../NumbersApplication/NumbersApplication.h"
+#include "../menu/Menu.h"
+#include "../Database/Database.h"
 
 using namespace std;
 
@@ -70,7 +68,7 @@ private:
     //! @brief Initialization of the listingApplication.
     ListingApplication listingApplication = ListingApplication(database);
 
-    //! @brief Initialization of the NumbersApplication.
+    //! @brief Initialization of the numbersApplication.
     NumbersApplication numbersApplication = NumbersApplication(database);
 
     //! @brief Initialization of the menu.

@@ -102,7 +102,7 @@ public:
      * @param origin of LocalPTR type.
      * @param destination of LocalPTR type.
      * @param airlines of unordered_set<string> type.
-     * @return list<list<Flight>> of flights.
+     * @return list<list<flight>> of flights.
      */
     list<pair<AirportPTR, list<Flight>>> getFlights(LocalPTR origin, LocalPTR destination,
                                                     unordered_set<string> airlines);
@@ -135,7 +135,7 @@ public:
      *
      * @param origin of LocalPTR type.
      * @param y of int type.
-     * @return set of reachable cities, of type unordered_set<City, City::hashFunction>
+     * @return set of reachable cities, of type unordered_set<city, city::hashFunction>
      */
     unordered_set<City, City::hashFunction> citiesWithMaxYFlights(LocalPTR origin, int y);
 

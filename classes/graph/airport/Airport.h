@@ -1,5 +1,5 @@
-/** @file Airport.h
- *  @brief Contains the Airport class declaration.
+/** @file airport.h
+ *  @brief Contains the airport class declaration.
  *  @author -
  *  @bug No known bugs.
  */
@@ -11,12 +11,12 @@
 #include <unordered_set>
 #include <list>
 #include <cmath>
-#include "../../Pointers.h"
+#include "../../../Pointers.h"
 #include "../Flight/Flight.h"
 
 using namespace std;
 
-/** @brief Airport class to represent an airport.
+/** @brief airport class to represent an airport.
  *
  */
 class Airport {
@@ -62,7 +62,7 @@ public:
     //! @brief Holds true if airport is in the stack or false if otherwise.
     bool inStack;
 
-    /** Create a new Airport with a code, a name, a city, a country, a latitude and a longitude.
+    /** Create a new airport with a code, a name, a city, a country, a latitude and a longitude.
      *
      * @param code Of Type string.
      * @param name Of Type string.
@@ -72,13 +72,13 @@ public:
      */
     Airport(string code, string name, string city, string country, float latitude, float longitude);
 
-    /** Create a copy of a Airport.
+    /** Create a copy of a airport.
      *
-     * @param airport Of Type const Airport.
+     * @param airport Of Type const airport.
      */
     Airport(const Airport& airport);
 
-    /** Create a new Airport.
+    /** Create a new airport.
      *
      * Does nothing.
      */
@@ -105,7 +105,7 @@ public:
 
     /** @brief Add flights to the list of flights.
      *
-     * @param flight of Flight type.
+     * @param flight of flight type.
      * @return Void.
      */
     void addFlight(Flight flight);

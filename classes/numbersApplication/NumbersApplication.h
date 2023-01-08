@@ -1,5 +1,5 @@
-/** @file NumbersApplication.h
- *  @brief Contains the NumbersApplication class declaration.
+/** @file numbersApplication.h
+ *  @brief Contains the numbersApplication class declaration.
  *  @author -
  *  @bug No known bugs.
  */
@@ -7,9 +7,9 @@
 #ifndef AED_FEUP_PROJ_2_22_23_NUMBERSAPPLICATION_H
 #define AED_FEUP_PROJ_2_22_23_NUMBERSAPPLICATION_H
 
-#include "../Pointers.h"
+#include "../../Pointers.h"
 
-/** @brief NumbersApplication class represents the most interest/important counts.
+/** @brief numbersApplication class represents the most interest/important counts.
  *
  */
 class NumbersApplication {
@@ -19,7 +19,7 @@ class NumbersApplication {
 
 public:
 
-    /** Creates a new NumbersApplication with a database.
+    /** Creates a new numbersApplication with a database.
      *
      * @param database of DatabasePTR type.
      */

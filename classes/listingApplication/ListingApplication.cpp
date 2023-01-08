@@ -1,5 +1,5 @@
-/** @file ListingApplication.cpp
- *  @brief Contains the ListingApplication Class implementation.
+/** @file listingApplication.cpp
+ *  @brief Contains the listingApplication Class implementation.
  *  @author -
  *  @bug No known bugs.
  */
@@ -59,7 +59,7 @@ void ListingApplication::listFlights(std::string airportCode) {
 
     string title = "======= " + airport->name + "'s flights =======\n";
     std::cout << title;
-    std::cout << "Airline | Destination\n";
+    std::cout << "airline | Destination\n";
 
     for (Flight flight: airport->getFlights()) {
         AirportPTR destination = database->getAirport(flight.destinationCode);
@@ -146,7 +146,7 @@ void ListingApplication::listAirportsByCity(City city) {
     }
     std::cout << "======= " << city.name << "'s existing Airports =======";
     std::cout << endl;
-    std::cout << "Airport Name |  Airport city & country \n";
+    std::cout << "airport Name |  airport city & country \n";
 
 
     for (auto airport: airports) {

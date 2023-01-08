@@ -1,5 +1,5 @@
-/** @file NumbersApplication.cpp
- *  @brief Contains the NumbersApplication Class implementation.
+/** @file numbersApplication.cpp
+ *  @brief Contains the numbersApplication Class implementation.
  *  @author -
  *  @bug No known bugs.
  */

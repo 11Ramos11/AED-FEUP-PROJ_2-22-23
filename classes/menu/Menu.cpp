@@ -30,8 +30,8 @@ const string Menu::AIRLINES_NUMBER = "Number of airlines of the airport";
 const string Menu::DESTINATIONS_NUMBER = "Number of different flight destinations the airport";
 const string Menu::COUNTRIES_NUMBER = "Number different countries flights of the airport";
 
-const string Menu::TRAJECTORIES_BY_AIRPORT_CODE = "By Airport";
-const string Menu::TRAJECTORIES_BY_CITY_COUNTRY = "By City";
+const string Menu::TRAJECTORIES_BY_AIRPORT_CODE = "By airport";
+const string Menu::TRAJECTORIES_BY_CITY_COUNTRY = "By city";
 const string Menu::TRAJECTORIES_BY_COORDS = "By Coordinates";
 
 const string Menu::GLOBAL_STATISTICS = "Check global statistics";
@@ -89,7 +89,7 @@ void Menu::displaySearchInfoMenu() {
 
     cout << endl;
     cout << "=============================================" << endl;
-    cout << "      Airport Information Type Menu" << endl;
+    cout << "      airport Information Type Menu" << endl;
     cout << "=============================================" << endl;
     cout << "1 - " << BY_LISTS << endl;
     cout << "2 - " << BY_NUMBER << endl;
@@ -105,7 +105,7 @@ void Menu::breakLine() {
 void Menu::displayNumbersMenu() {
     cout << endl;
     cout << "=============================================" << endl;
-    cout << "     Check Airport information numbers" << endl;
+    cout << "     Check airport information numbers" << endl;
     cout << "=============================================" << endl;
     cout << "1 - " << FLIGHTS_NUMBER << endl;
     cout << "2 - " << AIRLINES_NUMBER << endl;
@@ -130,7 +130,7 @@ void Menu::displayMaxYFlightsMenu() {
 void Menu::displayListsMenu() {
     cout << endl;
     cout << "=============================================" << endl;
-    cout << "         Airport listing options" << endl;
+    cout << "         airport listing options" << endl;
     cout << "=============================================" << endl;
     cout << "1 - " << AIRPORT_FLIGHTS << endl;
     cout << "2 - " << AIRPORT_AIRLINES << endl;
@@ -156,7 +156,7 @@ void Menu::displayLocalMenu(string local) {
 void Menu::displayNetworkMenu() {
     cout << endl;
     cout << "=============================================" << endl;
-    cout << "       Trajectories By Airline options" << endl;
+    cout << "       Trajectories By airline options" << endl;
     cout << "=============================================" << endl;
     cout << "1 - " << ALL_AIRLINES << endl;
     cout << "2 - " << FILTER_AIRLINES << endl;

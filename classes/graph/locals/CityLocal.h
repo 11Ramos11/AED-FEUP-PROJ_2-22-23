@@ -25,7 +25,7 @@ public:
 
     /** Create a new CityLocal with a city.
      *
-     * @param city Of Type City.
+     * @param city Of Type city.
      */
     CityLocal(City city);
 

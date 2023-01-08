@@ -14,7 +14,7 @@
 #include "../Graph/FlightMap.h"
 #include "../Graph/Airline/Airline.h"
 
-/** @brief Database class to read all input files and store all information.
+/** @brief database class to read all input files and store all information.
  *
  *  Intended to be instanced once and creates a database
  *  for use within the app.
@@ -41,7 +41,7 @@ private:
     /** @brief Reads airlines input file and stores them accordingly.
      *
      *  Reads the file "airlines.csv" and for each line
-     *  it reads an Airline code, name, its call sign and country.
+     *  it reads an airline code, name, its call sign and country.
      *
      *  @return Void.
      */
@@ -50,10 +50,10 @@ private:
     /** @brief Reads airports input file and stores them accordingly.
      *
      *  Reads the file "airports.csv" and for each line
-     *  it reads an Airport code and name, a name of the city and country that belongs to
+     *  it reads an airport code and name, a name of the city and country that belongs to
      *  and its latitude and longitude.
-     *  If the Airport (name of the city, name of the country) corresponds to a new Airport,
-     *  it creates a new Airport object and adds it to the unordered_map of airports.
+     *  If the airport (name of the city, name of the country) corresponds to a new airport,
+     *  it creates a new airport object and adds it to the unordered_map of airports.
      *
      *  @return Void.
      */
@@ -91,7 +91,7 @@ public:
     /** @brief Returns the code of an specific airline.
     *
     * @param code of string type.
-    * @return  airline of Airline type.
+    * @return  airline of airline type.
     */
     Airline getAirline(string code);
 
@@ -109,7 +109,7 @@ public:
 
     /** @brief Returns all airlines.
      *
-     * @return unordered_map<string, Airline> with airlines.
+     * @return unordered_map<string, airline> with airlines.
      */
     unordered_map<string, Airline> getAirlines();
 
@@ -124,7 +124,7 @@ public:
      *
      * @param origin Of LocalPTR type.
      * @param destination Of LocalPTR type.
-     * @return list<list<Flight>> with the trajectories by origin and destination.
+     * @return list<list<flight>> with the trajectories by origin and destination.
      */
     list<pair<AirportPTR, list<Flight>>> getTrajectories(LocalPTR origin, LocalPTR destination);
 
@@ -140,7 +140,7 @@ public:
      *
      * @param origin Of LocalPTR type.
      * @param destination Of int type.
-     * @return set of reachable cities, of type unordered_set<City, City::hashFunction>.
+     * @return set of reachable cities, of type unordered_set<city, city::hashFunction>.
      */
     unordered_set<City, City::hashFunction> citiesWithMaxYFlights(LocalPTR origin, int y);
 
@@ -175,7 +175,7 @@ public:
      * @param origin Of LocalPTR type.
      * @param destination Of LocalPTR type.
      * @param airlines Of unordered_set<string> type.
-     * @return list<pair<AirportPTR, list<Flight>>>.
+     * @return list<pair<AirportPTR, list<flight>>>.
      */
     list<pair<AirportPTR, list<Flight>>>getTrajectories(LocalPTR origin,
                                                         LocalPTR destination,
