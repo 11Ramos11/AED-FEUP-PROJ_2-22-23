@@ -7,10 +7,11 @@ void test1() {
     database->read();
     ListingApplication listingApplication(database);
 
-    LocalPTR origin = make_shared<AirportLocal>("OPO");
-    LocalPTR destination = make_shared<AirportLocal>("LIS");
 
-    listingApplication.showTrajectories(origin, destination, false, {});
+    LocalPTR origin = make_shared<CityLocal>(City("Moscow", "Russia"));
+    LocalPTR destination = make_shared<Coordinates>(40.6894, -74.0444, 40);
+
+    listingApplication.showTrajectories(origin, destination, false, {"AAL", "BAW"});
 }
 
 void test2() {
@@ -19,10 +20,10 @@ void test2() {
     ListingApplication listingApplication(database);
 
 
-    LocalPTR destination = make_shared<CityLocal>(City("London", "United Kingdom"));
-    LocalPTR origin = make_shared<CityLocal>(City("Porto", "Portugal"));
+    LocalPTR origin = make_shared<CityLocal>(City("Moscow", "Russia"));
+    LocalPTR destination = make_shared<Coordinates>(40.6894, -74.0444, 40);
 
-    listingApplication.showTrajectories(origin, destination, false, {});
+    listingApplication.showTrajectories(origin, destination, true, {"AAL", "BAW"});
 }
 
 void test3() {
