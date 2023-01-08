@@ -381,7 +381,7 @@ void Application::displayStatisticsMenu(int &oldOption) {
         switch (safeOption) {
             case GLOBAL_STATISTICS: {
                 int k;
-                cout << "Type the range of results: ";
+                cout << "Type the number for the top airports with most flights: ";
                 cin >> k;
                 listingApplication.globalStatistic(k);
                 break;
@@ -392,7 +392,7 @@ void Application::displayStatisticsMenu(int &oldOption) {
                 cout << "Type a country name to check its air transport statistics:";
                 cin.ignore();
                 getline(cin, country);
-                cout << "Type the range of results: ";
+                cout << "Type the number for the top airports with most flights: ";
                 cin >> k;
                 listingApplication.statisticPerCountry(country, k);
                 break;

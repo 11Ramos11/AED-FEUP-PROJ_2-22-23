@@ -154,6 +154,9 @@ void ListingApplication::globalStatistic(int k) {
     numAirlines = database->getAirlines().size();
     std::cout << "Number of airlines: " << numAirlines << std::endl;
 
+    std::cout << endl <<"Calculating Diameter..." << std::endl << endl;
+
+
     int diameter;
     diameter = database->diameter();
     std::cout << "Diameter: " << diameter << std::endl;
