@@ -151,9 +151,10 @@ public:
 
     /** @brief Displays the filtered local menu.
     *
+    * @param local of string type.
     * @return Void.
     */
-    void displayLocalMenu();
+    void displayLocalMenu(string local);
 
     /** @brief Displays the menu with search type information.
      *

@@ -58,7 +58,7 @@ void Application::airportNumbersSafety(string &option, int &safeOption) {
 
 void Application::localMenuSafety(string &option, int &safeOption, string typeLocal) {
     while (!safeOption) {
-        menu.displayLocalMenu();
+        menu.displayLocalMenu(typeLocal);
         safeInput(option, safeOption);
     }
 }
