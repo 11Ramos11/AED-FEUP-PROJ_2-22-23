@@ -65,7 +65,7 @@ void test7(){
 
     auto n = database->getFlightMapPtr()->articulationPoints();
 
-    cout << "Number of articulation points: " << n.size() << endl << endl;
+    cout << endl << "Number of articulation points: " << n.size() << endl << endl;
 }
 
 void test8(){

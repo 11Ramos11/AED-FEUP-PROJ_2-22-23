@@ -110,6 +110,12 @@ public:
     //! @brief Defines the string to output in the menu, as an option to showcase statistics by country.
     static const string STATISTICS_BY_COUNTRY;
 
+    //! @brief Defines the string to output in the menu, as an option to showcase articulation points.
+    static const string ARTICULATION_POINTS;
+
+    //! @brief Defines the string to output in the menu, as an option to showcase connected components.
+    static const string CONNECTED_COMPONENTS;
+
     //! @brief Does nothing.
     Menu();
 

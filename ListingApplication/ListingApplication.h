@@ -96,6 +96,10 @@ public:
     void numberReachableCities(LocalPTR local, int y);
 
     void numberReachableCountries(LocalPTR local, int y);
+
+    void listArticulationPoints();
+
+    void showNumberOfComponents();
 };
 
 

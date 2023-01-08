@@ -157,6 +157,10 @@ public:
      * @return  FlightMapPtr.
      */
     FlightMapPtr getFlightMapPtr();
+
+    list<AirportPTR> getArticulationPoints();
+
+    int getConnectedComponents();
 };
 
 #endif //AED_FEUP_PROJ_22_23_DATABASE_H

@@ -147,3 +147,11 @@ unordered_set<City, City::hashFunction> Database::citiesWithMaxYFlights(LocalPTR
 unordered_set<string> Database::countriesWithMaxYFlights(LocalPTR origin, int y){
     return flightMap->countriesWithMaxYFlights(origin, y);
 }
+
+list<AirportPTR> Database::getArticulationPoints(){
+    return flightMap->articulationPoints();
+}
+
+int Database::getConnectedComponents(){
+    return flightMap->connectedComponents();
+}
