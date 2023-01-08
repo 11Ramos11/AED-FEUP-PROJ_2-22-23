@@ -125,7 +125,7 @@ list<pair<AirportPTR, list<Flight>>> Database::getTrajectoriesAllAirlines(LocalP
 
     unordered_set<string> airlinesCodes;
 
-    for (auto airline: airlines){
+    for (auto airline: airlines) {
         airlinesCodes.insert(airline.first);
     }
 
@@ -136,7 +136,7 @@ FlightMapPtr Database::getFlightMapPtr() {
     return flightMap;
 }
 
-unordered_set<AirportPTR> Database::airportsWithMaxYFlights(LocalPTR origin, int y){
+unordered_set<AirportPTR> Database::airportsWithMaxYFlights(LocalPTR origin, int y) {
     return flightMap->airportsWithMaxYFlights(origin, y);
 }
 
@@ -144,14 +144,14 @@ unordered_set<City, City::hashFunction> Database::citiesWithMaxYFlights(LocalPTR
     return flightMap->citiesWithMaxYFlights(origin, y);
 }
 
-unordered_set<string> Database::countriesWithMaxYFlights(LocalPTR origin, int y){
+unordered_set<string> Database::countriesWithMaxYFlights(LocalPTR origin, int y) {
     return flightMap->countriesWithMaxYFlights(origin, y);
 }
 
-list<AirportPTR> Database::getArticulationPoints(){
+list<AirportPTR> Database::getArticulationPoints() {
     return flightMap->articulationPoints();
 }
 
-int Database::getConnectedComponents(){
+int Database::getConnectedComponents() {
     return flightMap->connectedComponents();
 }

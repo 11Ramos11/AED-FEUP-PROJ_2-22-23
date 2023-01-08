@@ -39,6 +39,9 @@ const string Menu::STATISTICS_BY_COUNTRY = "Check air transports statistics by c
 const string Menu::ARTICULATION_POINTS = "Check articulation points in the flight map";
 const string Menu::CONNECTED_COMPONENTS = "Check number of connected components in the flight map";
 
+const string Menu::ALL_AIRLINES = "Check all airlines trajectories";
+const string Menu::FILTER_AIRLINES = "Check trajectories for the filtered airlines";
+
 const string Menu::AIRPORT_FLIGHTS = "List flights by airport";
 const string Menu::AIRPORT_AIRLINES = "List airlines by airport";
 const string Menu::AIRPORT_DESTINATIONS = "List flight destinations by airport";
@@ -140,7 +143,7 @@ void Menu::displayListsMenu() {
     cout << "Insert option number > ";
 }
 
-void Menu::displayLocalMenu(string typeLocal) {
+void Menu::displayLocalMenu() {
     cout << endl;
     cout << "=============================================" << endl;
     cout << "          Local choice options" << endl;
@@ -152,10 +155,21 @@ void Menu::displayLocalMenu(string typeLocal) {
     cout << "Insert option number > ";
 }
 
+void Menu::displayNetworkMenu() {
+    cout << endl;
+    cout << "=============================================" << endl;
+    cout << "       Trajectories By Airline options" << endl;
+    cout << "=============================================" << endl;
+    cout << "1 - " << ALL_AIRLINES << endl;
+    cout << "2 - " << FILTER_AIRLINES << endl;
+    cout << "9 - " << GO_BACK << endl;
+    cout << "Insert option number > ";
+}
+
 void Menu::displayStatisticsMenu() {
     cout << endl;
     cout << "=============================================" << endl;
-    cout << "          Statistics options" << endl;
+    cout << "           Statistics options" << endl;
     cout << "=============================================" << endl;
     cout << "1 - " << GLOBAL_STATISTICS << endl;
     cout << "2 - " << STATISTICS_BY_COUNTRY << endl;
